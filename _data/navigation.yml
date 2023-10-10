@@ -7,14 +7,14 @@ main:
     # url: vitae/
     url: resume/
   
-  # - title: "Projects"
-  #   url: research/
+  - title: "Projects"
+    url: research/
 
   - title: "Publications"
     url: publications/
 
-  - title: "Teaching"
-    url: teaching/
+  # - title: "Teaching"
+    # url: teaching/
      
   - title: "Contact"
     url: contact/
