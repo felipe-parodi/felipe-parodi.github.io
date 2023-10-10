@@ -6,7 +6,7 @@ author_profile: true
 ---
 ### 2023
 - **[A large language model-assisted education tool...](https://arxiv.org/abs/2308.02439)**  
-  _Matelsky et al._ • _arXiv_  
+  _Matelsky, **Parodi**, et al._ • _arXiv_  
   🔑 Leveraged LLMs to enhance educational feedback.
 
 - **[Neural signatures of natural behavior...](https://www.biorxiv.org/content/10.1101/2023.07.05.547833v1)**  
@@ -25,12 +25,8 @@ author_profile: true
 ---
 
 <sup>†</sup> denotes shared authorship.
+
 <!--
-\item \textbf{Parodi, F.}, Matelsky, J., Kimock, C., Waller, B., Kording, K.P.*, Platt, M.L.* (2023). \textit{PrimateFace: A deep learning-based system for primate facial analysis}. In prep. {\href{...}{arXiv Pre-print available}}. \\ 
-
-
-
-
 ## 2023
 [A large language model-assisted education tool to provide feedback on open-ended responses](https://arxiv.org/abs/2308.02439) Matelsky, J.K., **Parodi, F.**, Liu, T., Lange, R.D., Kording, K.P. _arXiv preprint_ (2023).
 - Key Insight: Leveraged LLMs to enhance educational feedback mechanisms.
