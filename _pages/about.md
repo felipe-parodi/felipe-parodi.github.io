@@ -19,6 +19,7 @@ If you have similar interests or simply want to chat, please reach out!
 
 ## Education
 - Ph.D. in Neuroscience, 2020–Present, University of Pennsylvania
+- M.A. in Statistics and Data Science, 2020-2024, The Wharton School, Penn
 - B.S. in Neuroscience; B.A. in Economics, 2015-2019, University of Miami
 
 <!-- I am originally from Buenos Aires, Argentina, but I completed most of my education in Miami, FL. For undergrad, I studied Neuroscience and Economics at the University of Miami (go Canes!). At UM, I hopped from lab to lab, and eventually found my way towards Dr. Elizabeth Losin's Social & Cultural Neuroscience Lab, where I helped collect data for work on neurolinguistic pain modulation in Spanish-English bilinguals. Following graduation, I worked as a Psychometrician for First Choice Neurology under Dr. Rafael Rivas-Vazquez, where I developed and administered psychometric assessments to individuals with neuropsychological disorders.  -->
