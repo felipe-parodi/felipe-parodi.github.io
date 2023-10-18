@@ -14,7 +14,7 @@ author_profile: true
   🔑 Leveraged LLMs to enhance educational feedback.
 
 - **[Neural signatures of natural behavior...](https://www.biorxiv.org/content/10.1101/2023.07.05.547833v1)**  
-  _Testard<sup>†</sup>, Tremblay<sup>†</sup>, **Parodi**_ • _bioRxiv_  
+  _Testard<sup>†</sup>, Tremblay<sup>†</sup>, **Parodi**, et al._ • _bioRxiv_  
   🔑 Uncovered distinct neural patterns during macaque social interactions.
 
 - **[Quantifying grooming in paired macaques...](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=kqW-zA0A5dAC&citation_for_view=kqW-zA0A5dAC:2osOgNQ5qMEC)**  
@@ -23,7 +23,7 @@ author_profile: true
 
 ### 2022
 - **[Attention Deficits Linked with Proclivity to Explore...](https://psyarxiv.com/nyvjq/)**  
-  _Barack<sup>†</sup>, Ludwig<sup>†</sup>, **Parodi**_ • _PsyArXiv_  
+  _Barack<sup>†</sup>, Ludwig<sup>†</sup>, **Parodi**,  et al._ • _PsyArXiv_  
   🔑 Revealed connection between attention deficits and exploration tendencies.
 
 ---
