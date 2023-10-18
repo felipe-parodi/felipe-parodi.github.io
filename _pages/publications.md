@@ -5,7 +5,8 @@ permalink: /publications/
 author_profile: true
 ---
 ### 2023
-- **[Information gathering explains decision dynamics...](https://www.biorxiv.org/content/10.1101/2023.10.14.562362v1)** _Barack, **Parodi**, et al._ • _arXiv_
+- **[Information gathering explains decision dynamics...](https://www.biorxiv.org/content/10.1101/2023.10.14.562362v1)**
+  _Barack, **Parodi**, et al._ • _arXiv_
   🔑 Modeled human & monkey behavior to reveal motivations underlying irrational decisions.
 
 - **[A large language model-assisted education tool...](https://arxiv.org/abs/2308.02439)**  
