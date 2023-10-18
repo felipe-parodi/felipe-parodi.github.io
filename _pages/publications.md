@@ -19,7 +19,7 @@ author_profile: true
 
 - **[Quantifying grooming in paired macaques...](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=kqW-zA0A5dAC&citation_for_view=kqW-zA0A5dAC:2osOgNQ5qMEC)**  
   _**Parodi**, Platt, Kording_ • _Bulletin of the American Physical Society_  
-  🔑 Developed novel metrics for grooming behavior analysis.
+  🔑 Developed deep learning-based metrics for grooming behavior analysis.
 
 ### 2022
 - **[Attention Deficits Linked with Proclivity to Explore...](https://psyarxiv.com/nyvjq/)**  
