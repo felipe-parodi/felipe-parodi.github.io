@@ -3,12 +3,12 @@ main:
   - title: "Home"
     url: about/ # --> link CV here instead?
 
-  - title: "Resume"
-    # url: vitae/
-    url: resume/
+  # - title: "Resume"
+  #   # url: vitae/
+  #   url: resume/
   
-  - title: "Projects"
-    url: research/
+  # - title: "Projects"
+  #   url: research/
 
   - title: "Publications"
     url: publications/
