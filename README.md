@@ -3,7 +3,7 @@
 Welcome to the GitHub repository for my personal website. This site is a showcase of my professional work in neuroscience, computer vision, behavior, etc.
 
 ## Todos
-[ ] Link Google Scholar to publications for continuous updates
+- [ ] Link Google Scholar to publications for continuous updates
 
 ## Overview
 
