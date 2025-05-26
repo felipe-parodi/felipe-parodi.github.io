@@ -2,9 +2,6 @@
 
 Welcome to the GitHub repository for my personal website. This site is a showcase of my professional work in neuroscience, computer vision, behavior, etc.
 
-## Todos
-[ ] Link Google Scholar to publications for continuous updates
-
 ## Overview
 
 The website is built using [Jekyll](https://jekyllrb.com/) and hosted on [GitHub Pages](https://pages.github.com/). It features information about my research, publications, teaching experience, and more. The base site is from [this repository](https://github.com/academicpages/academicpages.github.io).
