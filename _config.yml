@@ -7,6 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
+theme                    : "minimal-mistakes-jekyll"
 title                    : ""
 title_separator          : ""
 name                     : &name "Felipe Parodi"
