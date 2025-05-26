@@ -1,5 +1,18 @@
----
----
+
+
+@charset "utf-8";
+
+// Import the Minimal Mistakes skin (e.g., "air")
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; 
+
+// Import Minimal Mistakes main SASS partials
+@import "minimal-mistakes"; 
+
+// You can add your custom SASS imports below this line if needed
+// For example, if you rename your old main.scss to _custom.scss in the _sass folder:
+// @import "custom"; 
+// Or if you have assets/css/custom.scss (ensure it doesn't also have front matter):
+// @import "../../../_sass/custom"; // Adjust path as needed or manage via load paths
 
 /*
  *    Minimal Mistakes Jekyll Theme
