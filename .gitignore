@@ -1,0 +1,15 @@
+_site/
+this.log
+vendor/
+
+# Ignore all PDFs
+*.pdf
+
+# Ignore large image files
+*.png
+!images/parodi_headshot.png
+
+# Ignore build artifacts
+.bundle/
+.sass-cache/
+files/

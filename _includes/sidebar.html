@@ -1,0 +1,81 @@
+{% include base_path %}
+
+{% if page.author_profile or layout.author_profile or page.sidebar %}
+  <div class="sidebar sticky">
+  {% if page.author_profile or layout.author_profile %}
+    {% if site.author.avatar contains "://" %}
+      <img src="{{ site.author.avatar }}" alt="{{ site.author.name }}" class="author__avatar">
+    {% else %}
+      <img src="{{ base_path }}{{ site.author.avatar }}" alt="{{ site.author.name }}" class="author__avatar">
+    {% endif %}
+
+    <div class="author__content">
+      <h3 class="author__name">{{ site.author.name }}</h3>
+      {% if site.author.bio %}
+        <p class="author__bio">{{ site.author.bio }}</p>
+      {% endif %}
+    </div>
+
+    <div class="author__urls-wrapper">
+      <button class="btn btn--inverse">{{ site.data.ui-text[site.locale].follow_label | default: "Follow" }}</button>
+      <ul class="author__urls social-icons">
+        {% if site.author.location %}
+          <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+            <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> <span itemprop="name">{{ site.author.location }}</span>
+          </li>
+        {% endif %}
+
+        {% if site.author.employer %}
+          <li>
+            <i class="fa fa-fw fa-university" aria-hidden="true"></i> {{ site.author.employer }}
+          </li>
+        {% endif %}
+
+        {% if site.author.linkedin %}
+          <li>
+            <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" itemprop="sameAs" rel="nofollow noopener noreferrer">
+              <i class="fa fa-fw fa-linkedin-square" aria-hidden="true"></i> LinkedIn
+            </a>
+          </li>
+        {% endif %}
+
+        {% if site.author.github %}
+          <li>
+            <a href="https://github.com/{{ site.author.github }}" itemprop="sameAs" rel="nofollow noopener noreferrer">
+              <i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub
+            </a>
+          </li>
+        {% endif %}
+
+        {% if site.author.googlescholar %}
+          <li>
+            <a href="{{ site.author.googlescholar }}" itemprop="sameAs" rel="nofollow noopener noreferrer">
+              <i class="ai ai-google-scholar-square ai-fw"></i> Google Scholar
+            </a>
+          </li>
+        {% endif %}
+
+        {% include author-profile-custom-links.html %}
+      </ul>
+    </div>
+  {% endif %}
+  {% if page.sidebar %}
+    {% for s in page.sidebar %}
+      {% if s.image %}
+        <img src=
+        {% if s.image contains "://" %}
+          "{{ s.image }}"
+        {% else %}
+          "{{ s.image | prepend: "/images/" | prepend: base_path }}"
+        {% endif %}
+        alt="{% if s.image_alt %}{{ s.image_alt }}{% endif %}">
+      {% endif %}
+      {% if s.title %}<h3>{{ s.title }}</h3>{% endif %}
+      {% if s.text %}{{ s.text | markdownify }}{% endif %}
+    {% endfor %}
+    {% if page.sidebar.nav %}
+      {% include nav_list nav=page.sidebar.nav %}
+    {% endif %}
+  {% endif %}
+  </div>
+{% endif %}

@@ -1,0 +1,169 @@
+/* ===== CLEAN OVAL PROFILE IMAGE SOLUTION ===== */
+/* Override all existing styles with maximum specificity */
+
+/* The image itself has the author__avatar class */
+html body .sidebar img.author__avatar,
+html body img.author__avatar,
+.sidebar img.author__avatar,
+img.author__avatar {
+  display: block !important;
+  width: 200px !important;
+  height: 250px !important; /* Taller than wide for oval shape */
+  margin: 0 auto !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  max-width: none !important; /* Override theme defaults */
+  padding: 0 !important; /* Remove any existing padding */
+  
+  /* OVAL SHAPE - this is the key! */
+  border-radius: 50% !important; /* This creates an oval when image is rectangular */
+  
+  /* BLACK AND WHITE BORDER FRAME */
+  border: 6px solid #000 !important; /* Black outer border */
+  box-shadow: 
+    0 0 0 2px #fff, /* White inner border */
+    0 4px 12px rgba(0,0,0,0.3) !important; /* Drop shadow */
+  
+  transition: all 0.3s ease !important;
+}
+
+/* Hover effect with maximum specificity */
+html body .sidebar img.author__avatar:hover,
+html body img.author__avatar:hover,
+.sidebar img.author__avatar:hover,
+img.author__avatar:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 
+    0 0 0 2px #fff,
+    0 6px 20px rgba(0,0,0,0.4) !important;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+  html body .sidebar img.author__avatar,
+  html body img.author__avatar,
+  .sidebar img.author__avatar,
+  img.author__avatar {
+    width: 160px !important;
+    height: 200px !important;
+    border: 4px solid #000 !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html body .sidebar img.author__avatar,
+  html body img.author__avatar,
+  .sidebar img.author__avatar,
+  img.author__avatar {
+    width: 140px !important;
+    height: 175px !important;
+    border: 3px solid #000 !important;
+  }
+}
+
+/* Override conflicting SCSS styles */
+.sidebar .author__avatar img {
+  border-radius: 50% !important; /* Override the 35% 25% from _custom.scss */
+  border: 6px solid #000 !important; /* Override the theme border */
+  padding: 0 !important; /* Remove padding */
+  max-width: none !important; /* Remove max-width constraint */
+  width: 200px !important;
+  height: 250px !important;
+  object-fit: cover !important;
+  box-shadow: 
+    0 0 0 2px #fff,
+    0 4px 12px rgba(0,0,0,0.3) !important;
+}
+
+/* Contact page font size adjustments */
+.archive {
+  font-size: 0.85em !important; /* Make all content smaller */
+}
+
+/* Contact form styling */
+.archive form {
+  font-size: 0.9em !important;
+}
+
+.archive form label {
+  font-size: 0.85em !important;
+  font-weight: bold;
+}
+
+.archive form input,
+.archive form textarea {
+  font-size: 0.8em !important;
+  padding: 8px !important;
+  margin: 5px 0 10px 0 !important;
+  border: 1px solid #ccc !important;
+  border-radius: 4px !important;
+}
+
+.archive form input[type="submit"] {
+  background-color: #4285f4 !important;
+  color: white !important;
+  padding: 10px 20px !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 0.85em !important;
+}
+
+.archive form input[type="submit"]:hover {
+  background-color: #3367d6 !important;
+}
+
+/* Hide any conflicting elements */
+.site-title { 
+  display: none !important; 
+}
+
+/* ===== Navigation Styling ===== */
+header ul {
+  position: static !important;
+  display: inline-block !important;
+  margin: 15px auto !important;
+  float: none !important;
+  text-align: center !important;
+  right: auto !important;
+}
+
+header li {
+  float: none !important;
+  display: inline-block !important;
+  margin: 0 10px !important;
+}
+
+.buttons {
+  padding: 2px 12px !important;
+  background-position: 8px center !important;
+}
+
+.site-nav {
+  text-align: center !important;
+  margin: 10px auto !important;
+  float: none !important;
+}
+
+.site-nav .page-link {
+  display: inline-block !important;
+  float: none !important;
+  margin: 0 15px !important;
+}
+
+/* Navigation mobile adjustments */
+@media screen and (max-width: 768px) {
+  header li {
+    margin: 0 8px !important;
+  }
+  
+  .site-nav .page-link {
+    margin: 0 10px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header ul {
+    margin: 10px auto !important;
+  }
+} 

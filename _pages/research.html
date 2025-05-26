@@ -1,0 +1,62 @@
+---
+layout: archive
+title: "Research | Publications"
+excerpt: "A list of my publications, automatically updated from Google Scholar."
+permalink: /research/
+author_profile: true
+---
+
+<div class="publications-list">
+  {% if site.data.scholar_publications %}
+    {% for pub in site.data.scholar_publications %}
+      <div class="publication-entry">
+        <h3><a href="{{ pub.url | default: '#' }}" target="_blank" rel="noopener noreferrer">{{ pub.title | default: "No Title" }}</a></h3>
+        <p class="authors"><em>{{ pub.authors | default: "N/A" }}</em></p>
+        <p class="venue-year">
+          {% if pub.venue and pub.venue != "N/A" %}
+            {{ pub.venue }}
+          {% endif %}
+          {% if pub.year and pub.year != "N/A" %}
+            ({% if pub.venue and pub.venue != "N/A" %}, {% endif %}{{ pub.year }})
+          {% endif %}
+        </p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No publications found. Please run the update script or check the data file.</p>
+    <p>To update, run: <code>python update_publications.py</code></p>
+  {% endif %}
+</div>
+
+<style>
+  .publications-list {
+    margin-top: 0.3em;
+  }
+  .publication-entry {
+    margin-bottom: 0.3em;
+    padding-bottom: 0.15em;
+    border-bottom: 1px solid #eee;
+  }
+  .publication-entry:last-child {
+    border-bottom: none;
+  }
+  .publication-entry h3 {
+    margin-bottom: 0.1em;
+    font-size: 0.95em;
+  }
+  .publication-entry h3 a {
+    text-decoration: none;
+  }
+  .publication-entry p {
+    margin-bottom: 0.1em;
+    font-size: 0.8em;
+    color: #555;
+  }
+  .publication-entry .authors {
+    font-style: italic;
+  }
+  .publication-entry .venue-year {
+    font-size: 0.75em;
+    color: #777;
+  }
+</style>

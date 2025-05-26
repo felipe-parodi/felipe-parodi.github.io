@@ -1,0 +1,91 @@
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": ["Person", "Researcher"],
+  "@id": "{{ site.url }}",
+  "name": "{{ site.author.name }}",
+  "jobTitle": "PhD Candidate",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "University of Pennsylvania",
+    "department": "Computational Neuroscience",
+    "memberOf": [
+      {
+        "@type": "Organization",
+        "name": "Konrad Kording Lab",
+        "description": "Machine Learning, Computational Neuroscience, and NeuroAI Research Group"
+      },
+      {
+        "@type": "Organization",
+        "name": "Michael Platt Lab",
+        "description": "Computational Neuroethology, Social Neuroscience, and Primate Behavior Research Group"
+      }
+    ]
+  },
+  "alumniOf": {
+    "@type": "Organization",
+    "name": "University of Pennsylvania"
+  },
+  "knowsAbout": [
+    "AI for Science",
+    "Computational Neuroscience",
+    "Machine Learning",
+    "Deep Learning",
+    "Primate Behavior",
+    "Social Interaction Analysis",
+    "Computational Neuroethology",
+    "Computer Vision",
+    "Neural Data Analysis",
+    "Behavioral Analysis",
+    "Social Neuroscience",
+    "Natural Behavior",
+    "Ethology",
+    "Reinforcement Learning",
+  ],
+  "researchProjects": [
+    {
+      "@type": "ResearchProject",
+      "name": "Mental Tracking of Social Interactions in Macaque Mid-Superior Temporal Sulcus",
+      "description": "Using AI and computational methods to understand social interaction processing in primate brain",
+      "keywords": ["primate behavior", "social neuroscience", "natural behavior", "AI for Science", "computational neuroethology"]
+    },
+    {
+      "@type": "ResearchProject",
+      "name": "PrimateFace: cross-species deep learning resource for primate face analysis",
+      "description": "Developing AI tools for automated analysis of natural primate behavior",
+      "keywords": ["deep learning", "computer vision", "ethology", "AI for Science", "behavioral analysis"]
+    }
+  ],
+  "expertise": [
+    {
+      "@type": "DefinedTerm",
+      "termCode": "computational_methods",
+      "name": "Computational Methods",
+      "skills": ["Python", "Deep Learning", "Computer Vision", "Data Science", "PyTorch", "Jax", "AI for Science"]
+    },
+    {
+      "@type": "DefinedTerm",
+      "termCode": "neuroscience",
+      "name": "Neuroscience",
+      "skills": ["Neural Recording", "Behavior Analysis", "Social Neuroscience", "Neural Data Analysis", "Computational Neuroethology"]
+    }
+  ],
+  "url": "{{ site.url }}",
+  "sameAs": [
+    "{{ site.author.googlescholar }}",
+    "https://github.com/{{ site.author.github }}",
+    "https://linkedin.com/in/{{ site.author.linkedin }}"
+  ],
+  "image": "{{ site.url }}/images/{{ site.author.avatar }}",
+  "description": "{{ site.description }}",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site.url }}",
+    "about": {
+      "@type": "Thing",
+      "name": "AI for Science: Computational Neuroscience and Animal Behavior",
+      "description": "Research focusing on understanding social interactions in primates through AI and computational methods, advancing scientific discovery"
+    }
+  }
+}
+</script> 

@@ -1,0 +1,52 @@
+{% include base_path %}
+
+<meta charset="utf-8">
+
+{% include seo.html %}
+{% include researcher-schema.html %}
+{% include og-tags.html %}
+
+<link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ base_path }}/feed.xml{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="{{ base_path }}/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ base_path }}/images/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="96x96" href="{{ base_path }}/images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="{{ base_path }}/images/android-chrome-192x192.png">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/dark-mode.css">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% if site.minimal_mistakes_skin == "air" or site.minimal_mistakes_skin == "contrast" or site.minimal_mistakes_skin == "dark" or site.minimal_mistakes_skin == "dirt" or site.minimal_mistakes_skin == "neon" or site.minimal_mistakes_skin == "mint" or site.minimal_mistakes_skin == "plum" or site.minimal_mistakes_skin == "sunrise" %}
+  <link rel="stylesheet" href="{{ '/assets/css/skins/{{ site.minimal_mistakes_skin }}.css' | relative_url }}">
+{% endif %}
+
+<script src="{{ '/assets/js/dark-mode.js' | relative_url }}" defer></script>
+
+{% if site.google_analytics and jekyll.environment == 'production' %}
+  {% include analytics.html %}
+{% endif %}
+
+{% if site.head_scripts %}
+  {% for script in site.head_scripts %}
+    {% if script contains "://" %}
+      {% capture script_path %}{{ script }}{% endcapture %}
+    {% else %}
+      {% capture script_path %}{{ script | relative_url }}{% endcapture %}
+    {% endif %}
+    <script src="{{ script_path | relative_url }}"></script>
+  {% endfor %}
+{% endif %}
+
+<meta http-equiv="cleartype" content="on">

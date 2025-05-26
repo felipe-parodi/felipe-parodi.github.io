@@ -1,0 +1,92 @@
+/* Custom overrides */
+
+.sidebar {
+  .author__avatar {
+    img {
+      border-radius: 35% 25% !important;
+      border: 2px solid currentColor !important;
+      padding: 3px !important;
+      max-width: 110px !important;
+      height: auto !important;
+      transition: all 0.3s ease !important;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1) !important;
+      
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(0,0,0,0.2) !important;
+      }
+    }
+  }
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  .sidebar .author__avatar img {
+    max-width: 100px !important;
+  }
+}
+
+/* News Section Styles */
+.news-list {
+  margin-top: 1.5em;
+  margin-bottom: 2em;
+}
+
+.news-item {
+  margin-bottom: 1.5em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid $lighter-gray; // Using the new variable
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+}
+
+.news-date {
+  font-size: 0.85em;
+  color: $gray; // Using the new variable
+  margin-bottom: 0.25em;
+}
+
+.news-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 0.35em;
+
+  a {
+    text-decoration: none;
+    color: $text-color; // Using the new variable
+
+    &:hover {
+      color: $link-color; // Using the new variable
+      text-decoration: underline;
+    }
+  }
+}
+
+.news-description {
+  font-size: 0.95em;
+  line-height: 1.5;
+  color: $text-color; // Using the new variable
+}
+
+/* Homepage font size reduction */
+.page__content {
+  font-size: 0.9em; /* Reduce overall content font size by 10% */
+  
+  p {
+    font-size: 0.95em; /* Slightly reduce paragraph text */
+    line-height: 1.6; /* Maintain good readability */
+  }
+  
+  /* Keep headings proportional but slightly smaller */
+  h1 { font-size: 1.4em; }
+  h2 { font-size: 1.2em; }
+  h3 { font-size: 1.1em; }
+}
+
+/* Alternative: Target only the homepage specifically */
+.layout--single .page__content {
+  font-size: 0.9em;
+} 
