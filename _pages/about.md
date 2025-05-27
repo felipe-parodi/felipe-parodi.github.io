@@ -19,7 +19,7 @@ I occasionally update [awesome-computational-primatology](https://github.com/Kor
 If you have similar interests or simply want to chat, please [reach out](/contact/)!
 
 ## Latest News
-
+<!--
 <div class="news-container">
   <ul id="news-list" class="news-feed-condensed">
     {% assign news_items = site.data.news | sort: 'date' | reverse %}
@@ -58,5 +58,5 @@ If you have similar interests or simply want to chat, please [reach out](/contac
     }
   });
 </script>
-
+-->
 <!-- ====== -->

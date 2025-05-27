@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   toggleButton.className = 'theme-toggle';
   toggleButton.setAttribute('aria-label', 'Toggle dark mode');
   toggleButton.innerHTML = savedTheme === 'dark' ? '<i class="fa fa-sun"></i>' : '<i class="fa fa-moon"></i>';
-  document.body.appendChild(toggleButton);
+  document.body.prepend(toggleButton);
 
   // Toggle theme on button click
   toggleButton.addEventListener('click', () => {

@@ -76,7 +76,7 @@
     "https://github.com/{{ site.author.github }}",
     "https://linkedin.com/in/{{ site.author.linkedin }}"
   ],
-  "image": "{{ site.url }}/images/{{ site.author.avatar }}",
+  "image": "{{ site.author.avatar | absolute_url }}",
   "description": "{{ site.description }}",
   "mainEntityOfPage": {
     "@type": "WebPage",
