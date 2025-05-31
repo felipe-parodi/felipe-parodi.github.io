@@ -1,5 +1,6 @@
 
-# Summer 2024: CIFAR DLRL Summer School
+- date: 2025-05-22
+  event: "Held penultimate (?!) committee meeting for my PhD!"
 
 - date: 2024-12-01
   event: "🤖 Completed LLM evaluation internship at Google–YouTube."
@@ -10,8 +11,32 @@
 - date: 2024-07-05
   event: "🤖 Attended the [CIFAR DLRL Summer School](https://dlrl.ca/) at the Vector Institute in Toronto, Canada."
 
+- date: 2024-06-21
+  event: "Published CVPR workshop paper on extending vision-language models for [quantifying provider attention during neonatal resuscitation](https://openaccess.thecvf.com/content/CVPR2024W/CVPM/html/Parodi_Vision-language_Models_for_Decoding_Provider_Attention_During_Neonatal_Resuscitation_CVPRW_2024_paper.html)!"
+
+- date: 2024-05-01
+  event: "Publication on applying [computer vision for dance quantification](https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2024.1295308/full)!"
+
+- date: 2024-04-11
+  event: "Nature publication on [neural signatures of natural behavior in macaques](https://www.nature.com/articles/s41586-024-07178-6)!"
+
+- date: 2024-04-01
+  event: "Presented _PrimateFace_ at Biological Anthropology Conference."
+
+- date: 2024-03-06
+  event: "Presented _PrimateFace_ at American Physical Society Spring meeting."
+
+- date: 2024-02-21
+  event: "Published work on [attention deficits linked to exploration during primate foraging](https://royalsocietypublishing.org/doi/full/10.1098/rspb.2022.2584)!"
+
+- date: 2023-10-17
+  event: "Preprinted work on [information gathering during human and monkey reward foraging](https://www.biorxiv.org/content/10.1101/2023.10.14.562362v1.abstract)."
+
 - date: 2023-08-11
   event: "📈 Presented _Quantifying grooming in paired macaques_ at Neuroethology: Behavior, Evolution, and Neurobiology Gordon Research Conference."
+
+- date: 2023-07-25
+  event: "Preprinted work on [LLM-assisted education tool to provide feedback on open-ended responses](https://arxiv.org/abs/2308.02439)."
 
 - date: 2023-06-18
   event: "📈 Presented _PrimateFace_ at the CVPR CV4Animals workshop."
