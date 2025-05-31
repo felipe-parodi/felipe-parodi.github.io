@@ -19,24 +19,24 @@ I occasionally update [awesome-computational-primatology](https://github.com/Kor
 If you have similar interests or simply want to chat, please [reach out](/contact/)!
 
 ## Latest News
-<!--
+
 <div class="news-container">
   <ul id="news-list" class="news-feed-condensed">
     {% assign news_items = site.data.news | sort: 'date' | reverse %}
-    {% for item in news_items limit:10 %}
+    {% for item in news_items limit:5 %}
       <li>
-        <span class="news-date">{{ item.date | date: "%m/%Y" }}:</span>
-        <span class="news-event">{{ item.event | markdownify }}</span>
+        <span class="news-date">{{ item.date | date: "%b %Y" }}:</span>
+        <span class="news-event">{{ item.event | markdownify | remove: '<p>' | remove: '</p>' }}</span>
       </li>
     {% endfor %}
   </ul>
 
-  {% if site.data.news.size > 10 %}
+  {% if site.data.news.size > 5 %}
     <ul id="older-news-list" class="news-feed-condensed" style="display:none;">
-      {% for item in news_items offset:10 %}
+      {% for item in news_items offset:5 %}
         <li>
-          <span class="news-date">{{ item.date | date: "%m/%Y" }}:</span>
-          <span class="news-event">{{ item.event | markdownify }}</span>
+          <span class="news-date">{{ item.date | date: "%b %Y" }}:</span>
+          <span class="news-event">{{ item.event | markdownify | remove: '<p>' | remove: '</p>' }}</span>
         </li>
       {% endfor %}
     </ul>
@@ -58,5 +58,3 @@ If you have similar interests or simply want to chat, please [reach out](/contac
     }
   });
 </script>
--->
-<!-- ====== -->

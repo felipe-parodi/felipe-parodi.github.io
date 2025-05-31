@@ -1,35 +1,89 @@
-- date: 2024-07-26
-  event: "📣 We've just published our latest findings on how macaques perceive social cues. Read more here: [Link to paper](/research/#publication-xyz)"
 
-- date: 2024-08-15
-  event: "🎤 I'll be presenting our work on AI-driven behavioral analysis at the NeuroAI conference next month. [More details](/talks/#my-talk-title)"
+# Summer 2024: CIFAR DLRL Summer School
 
-- date: 2024-07-01
-  event: "🎉 Our lab is thrilled to welcome our new AI assistant, ready to help with research and website updates."
-
-- date: 2024-10-01
-  event: "📣 Our paper 'Feature Complexity in Neural Networks' has been accepted at NeurIPS 2024! [Read more](/publications/#neurips-2024-feature-complexity)"
+- date: 2024-12-01
+  event: "🤖 Completed LLM evaluation internship at Google–YouTube."
 
 - date: 2024-09-01
-  event: "🎓 Started as a Research Fellow at the Prestigious Institute for AI. [(see CV)](/about/)"
+  event: "🐘 Completed computer vision for elephant behavior internship at Colossal Biosciences."
 
-- date: 2024-07-15
-  event: "🎓 Officially defended my thesis 'Sparks of Explainability for Vision Models'."
+- date: 2024-07-05
+  event: "🤖 Attended the [CIFAR DLRL Summer School](https://dlrl.ca/) at the Vector Institute in Toronto, Canada."
 
-- date: 2024-06-05
-  event: "🎤 Invited talk at University X (Some Lab Name). [Details](/talks/#university-x-talk)"
+- date: 2023-08-11
+  event: "📈 Presented _Quantifying grooming in paired macaques_ at Neuroethology: Behavior, Evolution, and Neurobiology Gordon Research Conference."
 
-- date: 2024-05-20
-  event: "📣 Paper 'Saliency Strikes Back' accepted at ICML 2024. [Access paper](/publications/#icml-2024-saliency)"
+- date: 2023-06-18
+  event: "📈 Presented _PrimateFace_ at the CVPR CV4Animals workshop."
 
-- date: 2024-03-10
-  event: "🚀 Officially launching LENS Project - an open-source initiative for..."
+- date: 2023-03-11
+  event: "📈 Presented _Quantifying grooming in paired macaques_ at American Physical Society Spring meeting."
 
-- date: 2023-11-15
-  event: "✅ Completed a significant research milestone."
+- date: 2023-01-15
+  event: "Served as Teaching Assistant for the UG course _Neuroethology_ (BIBB 233 @ Penn)."
 
-- date: 2023-08-22
-  event: "📄 Published a preprint on arXiv: [Groundbreaking Results in AI](https://arxiv.org/abs/your-arxiv-id)"
+- date: 2022-12-20
+  event: "🇶🇦🇦🇷 Completed short research stint in Qatar."
+
+- date: 2022-09-01
+  event: "Served as Teaching Assistant for the UG, MA course _Statistics for Biologists_ (BIOL 2510 @ Penn)."
+
+- date: 2022-08-22
+  event: "Awarded (but did not accept) the Travel Scholarship for the SACNAS National Diversity in STEM (NDiSTEM) Conference."
+
+- date: 2022-07-29
+  event: "📈 Presented _Neural Basis of Macaque Social Repertoire_ at Neurobiology & Cognition Gordon Research Conference."
+
+- date: 2022-06-22
+  event: "🐒 Attended the [Cajal Advanced Neuroscience Training](https://cajal-training.org/on-site/qab2022/#:~:text=This%20course%20provides%20promising%20young,measuring%20and%20manipulation%20neurophysiological%20processes) in Lisbon, Portugal!"
+
+- date: 2022-05-22
+  event: "Passed my PhD candidacy exam!"
+
+- date: 2022-05-17
+  event: "🎉 Awarded the Penn Jameson-Hurvich Travel Award."
+
+- date: 2022-01-15
+  event: "Served as Teaching Assistant for the UG and MA course _Deep Learning for Data Science_ (CIS 522 @ Penn)."
+
+- date: 2021-09-01
+  event: "Served as Teaching Assistant for the undergraduate (UG) course _Statistics for Biologists_ (BIOL 446 @ Penn)."
+
+- date: 2021-09-01
+  event: "🎉 Awarded the [NRSA T32 NIDCD-NIH Training Grant in Audition and Communication (CANAC)](https://www.med.upenn.edu/canac/)."
+
+- date: 2021-05-21
+  event: "🎉 Awarded the [Generation Google – North America Scholarship](https://www.google.com/about/careers/applications/buildyourfuture/scholarships/generation-google-scholarship)!"
+
+- date: 2021-05-15
+  event: "🗞️ Served as Computational Co-Chief for [Brain in Briefs](https://www.upenn.edu/news/brain-in-briefs) at Penn."
+
+- date: 2021-05-15
+  event: "🔬 Officially joined the Kording and Platt Labs as a co-supervised PhD Student."
+
+- date: 2021-05-01
+  event: "🧠 Completed rotation in the [Kording Lab](https://kordinglab.com/)!"
+
+- date: 2021-03-25
+  event: "Received Honorable Mention for the Ford Foundation Predoctoral Fellowship."
+
+- date: 2020-12-15
+  event: "🐒 Completed rotation in the [Platt Labs](https://plattlabs.rocks/)!"
+
+- date: 2020-10-05
+  event: "📈 Presented _Deep learning for primate non-human primate movement tracking_ at Neuromatch Conference."
 
 - date: 2020-09-01
-  event: "🎓 Started my PhD in Neuroscience at the University of Pennsylvania." 
+  event: "🎓 Started my PhD in Neuroscience as a William Fontaine Fellow at University of Pennsylvania!" 
+
+- date: 2020-07-31
+  event: "💻 Completed Neuromatch Academy's [Computational Neuroscience program](https://neuromatch.io/computational-neuroscience-course/)."
+
+- date: 2020-06-01
+  event: "💻 Completed Stanford University's [Code in Place program](https://codeinplace.stanford.edu/)."
+
+- date: 2019-05-15
+  event: "🎓 Received B.S. in Neuroscience, Economics from University of Miami!"
+
+- date: 2018-05-01
+  event: "Inducted into the [Iron Arrow Honor Society](https://ironarrow.miami.edu/) at University of Miami."

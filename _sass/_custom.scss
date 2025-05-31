@@ -11,11 +11,11 @@ $lighter-gray: #e0e0e0; // Define lighter-gray
       max-width: 110px !important;
       height: auto !important;
       transition: all 0.3s ease !important;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1) !important;
+      // box-shadow: 0 0 10px rgba(0,0,0,0.1) !important;
       
       &:hover {
         transform: scale(1.05);
-        box-shadow: 0 0 15px rgba(0,0,0,0.2) !important;
+        // box-shadow: 0 0 15px rgba(0,0,0,0.2) !important;
       }
     }
   }
@@ -91,4 +91,33 @@ $lighter-gray: #e0e0e0; // Define lighter-gray
 /* Alternative: Target only the homepage specifically */
 .layout--single .page__content {
   font-size: 0.9em;
+}
+
+/* Remove conflicting masthead styles */
+/* Masthead horizontal navigation */
+.masthead__menu .visible-links {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.masthead__menu .visible-links > li {
+  position: relative;
+  margin: 0 1em;
+}
+
+/* Remove the old left-aligned navigation */
+/* .masthead__menu nav {
+  text-align: left;
+} */
+
+/* Contact form styling - Attempt 2 */
+.page__content form input[type="text"],
+.page__content form input[type="email"],
+.page__content form textarea {
+  background: none !important; /* Forcing override */
+  border: 1px solid $gray; /* Example: ensure border is visible on yellow */
+  /* Adjust color if needed for readability */
+  /* color: $text-color; */
 } 

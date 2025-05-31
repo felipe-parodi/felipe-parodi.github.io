@@ -8,7 +8,7 @@ vendor/
 # Ignore large image files
 *.png
 !images/parodi_headshot.png
-
+images/*/mp4
 # Ignore build artifacts
 .bundle/
 .sass-cache/
