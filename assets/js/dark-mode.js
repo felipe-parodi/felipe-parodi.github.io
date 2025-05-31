@@ -13,7 +13,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleButton = document.createElement('button');
   toggleButton.className = 'theme-toggle';
   toggleButton.setAttribute('aria-label', 'Toggle dark mode');
-  toggleButton.innerHTML = savedTheme === 'dark' ? '<i class="fa fa-sun"></i>' : '<i class="fa fa-moon"></i>';
+  
+  // Function to update button icon and content
+  const updateButtonIcon = (theme) => {
+    if (theme === 'dark') {
+      // In dark mode, show sun icon (to switch to light)
+      toggleButton.innerHTML = '<i class="fa fa-sun-o" aria-hidden="true"></i>';
+      toggleButton.setAttribute('title', 'Switch to light mode');
+    } else {
+      // In light mode, show moon icon (to switch to dark)
+      toggleButton.innerHTML = '<i class="fa fa-moon-o" aria-hidden="true"></i>';
+      toggleButton.setAttribute('title', 'Switch to dark mode');
+    }
+    
+    // Fallback: if Font Awesome doesn't load, use Unicode symbols
+    setTimeout(() => {
+      const icon = toggleButton.querySelector('i');
+      if (icon && getComputedStyle(icon, ':before').content === 'none') {
+        toggleButton.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+      }
+    }, 100);
+  };
+  
+  // Set initial icon
+  updateButtonIcon(savedTheme);
   document.body.prepend(toggleButton);
 
   // Toggle theme on button click
@@ -25,6 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('theme', newTheme);
     
     // Update button icon
-    toggleButton.innerHTML = newTheme === 'dark' ? '<i class="fa fa-sun"></i>' : '<i class="fa fa-moon"></i>';
+    updateButtonIcon(newTheme);
   });
 }); 
