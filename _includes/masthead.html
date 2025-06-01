@@ -17,5 +17,24 @@
         </ul>
       </nav>
     </div>
+    <div class="masthead__social-icons" style="float: right; margin-top: 10px; margin-right: 10px; white-space: nowrap;">
+      {% for link_hash in site.social.links %}
+        {% assign link = link_hash %}
+        {% if link contains "github.com" %}
+          {% assign icon_name = "fa fa-github" %}
+          {% assign service_name = "GitHub" %}
+        {% elsif link contains "linkedin.com" %}
+          {% assign icon_name = "fa fa-linkedin" %}
+          {% assign service_name = "LinkedIn" %}
+        {% elsif link contains "scholar.google.com" %}
+          {% assign icon_name = "fa fa-graduation-cap" %}
+          {% assign service_name = "Google Scholar" %}
+        {% else %}
+          {% assign icon_name = "fa fa-link" %}
+          {% assign service_name = "Website" %}
+        {% endif %}
+        <a href="{{ link }}" title="{{ service_name }}" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-left: 8px;"><i class="{{ icon_name }}"></i></a>
+      {% endfor %}
+    </div>
   </div>
 </div>
