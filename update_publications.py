@@ -14,6 +14,35 @@ def _get_publication_year_key(pub):
     return int(year_str) if year_str.isdigit() else 0
 
 
+def _assign_tags(title, venue, authors):
+    """Automatically assign tags based on title, venue, and authors."""
+    text = f"{title} {venue} {authors}".lower()
+    tags = []
+    
+    # Define keyword mappings
+    tag_keywords = {
+        'primatology': ['primate', 'macaque', 'monkey', 'rhesus', 'baboon', 'chimpanzee', 'bonobo', 'gorilla', 'orangutan'],
+        'neuroscience': ['neural', 'brain', 'cortex', 'neuron', 'eeg', 'fmri', 'neuronal', 'cognitive', 'neuro'],
+        'computer vision': ['vision', 'visual', 'gaze', 'facial', 'image', 'detection', 'recognition', 'tracking', 'cv', 'opencv'],
+        'machine learning': ['learning', 'neural network', 'deep learning', 'classification', 'regression', 'algorithm', 'model', 'training'],
+        'llms': ['language model', 'llm', 'gpt', 'transformer', 'nlp', 'natural language', 'bert', 'attention'],
+        'movement': ['movement', 'motion', 'kinematics', 'locomotion', 'behavior', 'dance', 'tracking'],
+        'social behavior': ['social', 'interaction', 'communication', 'grooming', 'behavior', 'ethology'],
+        'medical': ['medical', 'clinical', 'resuscitation', 'neonatal', 'healthcare', 'diagnosis']
+    }
+    
+    # Check each tag category
+    for tag, keywords in tag_keywords.items():
+        if any(keyword in text for keyword in keywords):
+            tags.append(tag)
+    
+    # If no tags found, add 'other'
+    if not tags:
+        tags.append('other')
+    
+    return tags
+
+
 def fetch_publications():
     """Fetches G Scholar publications and saves them to a YAML file."""
     print(f"Fetching publications for Google Scholar ID: {SCHOLAR_ID}")
@@ -46,12 +75,17 @@ def fetch_publications():
                 'eprint_url', pub_filled.get('pub_url', '#')
             )
 
+            title = pub_filled.get('bib', {}).get('title', 'N/A')
+            authors = pub_filled.get('bib', {}).get('author', 'N/A')
+            
             pub_details = {
-                'title': pub_filled.get('bib', {}).get('title', 'N/A'),
-                'authors': pub_filled.get('bib', {}).get('author', 'N/A'),
+                'title': title,
+                'authors': authors,
                 'venue': venue,
                 'year': pub_filled.get('bib', {}).get('pub_year', 'N/A'),
-                'url': publication_url
+                'url': publication_url,
+                'tags': _assign_tags(title, venue, str(authors)),
+                'thumbnail': None  # Will be populated by thumbnail generation script
             }
             if isinstance(pub_details['authors'], list):
                 pub_details['authors'] = ', '.join(pub_details['authors'])
