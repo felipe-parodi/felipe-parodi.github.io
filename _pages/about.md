@@ -12,7 +12,7 @@ Hello, I'm Felipe — a PhD Candidate in the [Computational Neuroscience Initiat
 
 I completed my B.S. in Neuroscience and B.A. in Economics (2015–2019) at the University of Miami, and worked as a Psychometrician before graduate school.  
 
-My research combines **computational neuroethology**, **deep learning**, and **neurotechnology** to understand how neurons in the superior temporal sulcus encode complex social cues. Beyond biology, I’m interested in how these insights can inspire AI systems and tools for decoding non-human cognition, with applications to both basic science and human-centered technologies.  
+My research combines **neuroethology**, **deep learning**, and **neurotechnology** to understand how neurons in the superior temporal sulcus encode complex social cues. Beyond biology, I’m interested in how these insights can inspire AI systems and tools for decoding non-human cognition, with applications to both basic science and human-centered technologies.  
 
 I am co-advised by [Konrad Kording](http://kordinglab.com/) and [Michael Platt](http://plattlabs.rocks/). Along the way, I was lucky enough to intern at <span style="color:#4285F4;">G</span><span style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span style="color:#EA4335;">e</span> and [Colossal Biosciences](https://colossal.com/).
 
