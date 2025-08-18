@@ -1,38 +1,41 @@
-# Felipe's Personal Website
+# Felipe Parodi's Personal Website
 
-Welcome to the GitHub repository for my personal website. This site is a showcase of my professional work in neuroscience, computer vision, behavior, etc.
+Welcome to my personal academic website repository! This site showcases my research in computational neuroscience, machine learning, and primate behavior.
 
-## Overview
+## About
 
-The website is built using [Jekyll](https://jekyllrb.com/) and hosted on [GitHub Pages](https://pages.github.com/). It features information about my research, publications, teaching experience, and more. The base site is from [this repository](https://github.com/academicpages/academicpages.github.io).
+I'm a PhD candidate at the University of Pennsylvania working in the Konrad Kording and Michael Platt labs. My research focuses on understanding social interactions in primates using AI and computational methods.
 
-## Structure
+## Website Features
 
-The website is organized into several main sections:
+- **Research:** Automated publication system with thumbnail generation and tag-based filtering
+- **Dark Mode:** Toggle between light and dark themes
+- **Responsive Design:** Optimized for desktop and mobile viewing
+- **Google Scholar Integration:** Automatic publication updates via Python scripts
 
-- **Home:** A brief introduction about me and my work.
-- **Research:** Details about my ongoing research projects.
-- **Publications:** A list of my academic publications.
-- **Teaching:** Information about my teaching experience and philosophy.
-- **Contact:** How to get in touch with me.
+## Tech Stack
 
-## Development
+- **Jekyll** static site generator with Minimal Mistakes theme
+- **GitHub Pages** hosting
+- **Python** scripts for publication management and thumbnail generation
+- **JavaScript** for interactive filtering and dark mode
 
-If you wish to run the website locally, you will need to have Ruby and Jekyll installed. Once those are installed, you can run the following commands in the terminal:
+## Local Development
 
-```
-git clone https://github.com/yourusername/yourrepository.git
-cd yourrepository
+```bash
+git clone https://github.com/felipe-parodi/felipe-parodi.github.io.git
+cd felipe-parodi.github.io
 bundle install
 bundle exec jekyll serve
 ```
 
-Then open your web browser and navigate to `http://localhost:4000` to view the site.
+Visit `http://localhost:4000` to view locally.
 
-## Contributing
+## Key Scripts
 
-As this is a personal website, I'm not currently accepting pull requests. However, if you spot any issues or errors, please feel free to open an issue in this repository.
+- `update_publications.py` - Fetches publications from Google Scholar with automatic tagging
+- `generate_thumbnails.py` - Extracts thumbnails from PDFs using PyMuPDF
 
-## License
+## Contact
 
-This is open source under the MIT license. See the LICENSE file for more information.
+Feel free to reach out if you have questions about the research or the website implementation!
