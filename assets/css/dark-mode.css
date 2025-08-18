@@ -14,50 +14,126 @@
   --nav-link-hover: #66b3ff;
 }
 
-[data-theme="dark"] body {
-  background-color: var(--background-color);
-  color: var(--text-color);
+/* Main body and background */
+[data-theme="dark"] body,
+[data-theme="dark"] html {
+  background-color: #1a1a1a !important;
+  color: #e0e0e0 !important;
 }
 
+/* Main content area */
+[data-theme="dark"] #main {
+  background-color: #1a1a1a !important;
+}
+
+/* Page content */
+[data-theme="dark"] .page__content,
+[data-theme="dark"] .archive {
+  background-color: #1a1a1a !important;
+  color: #e0e0e0 !important;
+}
+
+/* Links */
 [data-theme="dark"] a {
-  color: var(--link-color);
+  color: #66b3ff !important;
 }
 
+[data-theme="dark"] a:hover {
+  color: #99ccff !important;
+}
+
+/* Navigation */
 [data-theme="dark"] .greedy-nav {
-  background: var(--nav-background);
+  background: #2d2d2d !important;
 }
 
 [data-theme="dark"] .greedy-nav a {
-  color: var(--nav-link-color);
+  color: #e0e0e0 !important;
 }
 
 [data-theme="dark"] .greedy-nav a:hover {
-  color: var(--nav-link-hover);
+  color: #66b3ff !important;
 }
 
 [data-theme="dark"] .greedy-nav .visible-links a:before {
-  background: var(--nav-link-hover);
+  background: #66b3ff !important;
 }
 
+/* Sidebar */
+[data-theme="dark"] .sidebar {
+  background-color: #2d2d2d !important;
+}
+
+[data-theme="dark"] .author__content,
+[data-theme="dark"] .author__bio {
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .author__name {
+  color: #ffffff !important;
+}
+
+/* Footer */
+[data-theme="dark"] .page__footer {
+  background-color: #2d2d2d !important;
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] .page__footer a {
+  color: #66b3ff !important;
+}
+
+/* Code blocks */
 [data-theme="dark"] code {
-  background-color: var(--code-background);
+  background-color: #2d2d2d !important;
+  color: #e0e0e0 !important;
 }
 
+[data-theme="dark"] pre {
+  background-color: #2d2d2d !important;
+}
+
+/* Blockquotes */
 [data-theme="dark"] blockquote {
-  color: var(--blockquote-color);
-  border-left-color: var(--border-color);
+  color: #a0a0a0 !important;
+  border-left-color: #333 !important;
 }
 
+/* Tables */
 [data-theme="dark"] table {
-  border-color: var(--table-border-color);
+  border-color: #333 !important;
+  background-color: #2d2d2d !important;
 }
 
 [data-theme="dark"] th {
-  background-color: var(--table-header-background);
+  background-color: #333 !important;
+  color: #e0e0e0 !important;
+}
+
+[data-theme="dark"] td {
+  background-color: #2d2d2d !important;
+  color: #e0e0e0 !important;
+  border-color: #333 !important;
 }
 
 [data-theme="dark"] tr:hover {
-  background-color: var(--table-row-hover);
+  background-color: #404040 !important;
+}
+
+/* Headers */
+[data-theme="dark"] h1, 
+[data-theme="dark"] h2, 
+[data-theme="dark"] h3, 
+[data-theme="dark"] h4, 
+[data-theme="dark"] h5, 
+[data-theme="dark"] h6 {
+  color: #ffffff !important;
+}
+
+/* Masthead */
+[data-theme="dark"] .masthead {
+  background-color: #2d2d2d !important;
+  border-bottom: 1px solid #333 !important;
 }
 
 /* Dark mode toggle button - PERFECTLY CIRCULAR */
