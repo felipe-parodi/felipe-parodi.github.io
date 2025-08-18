@@ -1,6 +1,6 @@
 ---
-layout: archive
-title: "Research | Publications"
+layout: single
+title: "Research - Publications"
 excerpt: "A list of my publications with automated thumbnails and tag-based filtering."
 permalink: /research/
 author_profile: true
@@ -23,7 +23,7 @@ author_profile: true
         {% endfor %}
         {% assign sorted_tags = all_tags | sort %}
         {% for tag in sorted_tags %}
-          <button class="filter-btn" data-tag="{{ tag }}">{{ tag | capitalize }}</button>
+          <button class="filter-btn" data-tag="{{ tag }}">{% if tag == "LLMs" %}LLMs{% else %}{{ tag | capitalize }}{% endif %}</button>
         {% endfor %}
       </div>
     </div>
@@ -34,9 +34,9 @@ author_profile: true
         <div class="publication-card" data-tags="{{ pub.tags | join: ',' }}">
           <div class="card-thumbnail">
             {% if pub.thumbnail and pub.thumbnail != null %}
-              <img src="{{ pub.thumbnail }}" alt="Thumbnail for {{ pub.title }}" loading="lazy">
+              <img src="/{{ pub.thumbnail }}" alt="Thumbnail for {{ pub.title }}" loading="lazy">
             {% else %}
-              <img src="images/publications/default.png" alt="Default thumbnail" loading="lazy">
+              <img src="/images/publications/default.png" alt="Default thumbnail" loading="lazy">
             {% endif %}
           </div>
           

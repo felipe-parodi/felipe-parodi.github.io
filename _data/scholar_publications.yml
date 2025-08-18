@@ -26,7 +26,7 @@
   year: 2024
   url: https://royalsocietypublishing.org/doi/abs/10.1098/rspb.2022.2584
   tags:
-  - llms
+  - LLMs
   thumbnail: images/publications/default.png
 - title: 'Computational Kinematics of Dance: Distinguishing Hip Hop Genres'
   authors: Ben Baker and Tony Liu and Jordan Matelsky and Felipe Parodi and John W
@@ -44,6 +44,7 @@
   year: 2024
   url: https://scholar.google.com/scholar?cluster=15430584605818452538&hl=en&oi=scholarr
   tags:
+  - conference abstract
   - primatology
   - computer vision
   thumbnail: images/publications/default.png
@@ -53,6 +54,7 @@
   year: 2024
   url: https://ui.adsabs.harvard.edu/abs/2024APS..MARN00304P/abstract
   tags:
+  - conference abstract
   - primatology
   - computer vision
   thumbnail: images/publications/default.png
@@ -77,7 +79,7 @@
   url: https://arxiv.org/abs/2308.02439
   tags:
   - machine learning
-  - llms
+  - LLMs
   thumbnail: images/publications/b10cecee27b1217ae1329e60187b59ee.png
 - title: Information gathering explains decision dynamics during human and monkey
     reward foraging
@@ -94,6 +96,7 @@
   year: 2023
   url: https://ui.adsabs.harvard.edu/abs/2023APS..MARN00332P/abstract
   tags:
+  - conference abstract
   - primatology
   - social behavior
   thumbnail: images/publications/default.png

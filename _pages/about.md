@@ -1,4 +1,5 @@
 ---
+layout: single
 permalink: /
 title: "Felipe Parodi"
 excerpt: "PhD Candidate in Computational Neuroscience at UPenn, studying social intelligence in primates and machines. Co-advised by Konrad Kording and Michael Platt."
