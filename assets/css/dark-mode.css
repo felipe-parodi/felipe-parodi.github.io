@@ -66,6 +66,15 @@
   border-right: 1px solid #444 !important;
 }
 
+/* Fix sidebar positioning - override sticky top position */
+.sidebar.sticky {
+  top: 4rem !important;
+}
+
+[data-theme="dark"] .sidebar.sticky {
+  top: 4rem !important;
+}
+
 [data-theme="dark"] .author__content,
 [data-theme="dark"] .author__bio {
   color: #e0e0e0 !important;

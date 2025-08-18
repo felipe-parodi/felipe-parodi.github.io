@@ -19,6 +19,17 @@ def _assign_tags(title, venue, authors):
     text = f"{title} {venue} {authors}".lower()
     tags = []
     
+    # Check if it's a conference abstract
+    abstract_venues = [
+        'aps march meeting abstracts',
+        'bulletin of the american physical society',
+        'american journal of biological anthropology',
+        'abstracts'
+    ]
+    
+    if any(abstract_venue in venue.lower() for abstract_venue in abstract_venues):
+        tags.append('conference abstract')
+    
     # Define keyword mappings
     tag_keywords = {
         'primatology': ['primate', 'macaque', 'monkey', 'rhesus', 'baboon', 'chimpanzee', 'bonobo', 'gorilla', 'orangutan'],
