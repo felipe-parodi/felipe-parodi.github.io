@@ -16,7 +16,7 @@ My research combines **computational neuroethology**, **deep learning**, and **n
 
 I am co-advised by [Konrad Kording](http://kordinglab.com/) and [Michael Platt](http://plattlabs.rocks/). Along the way, I’ve also interned at <span style="color:#4285F4;">G</span><span style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span style="color:#EA4335;">e</span> and [Colossal Biosciences](https://colossal.com/).  
 
-I am currently seeking opportunities in **Research Scientist** and **Machine Learning Engineer** roles, particularly at the intersection of **AI for Science, social intelligence, and neurotechnology**. <u>[Get in touch](/contact/)</u> if you'd like to connect.  
+I am currently seeking opportunities in **Research Scientist** and **Machine Learning Engineer** roles, particularly at the intersection of **AI for Science, social intelligence, and neurotechnology**. [Get in touch](/contact/) if you'd like to connect.  
 
 I also maintain [awesome-computational-primatology](https://github.com/KordingLab/awesome-computational-primatology), a community resource on the interface of machine learning and primatology. Contributions welcome!
 
