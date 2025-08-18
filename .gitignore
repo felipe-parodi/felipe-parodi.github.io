@@ -3,7 +3,7 @@ this.log
 vendor/
 
 # Ignore all PDFs
-*.pdf
+# *.pdf
 
 # Ignore large image files
 *.png
