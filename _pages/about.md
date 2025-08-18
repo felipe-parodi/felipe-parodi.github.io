@@ -14,11 +14,9 @@ My research interests span **machine learning**, including everything under the 
 
 I am lucky enough to be co-supervised by the wonderful [Konrad Kording](http://kordinglab.com/) and [Michael Platt](http://plattlabs.rocks/) labs. Along the way, I've also had the chance to intern at <span style="color:#4285F4;">G</span><span style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span style="color:#EA4335;">e</span> and <a href="https://colossal.com/" target="_blank" rel="noopener noreferrer">Colossal Biosciences</a>.
 
-BTW: I'm actively seeking internship and/or full-time opportunities in Research Scientist or Machine Learning Engineer roles. I'm particularly interested in applying my expertise in deep learning, computer vision, and data science to impactful projects within **machine learning for animal behavior, neurotechnology, or the broader AI for Science landscape.** Please feel free to connect if you have a relevant position.
+BTW: I'm actively seeking internship and/or full-time opportunities in Research Scientist or Machine Learning Engineer roles, particularly at the intersection of AI for science and neurotechnology. Feel free to [reach out](/contact/) if interested :)
 
 I occasionally update [awesome-computational-primatology](https://github.com/KordingLab/awesome-computational-primatology). If you're interested in ML x Primatology, I encourage you to contribute.
-
-If you have similar interests or simply want to chat, please [reach out](/contact/)!
 
 ## Latest News
 
