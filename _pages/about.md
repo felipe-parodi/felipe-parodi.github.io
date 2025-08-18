@@ -1,22 +1,25 @@
 ---
 permalink: /
 title: "Felipe Parodi"
-excerpt: "PhD Candidate in Computational Neuroscience at UPenn, researching AI for Science with focus on primate social behavior and computational neuroethology. Co-advised by Konrad Kording and Michael Platt."
+excerpt: "PhD Candidate in Computational Neuroscience at UPenn, studying social intelligence in primates and machines. Co-advised by Konrad Kording and Michael Platt."
 author_profile: true
 redirect_from: 
   - about/
   - /about.html
 ---
 
-Hello, I'm Felipe, a PhD Candidate in the [Computational Neuroscience Initiative](https://cni.upenn.edu/) at the University of Pennsylvania (2020–Present). I study the neural processes underlying primate social behaviors. I completed my B.S. in Neuroscience and B.A. in Economics (2015–2019) at the University of Miami and worked as a Psychometrician for First Choice Neurology.
+Hello, I'm Felipe — a PhD Candidate in the [Computational Neuroscience Initiative](https://cni.upenn.edu/) at the University of Pennsylvania (2020–Present). I study how the brain supports social intelligence, with a focus on natural primate interactions.  
 
-My research interests span **machine learning**, including everything under the umbrella of multi-modal deep learning for scientific discovery, **ethology**, especially on developing AI tools to decode non-human animal communication, and **neuroscience**, particularly on how we can develop useful interfaces for understanding non-human animal cognition and solving human problems.
+I completed my B.S. in Neuroscience and B.A. in Economics (2015–2019) at the University of Miami, and worked as a Psychometrician before graduate school.  
 
-I am lucky enough to be co-supervised by the wonderful [Konrad Kording](http://kordinglab.com/) and [Michael Platt](http://plattlabs.rocks/) labs. Along the way, I've also had the chance to intern at <span style="color:#4285F4;">G</span><span style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span style="color:#EA4335;">e</span> and <a href="https://colossal.com/" target="_blank" rel="noopener noreferrer">Colossal Biosciences</a>.
+My research combines **computational neuroethology**, **deep learning**, and **neurotechnology** to understand how neurons in the superior temporal sulcus encode complex social cues. Beyond biology, I’m interested in how these insights can inspire AI systems and tools for decoding non-human cognition, with applications to both basic science and human-centered technologies.  
 
-BTW: I'm actively seeking internship and/or full-time opportunities in Research Scientist or Machine Learning Engineer roles, particularly at the intersection of AI for science and neurotechnology. Feel free to [reach out](/contact/) if interested :)
+I am co-advised by [Konrad Kording](http://kordinglab.com/) and [Michael Platt](http://plattlabs.rocks/). Along the way, I’ve also interned at <span style="color:#4285F4;">G</span><span style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span style="color:#EA4335;">e</span> and [Colossal Biosciences](https://colossal.com/).  
 
-I occasionally update [awesome-computational-primatology](https://github.com/KordingLab/awesome-computational-primatology). If you're interested in ML x Primatology, I encourage you to contribute.
+I am currently seeking opportunities in **Research Scientist** and **Machine Learning Engineer** roles, particularly at the intersection of **AI for Science, social intelligence, and neurotechnology**. [Get in touch](/contact/) if you’d like to connect.  
+
+I also maintain [awesome-computational-primatology](https://github.com/KordingLab/awesome-computational-primatology), a community resource on the interface of machine learning and primatology. Contributions welcome!
+
 
 ## Latest News
 
