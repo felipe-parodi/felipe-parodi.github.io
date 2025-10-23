@@ -32,13 +32,6 @@ author_profile: true
     <div class="publications-grid" id="publications-grid">
       {% for pub in site.data.scholar_publications %}
         <div class="publication-card" data-tags="{{ pub.tags | join: ',' }}">
-          <div class="card-thumbnail">
-            {% if pub.thumbnail and pub.thumbnail != null %}
-              <img src="/{{ pub.thumbnail }}" alt="Thumbnail for {{ pub.title }}" loading="lazy">
-            {% else %}
-              <img src="/images/publications/default.png" alt="Default thumbnail" loading="lazy">
-            {% endif %}
-          </div>
           
           <div class="card-content">
             <h3 class="card-title">

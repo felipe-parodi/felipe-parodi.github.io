@@ -6,7 +6,29 @@
   url: https://arxiv.org/abs/2507.02771
   tags:
   - movement
-  thumbnail: images/publications/c4a01e46116ae94c530b0d2f506e4077.png
+  thumbnail: null
+- title: 'PrimateFace: A Machine Learning Resource for Automated Face Analysis in
+    Human and Non-human Primates'
+  authors: Felipe Parodi and Jordan Matelsky and Alessandro Lamacchia and Melanie
+    Segado and Yaoguang Jiang and Alejandra Regla-Vargas and Liala Sofi and Clare
+    Kimock and Bridget M Waller and Michael Platt and Konrad Paul Kording
+  venue: bioRxiv
+  year: 2025
+  url: https://www.biorxiv.org/content/10.1101/2025.08.12.669927.abstract
+  tags:
+  - primatology
+  - machine learning
+  thumbnail: null
+- title: 'Primate neuroethology: a new synthesis'
+  authors: Felipe Parodi and Konrad P Kording and Michael L Platt
+  venue: N/A
+  year: 2025
+  url: https://www.cell.com/trends/cognitive-sciences/abstract/S1364-6613(25)00241-4
+  tags:
+  - primatology
+  - neuroscience
+  - social behavior
+  thumbnail: null
 - title: Neural signatures of natural behaviour in socializing macaques
   authors: "Camille Testard* and S\xE9bastien Tremblay* and Felipe Parodi and Ron\
     \ W DiTullio and Arianna Acevedo-Ithier and Kristin L Gardiner and Konrad Kording\
@@ -18,7 +40,7 @@
   - primatology
   - neuroscience
   - social behavior
-  thumbnail: images/publications/2ecb014cbdad1fa64d970aff8816404a.png
+  thumbnail: null
 - title: Attention deficits linked with proclivity to explore while foraging
   authors: David L Barack* and Vera U Ludwig* and Felipe Parodi and Nuwar Ahmed and
     Elizabeth M Brannon and Arjun Ramakrishnan and Michael L Platt
@@ -26,8 +48,8 @@
   year: 2024
   url: https://royalsocietypublishing.org/doi/abs/10.1098/rspb.2022.2584
   tags:
-  - LLMs
-  thumbnail: images/publications/default.png
+  - llms
+  thumbnail: null
 - title: 'Computational Kinematics of Dance: Distinguishing Hip Hop Genres'
   authors: Ben Baker and Tony Liu and Jordan Matelsky and Felipe Parodi and John W
     Krakauer and Brett Mensh and Konrad Kording
@@ -36,7 +58,7 @@
   url: https://www.frontiersin.org/journals/robotics-and-ai/articles/10.3389/frobt.2024.1295308/full
   tags:
   - movement
-  thumbnail: images/publications/default.png
+  thumbnail: null
 - title: 'PrimateFace: Large-scale resource for cross-species primate facial analysis'
   authors: Felipe Parodi and Jordan K Matelsky and Clare Kimock and Michael L Platt
     and Konrad P Kording
@@ -47,7 +69,7 @@
   - conference abstract
   - primatology
   - computer vision
-  thumbnail: images/publications/default.png
+  thumbnail: null
 - title: Quantifying cross-species primate facial cues
   authors: Felipe Parodi and Jordan Matelsky and Michael Platt and Konrad Kording
   venue: APS March Meeting Abstracts
@@ -57,19 +79,20 @@
   - conference abstract
   - primatology
   - computer vision
-  thumbnail: images/publications/default.png
-- title: Automated Gaze Classification in Neonatal Resuscitation Using Deep Learning
+  thumbnail: null
+- title: Vision-language models for decoding provider attention during neonatal resuscitation
   authors: Felipe Parodi and Jordan K Matelsky and Alejandra Regla-Vargas and Elizabeth
     E Foglia and Charis Lim and Danielle Weinberg and Konrad P Kording and Heidi M
     Herrick and Michael L Platt
   venue: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition
   year: 2024
-  url: '#'
+  url: https://openaccess.thecvf.com/content/CVPR2024W/CVPM/html/Parodi_Vision-language_Models_for_Decoding_Provider_Attention_During_Neonatal_Resuscitation_CVPRW_2024_paper.html
   tags:
   - computer vision
   - machine learning
+  - llms
   - medical
-  thumbnail: images/publications/default.png
+  thumbnail: null
 - title: A large language model-assisted education tool to provide feedback on open-ended
     responses
   authors: Jordan K Matelsky and Felipe Parodi and Tony Liu and Richard D Lange and
@@ -79,8 +102,8 @@
   url: https://arxiv.org/abs/2308.02439
   tags:
   - machine learning
-  - LLMs
-  thumbnail: images/publications/b10cecee27b1217ae1329e60187b59ee.png
+  - llms
+  thumbnail: null
 - title: Information gathering explains decision dynamics during human and monkey
     reward foraging
   authors: David L Barack and Felipe Parodi and Vera Ludwig and Michael L Platt
@@ -89,7 +112,7 @@
   url: https://www.biorxiv.org/content/10.1101/2023.10.14.562362.abstract
   tags:
   - primatology
-  thumbnail: images/publications/default.png
+  thumbnail: null
 - title: Quantifying grooming in paired macaques
   authors: Felipe Parodi and Michael Platt and Konrad Kording
   venue: Bulletin of the American Physical Society
@@ -99,4 +122,16 @@
   - conference abstract
   - primatology
   - social behavior
-  thumbnail: images/publications/default.png
+  thumbnail: null
+- title: 'PrimateFace: A Foundational Resource for Generalizable Cross-Species Facial
+    Analysis'
+  authors: Felipe Parodi and Konrad Kording
+  venue: Foundation Models for the Brain and Body Workshop {\textendash} NeurIPS 2025
+  year: N/A
+  url: https://openreview.net/forum?id=zk5cYUJQ0C
+  tags:
+  - primatology
+  - neuroscience
+  - computer vision
+  - machine learning
+  thumbnail: null
