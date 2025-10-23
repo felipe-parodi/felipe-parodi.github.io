@@ -30,7 +30,7 @@ I also maintain [awesome-computational-primatology](https://github.com/KordingLa
 
 <div class="news-container">
   <ul id="news-list" class="news-feed-condensed">
-    {% assign news_items = site.data.news | sort: 'date' | reverse %}
+    {% assign news_items = site.data.news %}
     {% for item in news_items limit:5 %}
       <li>
         <span class="news-date">{{ item.date | date: "%b %Y" }}:</span>
