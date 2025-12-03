@@ -60,7 +60,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : &twitter
+  username               : &@felipe285025
 facebook:
   username               :
   app_id                 :
@@ -91,6 +91,7 @@ author:
   bio              : "Interested in neuroscience, machine learning, and animal behavior. For the <u><a href='/Parodi_CV_Fall_2025_site.pdf' target='_blank'>CV seekers</a></u>."
   employer         : "University of Pennsylvania"
   googlescholar    : "https://scholar.google.com/citations?user=kqW-zA0A5dAC&hl=en"
+  twitter          : "felipe285025"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   github           : "felipe-parodi/"
   linkedin         : "felipeparodi/"
