@@ -1,8 +1,11 @@
+- date: 2025-12-02
+  event: "Gave a guest lecture on (AI for) primatology at Marc Schmidt & Yun Ding's Animal Behavior course at UPenn. [Slides here](https://docs.google.com/presentation/d/129A0aBgiKZ8ibGI8x9zl16E2TTfC0clZ6ZgKRQs9P7w/edit?usp=sharing)."
+
 - date: 2025-10-10
   event: "PrimateFace accepted to NeurIPS AI for Animal Communication Workshop (oral) and Foundation Models for the Brain and Body Workshop (poster)!"
 
 - date: 2025-9-26
-  event: "📝 Published [Primate neuroethology: a new synthesis](https://authors.elsevier.com/c/1lqx54sIRvW-Qk) on why we should study primate behavior in more natural conditions."
+  event: "📝 Published [Primate neuroethology: a new synthesis](https://authors.elsevier.com/c/1lqx54sIRvW-Qk) on why we should study primate behavior in real-world conditions."
 
 - date: 2025-08-16
   event: "📝 Preprinted [PrimateFace](https://www.biorxiv.org/content/10.1101/2025.08.12.669927v1), a machine learning resource for cross-species primate facial analysis."
