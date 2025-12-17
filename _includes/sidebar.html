@@ -31,6 +31,14 @@
           </li>
         {% endif %}
 
+        {% if site.author.twitter %}
+          <li>
+            <a href="https://twitter.com/{{ site.author.twitter }}" itemprop="sameAs" rel="nofollow noopener noreferrer">
+              <i class="fa fa-fw fa-twitter" aria-hidden="true"></i> Twitter
+            </a>
+          </li>
+        {% endif %}
+
         {% if site.author.linkedin %}
           <li>
             <a href="https://www.linkedin.com/in/{{ site.author.linkedin }}" itemprop="sameAs" rel="nofollow noopener noreferrer">
@@ -50,7 +58,7 @@
         {% if site.author.googlescholar %}
           <li>
             <a href="{{ site.author.googlescholar }}" itemprop="sameAs" rel="nofollow noopener noreferrer">
-              <i class="ai ai-google-scholar-square ai-fw"></i> Google Scholar
+              <i class="fa fa-fw fa-graduation-cap" aria-hidden="true"></i> Google Scholar
             </a>
           </li>
         {% endif %}

@@ -29,6 +29,9 @@
         {% elsif link contains "scholar.google.com" %}
           {% assign icon_name = "fa fa-graduation-cap" %}
           {% assign service_name = "Google Scholar" %}
+        {% elsif link contains "twitter.com" or link contains "x.com" %}
+          {% assign icon_name = "fa fa-twitter" %}
+          {% assign service_name = "Twitter" %}
         {% else %}
           {% assign icon_name = "fa fa-link" %}
           {% assign service_name = "Website" %}

@@ -11,20 +11,21 @@ redirect_from:
 
 Hello, I'm Felipe — a PhD Candidate in the [Computational Neuroscience Initiative](https://cni.upenn.edu/) at the University of Pennsylvania. I study how primate brains encode social intelligence and how these principles can inform artificial ones.
 
-I completed my B.S. in Neuroscience and B.A. in Economics at the University of Miami, and worked as a Psychometrician before graduate school.
+I went to college at the University of Miami, where I studied Neuroscience and Economics. I then briefly worked as a Psychometrician before grad school.
 
-My research combines **neuroethology**, **machine learning**, and **neurotechnology** to model natural social behavior from neural and video data. I've applied these methods at <span style="color:#4285F4;">G</span><span style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span style="color:#EA4335;">e</span> and [Colossal Biosciences](https://colossal.com/), where I worked on LLM evaluation and behavioral modeling.
+My research combines **neurosciences**, **machine learning**, and **animal behavior** to model natural social behavior from multiple data streams, including neural, video, and audio data. I've extended these methods to projects at <span style="color:#4285F4;">G</span><span style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span style="color:#EA4335;">e</span> and [Colossal Biosciences](https://colossal.com/) 🐘, where I worked on LLM-driven evaluation of generative music and behavioral modeling, respectively.
 
 I'm co-advised by [Konrad Kording](http://kordinglab.com/) and [Michael Platt](http://plattlabs.rocks/).
 
 **Recent work:**
-1. [Primate neuroethology: a new synthesis](https://authors.elsevier.com/c/1lqx54sIRvW-Qk) — why we should study primate intelligence in more natural conditions.
+1. [Primate neuroethology: a new synthesis](https://pubmed.ncbi.nlm.nih.gov/41015681/) — why we should study primate intelligence in more natural conditions.
 2. [PrimateFace](https://www.biorxiv.org/content/10.1101/2025.08.12.669927v2) — a machine learning resource for cross-species primate facial analysis.
 
-I am currently seeking **Research Scientist** and **Machine Learning Engineer** roles focused on **AI for Science, social intelligence, and biologically-inspired learning**. [Get in touch](/contact/) if you'd like to connect.
+<!-- I am currently seeking **Research Scientist** and **Machine Learning Engineer** roles focused on **AI for Science, social intelligence, and biologically-inspired learning**.  -->
 
 I also maintain [awesome-computational-primatology](https://github.com/KordingLab/awesome-computational-primatology), a community resource at the intersection of machine learning and primatology. Contributions welcome!
 
+[Get in touch](/contact/) if you'd like to connect!
 
 ## Latest News
 
