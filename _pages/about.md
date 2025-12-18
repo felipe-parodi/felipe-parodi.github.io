@@ -13,7 +13,9 @@ Hello, I'm Felipe — a PhD Candidate in the [Computational Neuroscience Initiat
 
 I went to college at the University of Miami, where I studied Neuroscience and Economics. I then briefly worked as a Psychometrician before grad school.
 
-My research combines **neurosciences**, **machine learning**, and **animal behavior** to model natural social behavior from multiple data streams, including neural, video, and audio data. I've extended these methods to projects at <span style="color:#4285F4;">G</span><span style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span style="color:#EA4335;">e</span> and [Colossal Biosciences](https://colossal.com/) 🐘, where I worked on LLM-driven evaluation of generative music and behavioral modeling, respectively.
+My research combines **neurosciences**, **machine learning**, and **animal behavior** to model natural social behavior from multiple data streams, including neural, video, and audio data. 
+
+I've extended some of these methods to projects at <span style="color:#4285F4;">G</span><span style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span style="color:#EA4335;">e</span>, where I worked on LLM-driven evaluation of generative music.
 
 I'm co-advised by [Konrad Kording](http://kordinglab.com/) and [Michael Platt](http://plattlabs.rocks/).
 
@@ -26,6 +28,7 @@ I'm co-advised by [Konrad Kording](http://kordinglab.com/) and [Michael Platt](h
 I also maintain [awesome-computational-primatology](https://github.com/KordingLab/awesome-computational-primatology), a community resource at the intersection of machine learning and primatology. Contributions welcome!
 
 [Get in touch](/contact/) if you'd like to connect!
+<!-- I've extended these methods to projects at <span style="color:#4285F4;">G</span><span style="color:#EA4335;">o</span><span style="color:#FBBC05;">o</span><span style="color:#4285F4;">g</span><span style="color:#34A853;">l</span><span style="color:#EA4335;">e</span> and [Colossal Biosciences](https://colossal.com/) 🐘, where I worked on LLM-driven evaluation of generative music and behavioral modeling, respectively. -->
 
 ## Latest News
 
