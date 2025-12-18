@@ -13,3 +13,6 @@ images/*/mp4
 .bundle/
 .sass-cache/
 files/
+
+# CV
+*CV*.pdf

@@ -28,8 +28,8 @@
 - date: 2024-11-01
   event: "📈 Co-hosted an _AI for Science_ workshop with Konrad Kording for motor control PhD students at University of Chicago."
 
-- date: 2024-08-31
-  event: "🐘 Completed computer vision for elephant behavior internship at Colossal Biosciences."
+# - date: 2024-08-31
+#   event: "🐘 Completed computer vision for elephant behavior internship at Colossal Biosciences."
 
 - date: 2024-07-05
   event: "🤖 Attended the [CIFAR DLRL Summer School](https://dlrl.ca/) at the Vector Institute in Toronto, Canada."
