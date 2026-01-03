@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research - Felipe Parodi</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/claude-theme.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/v1-scholar.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/research.css' | relative_url }}">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32x32.png' | relative_url }}">
+
+  {% include seo.html %}
+</head>
+<body class="claude-layout scholar-layout">
+
+  <!-- Minimal Header -->
+  <header class="scholar-header">
+    <div class="scholar-header-inner">
+      <a href="/" class="scholar-name">Felipe Parodi</a>
+      <nav class="scholar-nav">
+        <a href="/">Home</a>
+        <a href="/research/" class="active">Research</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="scholar-main research-main">
+    <article class="scholar-article">
+
+      <!-- Page Header -->
+      <header class="research-header">
+        <h1>Research</h1>
+        <p class="research-intro">I study intelligence by combining <strong>neuroscience</strong>, <strong>machine learning</strong>, and <strong>ethology</strong>. My work follows a deliberate arc: understand natural social cognition with quantitative rigor, build measurement tools that bridge biological and artificial systems, then use those tools to explain how brains compute social meaning – and what that might teach us about building AI that understands the social world.</p>
+      </header>
+
+      <hr class="claude-divider">
+
+      <!-- Featured Projects -->
+      <section class="research-projects">
+
+        <!-- Project 1: Nature Work -->
+        <div class="research-project">
+          <div class="project-visual">
+            <img src="{{ '/images/research/nature-summary.jpeg' | relative_url }}" alt="Natural social cognition">
+          </div>
+          <div class="project-content">
+            <span class="project-label">Grounding</span>
+            <h2>The Primate Brain During Natural Social Behavior</h2>
+            <p class="project-citation">Testard & Tremblay et al., 2024 · <em>Nature</em></p>
+
+            <p class="project-summary">Quantitative analysis of neural population activity during naturalistic primate social behavior.</p>
+
+            <div class="project-details">
+              <p>This work established a foundation for studying primate social cognition under naturalistic conditions, combining ethological annotation, computer vision, and wireless neural recording in unrestrained dyads.</p>
+              <p>I led the behavioral quantification pipeline, producing standardized behavioral event streams (labeling/QC and time alignment) used for downstream single-neuron and population analyses.</p>
+            </div>            
+
+            <button class="project-toggle" aria-expanded="false">Show details</button>
+
+            <div class="project-links">
+              <a href="https://pubmed.ncbi.nlm.nih.gov/38480888/" class="claude-arrow-link">Read paper</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: PrimateFace -->
+        <div class="research-project research-project--primateface">
+          <div class="project-visual project-visual--primateface">
+            <img src="{{ '/images/research/primateface-summary.jpeg' | relative_url }}" alt="PrimateFace">
+          </div>
+          <div class="project-content">
+            <span class="project-label">Tool-Building</span>
+            <h2>PrimateFace: Resource for Cross-Species Face Analysis</h2>
+            <p class="project-citation">Parodi et al., 2025 · <em>bioRxiv</em></p>
+
+            <p class="project-summary">A cross-species primate face dataset and benchmark for measuring generalization in facial analysis models.</p>
+
+            <div class="project-details">
+              <p>To connect animal behavior to modern CV, I built PrimateFace as an evaluation substrate: a curated dataset spanning multiple primate species, with standardized training/evaluation infrastructure and systematic comparisons across model families (CNNs, transformers, vision-language models).</p>
+              <p>PrimateFace is genus-balanced to make cross-species generalization measurable rather than incidental. In practice it supports (i) individual identification/verification for longitudinal behavioral studies, (ii) robust face embeddings for tracking and re-identification, and (iii) pretraining/evaluation for downstream models used in primate video analysis.</p>
+            </div>
+
+            <button class="project-toggle" aria-expanded="false">Show details</button>
+
+            <div class="project-links">
+              <a href="https://www.biorxiv.org/content/10.1101/2025.08.12.669927v2" class="claude-arrow-link">Read preprint</a>
+              <a href="https://github.com/KordingLab/primateface" class="claude-arrow-link">Code & data</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: PhD Thesis -->
+        <div class="research-project">
+          <div class="project-visual">
+            <img src="{{ '/images/research/sts-summary.jpeg' | relative_url }}" alt="mid-STS neural computation">
+          </div>
+          <div class="project-content">
+            <span class="project-label">Synthesis</span>
+            <h2>Neural Basis of Social Intelligence</h2>
+            <p class="project-citation">PhD Thesis · mid-STS</p>
+
+            <p class="project-summary">Integrating deep behavioral modeling with wireless neural recordings to study social intelligence.</p>
+
+            <div class="project-details">
+              <p>My thesis brings these threads together: I use deep learning to extract behavioral representations (pose, kinematics, interaction structure, behavioral syllables) to bridge complex social behavior and neural activity in macaque mid-superior temporal sulcus (STS).</p>
+              <p>These representations let me test mechanistic hypotheses with single-unit and population methods, including dimensionality reduction, time-resolved analyses, and RL-based modeling.</p>
+            </div>
+
+            <button class="project-toggle" aria-expanded="false">Show details</button>
+
+            <div class="project-links">
+              <a href="#" class="claude-arrow-link">Coming soon</a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <hr class="claude-divider">
+
+      <!-- All Publications -->
+      <section class="research-publications">
+        <div class="claude-section-header">
+          <h2>All Publications</h2>
+        </div>
+
+        {% if site.data.scholar_publications %}
+        <div class="publications-filter">
+          <button class="filter-btn active" data-tag="all">All</button>
+          {% assign all_tags = "" | split: "" %}
+          {% for pub in site.data.scholar_publications %}
+            {% for tag in pub.tags %}
+              {% unless all_tags contains tag %}
+                {% assign all_tags = all_tags | push: tag %}
+              {% endunless %}
+            {% endfor %}
+          {% endfor %}
+          {% assign sorted_tags = all_tags | sort %}
+          {% for tag in sorted_tags %}
+            <button class="filter-btn" data-tag="{{ tag }}">{{ tag | capitalize }}</button>
+          {% endfor %}
+        </div>
+
+        <ul class="publications-list" id="publications-list">
+          {% for pub in site.data.scholar_publications %}
+          <li class="publication-item" data-tags="{{ pub.tags | join: ',' }}">
+            <a href="{{ pub.url | default: '#' }}" target="_blank" rel="noopener noreferrer" class="publication-title">{{ pub.title }}</a>
+            <span class="publication-meta">
+              {{ pub.authors | truncatewords: 10 }} ·
+              {% if pub.venue and pub.venue != "N/A" %}{{ pub.venue }}{% endif %}
+              {% if pub.year and pub.year != "N/A" %}({{ pub.year }}){% endif %}
+            </span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="no-publications">Publications loading from Google Scholar...</p>
+        {% endif %}
+      </section>
+
+      <!-- Footer -->
+      <footer class="scholar-footer">
+        <div class="claude-socials">
+          <a href="mailto:fparodi@upenn.edu" class="claude-social-link" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/felipe-parodi" class="claude-social-link" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://scholar.google.com/citations?user=kqW-zA0A5dAC" class="claude-social-link" title="Google Scholar">
+            <i class="fas fa-graduation-cap"></i>
+          </a>
+          <a href="https://linkedin.com/in/felipeparodi" class="claude-social-link" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com/fe_parodi" class="claude-social-link" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </footer>
+
+    </article>
+  </main>
+
+  <!-- Theme Toggle -->
+  <button class="claude-theme-toggle" id="theme-toggle" title="Toggle dark mode">
+    <span id="theme-icon">&#9790;</span>
+  </button>
+
+  <script>
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    const html = document.documentElement;
+
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      html.setAttribute('data-theme', saved);
+      icon.textContent = saved === 'dark' ? '\u2600' : '\u263E';
+    }
+
+    toggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      icon.textContent = next === 'dark' ? '\u2600' : '\u263E';
+    });
+
+    // Project details toggle
+    document.querySelectorAll('.project-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const details = btn.previousElementSibling;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !expanded);
+        details.classList.toggle('is-visible');
+        btn.textContent = expanded ? 'Show details' : 'Hide details';
+      });
+    });
+
+    // Publication filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const pubItems = document.querySelectorAll('.publication-item');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tag = btn.dataset.tag;
+
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        pubItems.forEach(item => {
+          if (tag === 'all' || item.dataset.tags.includes(tag)) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

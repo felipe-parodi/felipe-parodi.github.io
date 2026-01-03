@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# Optional pre-commit hook to refresh publications and thumbnails.
+# Opt out by setting SKIP_PUBLICATIONS=1 in your environment.
+
+set -euo pipefail
+
+if [ "${SKIP_PUBLICATIONS:-0}" = "1" ]; then
+  echo "SKIP_PUBLICATIONS=1 set; skipping publication refresh."
+  exit 0
+fi
+
+if [ ! -f "update_publications.py" ]; then
+  echo "update_publications.py not found; skipping publication refresh."
+  exit 0
+fi
+
+echo "Running update_publications.py..."
+python update_publications.py
+
+if [ -f "generate_thumbnails.py" ]; then
+  echo "Running generate_thumbnails.py..."
+  python generate_thumbnails.py
+fi
+
+echo "Publication refresh complete."

@@ -1,0 +1,208 @@
+/* ===== VERSION 1: THE SCHOLAR ===== */
+/* Single-column prose-focused layout */
+/* Inspiration: Andy Matuschak, Pascal Michaillat */
+
+/* ===== LAYOUT ===== */
+.scholar-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===== HEADER ===== */
+.scholar-header {
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.scholar-header-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scholar-name {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.scholar-nav {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.scholar-nav a {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.scholar-nav a:hover {
+  color: var(--accent);
+}
+
+/* ===== MAIN CONTENT ===== */
+.scholar-main {
+  flex: 1;
+  padding: var(--space-3xl) var(--space-lg);
+}
+
+.scholar-article {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ===== PORTRAIT ===== */
+.scholar-portrait-wrap {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+/* ===== INTRO ===== */
+.scholar-intro {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.scholar-intro h1 {
+  font-size: clamp(2rem, 5vw, 2.5rem);
+  margin-bottom: var(--space-sm);
+}
+
+.scholar-position {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  color: var(--text);
+  margin-bottom: var(--space-xs);
+}
+
+.scholar-affiliation {
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ===== SECTIONS ===== */
+.scholar-section {
+  margin-bottom: var(--space-md);
+}
+
+.scholar-section p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.scholar-section strong {
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ===== RESEARCH LIST ===== */
+.scholar-research-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-lg);
+}
+
+.scholar-research-list li {
+  margin-bottom: var(--space-lg);
+}
+
+.scholar-research-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.scholar-research-title:hover {
+  color: var(--accent-hover);
+}
+
+.scholar-research-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ===== NEWS ===== */
+.scholar-section .claude-news {
+  margin-bottom: var(--space-lg);
+}
+
+.scholar-section .claude-news li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+}
+
+.scholar-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-sans);
+}
+
+.scholar-toggle-btn:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+/* ===== FOOTER ===== */
+.scholar-footer {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-xl) 0;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .scholar-main {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
+  .scholar-header-inner {
+    flex-direction: column;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  .scholar-nav {
+    gap: var(--space-md);
+  }
+
+  .scholar-section p {
+    font-size: 1rem;
+  }
+
+  .scholar-section .claude-news li {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .scholar-header,
+  .claude-theme-toggle,
+  .scholar-toggle-btn {
+    display: none;
+  }
+
+  .scholar-main {
+    padding: 0;
+  }
+}

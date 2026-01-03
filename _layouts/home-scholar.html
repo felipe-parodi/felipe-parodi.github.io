@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site.author.name }} - Computational Neuroscientist</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/claude-theme.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/v1-scholar.css' | relative_url }}">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32x32.png' | relative_url }}">
+
+  {% include seo.html %}
+</head>
+<body class="claude-layout scholar-layout">
+
+  <!-- Minimal Header -->
+  <header class="scholar-header">
+    <div class="scholar-header-inner">
+      <span class="scholar-name">Felipe Parodi</span>
+      <nav class="scholar-nav">
+        <a href="/research/">Research</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="scholar-main">
+    <article class="scholar-article">
+
+      <!-- Portrait -->
+      <div class="scholar-portrait-wrap">
+        <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="claude-portrait claude-portrait--lg">
+      </div>
+
+      <!-- Title & Tagline -->
+      <header class="scholar-intro">
+        <p class="scholar-position">Neuroscientist &middot; AI Researcher &middot; Ethologist</p>
+        <p class="scholar-affiliation">PhD Candidate @ University of Pennsylvania</p>
+      </header>
+
+      <!-- Bio -->
+      <section class="scholar-section">
+        <p>I study how primate brains encode social intelligence and how these principles can inform artificial ones. I'm co-advised by <a href="http://kordinglab.com/">Konrad Kording</a> and <a href="http://plattlabs.rocks/">Michael Platt</a>.</p>
+
+        <p>My research combines <strong>neuroscience</strong>, <strong>machine learning</strong>, and <strong>animal behavior</strong> to model natural social behavior from multiple data streams, including neural, video, and audio data.</p>
+
+        <p>I went to college at the University of Miami, where I studied Neuroscience and Economics. I then briefly worked as a Psychometrician before grad school.</p>
+      </section>
+
+      <hr class="claude-divider">
+
+      <!-- Research Section -->
+      <section class="scholar-section">
+        <div class="claude-section-header">
+          <h2>Research</h2>
+        </div>
+
+        <ul class="scholar-research-list">
+          <li>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/41015681/" class="scholar-research-title">Primate neuroethology: a new synthesis</a>
+            <p class="scholar-research-desc">Why we should study primate intelligence in more natural conditions.</p>
+          </li>
+          <li>
+            <a href="https://www.biorxiv.org/content/10.1101/2025.08.12.669927v2" class="scholar-research-title">PrimateFace</a>
+            <p class="scholar-research-desc">A machine learning resource for cross-species primate facial analysis.</p>
+          </li>
+          <li>
+            <a href="https://github.com/KordingLab/awesome-computational-primatology" class="scholar-research-title">awesome-computational-primatology</a>
+            <p class="scholar-research-desc">A curated community resource at the intersection of ML and primatology.</p>
+          </li>
+        </ul>
+
+        <a href="/research/" class="claude-arrow-link">View all publications</a>
+      </section>
+
+      <hr class="claude-divider">
+
+      <!-- News Section -->
+      <section class="scholar-section">
+        <div class="claude-section-header">
+          <h2>News</h2>
+        </div>
+
+        <ul class="claude-news" id="news-list">
+          {% assign news_items = site.data.news %}
+          {% for item in news_items limit:5 %}
+          <li>
+            <span class="claude-news-date">{{ item.date | date: "%b %Y" }}</span>
+            <span class="claude-news-event">{{ item.event | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+
+        {% if site.data.news.size > 5 %}
+        {% assign cutoff = '2024-01-01' | date: '%s' %}
+        {% assign archive_size = 0 %}
+        {% assign recent_size = 0 %}
+        {% for item in news_items offset:5 %}
+          {% assign item_ts = item.date | date: '%s' %}
+          {% if item_ts < cutoff %}
+            {% assign archive_size = archive_size | plus: 1 %}
+          {% else %}
+            {% assign recent_size = recent_size | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+
+        {% if recent_size > 0 %}
+        <ul class="claude-news" id="older-news" style="display: none;">
+          {% for item in news_items offset:5 %}
+            {% assign item_ts = item.date | date: '%s' %}
+            {% if item_ts >= cutoff %}
+            <li>
+              <span class="claude-news-date">{{ item.date | date: "%b %Y" }}</span>
+              <span class="claude-news-event">{{ item.event | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+            </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <button class="scholar-toggle-btn" id="toggle-news">Show older news</button>
+        {% endif %}
+
+        {% if archive_size > 0 %}
+        <ul class="claude-news" id="archive-news" style="display: none;">
+          {% for item in news_items offset:5 %}
+            {% assign item_ts = item.date | date: '%s' %}
+            {% if item_ts < cutoff %}
+            <li>
+              <span class="claude-news-date">{{ item.date | date: "%b %Y" }}</span>
+              <span class="claude-news-event">{{ item.event | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+            </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+        <button class="scholar-toggle-btn" id="toggle-archive" style="display: none;">Show even older news</button>
+        {% endif %}
+        {% endif %}
+      </section>
+
+      <hr class="claude-divider">
+
+      <!-- Social Links -->
+      <footer class="scholar-footer">
+        <div class="claude-socials">
+          <a href="mailto:fparodi@upenn.edu" class="claude-social-link" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/felipe-parodi" class="claude-social-link" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://scholar.google.com/citations?user=kqW-zA0A5dAC" class="claude-social-link" title="Google Scholar">
+            <i class="fas fa-graduation-cap"></i>
+          </a>
+          <a href="https://linkedin.com/in/felipeparodi" class="claude-social-link" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com/fe_parodi" class="claude-social-link" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </footer>
+
+    </article>
+  </main>
+
+  <!-- Theme Toggle -->
+  <button class="claude-theme-toggle" id="theme-toggle" title="Toggle dark mode">
+    <span id="theme-icon">&#9790;</span>
+  </button>
+
+  <script>
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    const html = document.documentElement;
+
+    // Check saved preference
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      html.setAttribute('data-theme', saved);
+      icon.textContent = saved === 'dark' ? '\u2600' : '\u263E';
+    }
+
+    toggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      icon.textContent = next === 'dark' ? '\u2600' : '\u263E';
+    });
+
+    // News toggle
+    const newsToggle = document.getElementById('toggle-news');
+    const archiveToggle = document.getElementById('toggle-archive');
+    const olderNews = document.getElementById('older-news');
+    const archiveNews = document.getElementById('archive-news');
+
+    if (newsToggle && olderNews) {
+      newsToggle.addEventListener('click', () => {
+        const hidden = olderNews.style.display === 'none';
+        olderNews.style.display = hidden ? 'block' : 'none';
+        newsToggle.textContent = hidden ? 'Hide older news' : 'Show older news';
+
+        // Only reveal the archive toggle when older news is visible
+        if (archiveToggle) {
+          if (hidden) {
+            archiveToggle.style.display = 'inline';
+          } else {
+            archiveToggle.style.display = 'none';
+            if (archiveNews) {
+              archiveNews.style.display = 'none';
+              archiveToggle.textContent = 'Show even older news';
+            }
+          }
+        }
+      });
+    }
+
+    if (archiveToggle && archiveNews) {
+      archiveToggle.addEventListener('click', () => {
+        const hidden = archiveNews.style.display === 'none';
+        archiveNews.style.display = hidden ? 'block' : 'none';
+        archiveToggle.textContent = hidden ? 'Hide even older news' : 'Show even older news';
+      });
+    }
+  </script>
+</body>
+</html>

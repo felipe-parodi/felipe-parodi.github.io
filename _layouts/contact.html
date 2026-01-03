@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Felipe Parodi</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/claude-theme.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/v1-scholar.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/contact.css' | relative_url }}">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32x32.png' | relative_url }}">
+
+  {% include seo.html %}
+</head>
+<body class="claude-layout scholar-layout">
+
+  <!-- Minimal Header -->
+  <header class="scholar-header">
+    <div class="scholar-header-inner">
+      <a href="/" class="scholar-name">Felipe Parodi</a>
+      <nav class="scholar-nav">
+        <a href="/">Home</a>
+        <a href="/research/">Research</a>
+        <a href="/contact/" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="scholar-main">
+    <article class="scholar-article">
+
+      <!-- Page Header -->
+      <header class="contact-header">
+        <h1>Contact</h1>
+        <p class="contact-intro">Reach out if you'd like to chat!</p>
+      </header>
+
+      <hr class="claude-divider">
+
+      <!-- Contact Info -->
+      <section class="contact-section">
+        <div class="contact-grid">
+
+          <!-- Email -->
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h3>Email</h3>
+            <p>fparodi > upenn dot edu</p>
+          </div>
+
+          <!-- Location -->
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Location</h3>
+            <p>
+              Richards Medical Research Labs<br>
+              3700 Hamilton Walk<br>
+              Philadelphia, PA 19104
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Labs -->
+      <section class="contact-section">
+        <div class="claude-section-header">
+          <h2>Labs</h2>
+        </div>
+        <div class="contact-labs">
+          <a href="http://plattlabs.rocks/" class="contact-lab">
+            <strong>Platt Lab</strong>
+            <span>Suite A401</span>
+          </a>
+          <a href="http://kordinglab.com/" class="contact-lab">
+            <strong>Kording Lab</strong>
+            <span>Suite B401</span>
+          </a>
+        </div>
+      </section>
+
+      <hr class="claude-divider">
+
+      <!-- Contact Form -->
+      <section class="contact-section">
+        <div class="claude-section-header">
+          <h2>Send a Message</h2>
+        </div>
+        <form action="https://formspree.io/f/xoqzobln" method="POST" class="contact-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="_replyto" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="claude-btn claude-btn--primary">Send Message</button>
+        </form>
+      </section>
+
+      <hr class="claude-divider">
+
+      <!-- Footer -->
+      <footer class="scholar-footer">
+        <div class="claude-socials">
+          <a href="mailto:fparodi@upenn.edu" class="claude-social-link" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/felipe-parodi" class="claude-social-link" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://scholar.google.com/citations?user=kqW-zA0A5dAC" class="claude-social-link" title="Google Scholar">
+            <i class="fas fa-graduation-cap"></i>
+          </a>
+          <a href="https://linkedin.com/in/felipeparodi" class="claude-social-link" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com/fe_parodi" class="claude-social-link" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </footer>
+
+    </article>
+  </main>
+
+  <!-- Theme Toggle -->
+  <button class="claude-theme-toggle" id="theme-toggle" title="Toggle dark mode">
+    <span id="theme-icon">&#9790;</span>
+  </button>
+
+  <script>
+    // Theme toggle
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    const html = document.documentElement;
+
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      html.setAttribute('data-theme', saved);
+      icon.textContent = saved === 'dark' ? '\u2600' : '\u263E';
+    }
+
+    toggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      icon.textContent = next === 'dark' ? '\u2600' : '\u263E';
+    });
+  </script>
+</body>
+</html>

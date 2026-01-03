@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} - Felipe Parodi</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/claude-theme.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/v1-scholar.css' | relative_url }}">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32x32.png' | relative_url }}">
+
+  {% include seo.html %}
+</head>
+<body class="claude-layout scholar-layout">
+
+  <header class="scholar-header">
+    <div class="scholar-header-inner">
+      <a href="{{ '/' | relative_url }}" class="scholar-name">Felipe Parodi</a>
+      <nav class="scholar-nav">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/research/' | relative_url }}">Research</a>
+        <a href="{{ '/contact/' | relative_url }}">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="scholar-main">
+    <article class="scholar-article">
+      <header class="scholar-intro" style="text-align:left; margin-bottom: var(--space-xl);">
+        <h1 style="margin-bottom: var(--space-sm);">{{ page.title }}</h1>
+        {% if page.excerpt %}<p class="scholar-affiliation">{{ page.excerpt }}</p>{% endif %}
+      </header>
+
+      <section class="scholar-section">
+        {{ content }}
+      </section>
+
+      <hr class="claude-divider">
+
+      <footer class="scholar-footer">
+        <div class="claude-socials">
+          <a href="mailto:fparodi@upenn.edu" class="claude-social-link" title="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://github.com/felipe-parodi" class="claude-social-link" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://scholar.google.com/citations?user=kqW-zA0A5dAC" class="claude-social-link" title="Google Scholar">
+            <i class="fas fa-graduation-cap"></i>
+          </a>
+          <a href="https://linkedin.com/in/felipeparodi" class="claude-social-link" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://twitter.com/fe_parodi" class="claude-social-link" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </div>
+      </footer>
+    </article>
+  </main>
+
+  <button class="claude-theme-toggle" id="theme-toggle" title="Toggle dark mode">
+    <span id="theme-icon">&#9790;</span>
+  </button>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    const html = document.documentElement;
+
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      html.setAttribute('data-theme', saved);
+      icon.textContent = saved === 'dark' ? '\u2600' : '\u263E';
+    }
+
+    toggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      icon.textContent = next === 'dark' ? '\u2600' : '\u263E';
+    });
+  </script>
+</body>
+</html>
