@@ -1,0 +1,199 @@
+/* ===== GLOBAL BACKGROUND COLOR FIX ===== */
+/* Apply consistent warm off-white background across all pages */
+
+html, body {
+  background-color: #FAF9F6 !important;
+}
+
+.page,
+.page__content,
+.archive,
+.initial-content,
+.masthead,
+#main {
+  background-color: #FAF9F6 !important;
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] html,
+[data-theme="dark"] body,
+[data-theme="dark"] .page,
+[data-theme="dark"] .page__content,
+[data-theme="dark"] .archive,
+[data-theme="dark"] .initial-content,
+[data-theme="dark"] .masthead,
+[data-theme="dark"] #main {
+  background-color: #1a1a1a !important;
+}
+
+/* ===== CLEAN OVAL PROFILE IMAGE SOLUTION ===== */
+/* Override all existing styles with maximum specificity */
+
+/* The image itself has the author__avatar class */
+html body .sidebar img.author__avatar,
+html body img.author__avatar,
+.sidebar img.author__avatar,
+img.author__avatar {
+  display: block !important;
+  width: 200px !important;
+  height: 250px !important; /* Taller than wide for oval shape */
+  margin: 0 auto !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  max-width: none !important; /* Override theme defaults */
+  padding: 0 !important; /* Remove any existing padding */
+  
+  /* OVAL SHAPE - this is the key! */
+  border-radius: 50% !important; /* This creates an oval when image is rectangular */
+  
+  /* BLACK AND WHITE BORDER FRAME */
+  border: 6px solid #000 !important; /* Black outer border */
+  box-shadow: 
+    0 0 0 2px #fff, /* White inner border */
+    0 4px 12px rgba(0,0,0,0.3) !important; /* Drop shadow */
+  
+  transition: all 0.3s ease !important;
+}
+
+/* Hover effect with maximum specificity */
+html body .sidebar img.author__avatar:hover,
+html body img.author__avatar:hover,
+.sidebar img.author__avatar:hover,
+img.author__avatar:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 
+    0 0 0 2px #fff,
+    0 6px 20px rgba(0,0,0,0.4) !important;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 768px) {
+  html body .sidebar img.author__avatar,
+  html body img.author__avatar,
+  .sidebar img.author__avatar,
+  img.author__avatar {
+    width: 160px !important;
+    height: 200px !important;
+    border: 4px solid #000 !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html body .sidebar img.author__avatar,
+  html body img.author__avatar,
+  .sidebar img.author__avatar,
+  img.author__avatar {
+    width: 140px !important;
+    height: 175px !important;
+    border: 3px solid #000 !important;
+  }
+}
+
+/* Override conflicting SCSS styles */
+.sidebar .author__avatar img {
+  border-radius: 50% !important; /* Override the 35% 25% from _custom.scss */
+  border: 6px solid #000 !important; /* Override the theme border */
+  padding: 0 !important; /* Remove padding */
+  max-width: none !important; /* Remove max-width constraint */
+  width: 200px !important;
+  height: 250px !important;
+  object-fit: cover !important;
+  box-shadow: 
+    0 0 0 2px #fff,
+    0 4px 12px rgba(0,0,0,0.3) !important;
+}
+
+/* ===== SIDEBAR OPACITY FIX ===== */
+/* Fix the tint/opacity issue on the sidebar */
+
+/* Ensure sidebar always has full opacity */
+html body .sidebar,
+.sidebar {
+  opacity: 1 !important;
+  -webkit-transition: none !important;
+  transition: none !important;
+}
+
+/* Override any hover effects that might be causing opacity changes */
+html body .sidebar:hover,
+.sidebar:hover {
+  opacity: 1 !important;
+}
+
+/* Ensure all sidebar content is fully opaque */
+html body .sidebar *,
+.sidebar * {
+  opacity: 1 !important;
+}
+
+/* ===== HOMEPAGE FONT SIZE REDUCTION ===== */
+/* Make homepage font match the contact page */
+
+/* Target homepage content - the default layout content area */
+.page__content {
+  font-size: 0.85em !important; /* Same as contact page */
+}
+
+.page__content p {
+  font-size: 0.9em !important;
+  line-height: 1.6 !important;
+}
+
+.page__content h1 {
+  font-size: 1.4em !important;
+}
+
+.page__content h2 {
+  font-size: 1.2em !important;
+}
+
+.page__content h3 {
+  font-size: 1.1em !important;
+}
+
+.page__content li {
+  font-size: 0.9em !important;
+}
+
+/* Contact page font size adjustments */
+.archive {
+  font-size: 0.85em !important; /* Make all content smaller */
+}
+
+/* ===== FOOTER BLUE BAR FIX ===== */
+/* Remove the blue background from footer */
+
+/* Fix footer background to match page background */
+html body .page__footer,
+.page__footer {
+  background-color: #FAF9F6 !important; /* Match page background */
+  border-top: 1px solid #ddd !important; /* Subtle border instead of blue */
+  color: #333 !important; /* Ensure text is readable */
+}
+
+/* Fix footer text and link colors */
+html body .page__footer a,
+.page__footer a {
+  color: #555 !important;
+  text-decoration: none !important;
+}
+
+html body .page__footer a:hover,
+.page__footer a:hover {
+  color: #333 !important;
+  text-decoration: underline !important;
+}
+
+/* Fix footer follow section */
+html body .page__footer-follow,
+.page__footer-follow {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* Fix footer copyright section */
+html body .page__footer-copyright,
+.page__footer-copyright {
+  color: #666 !important;
+  background-color: transparent !important;
+}
