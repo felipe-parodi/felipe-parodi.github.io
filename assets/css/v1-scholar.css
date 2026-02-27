@@ -16,7 +16,7 @@
 }
 
 .scholar-header-inner {
-  max-width: 680px;
+  max-width: 740px;
   margin: 0 auto;
   padding: 0 var(--space-lg);
   display: flex;
@@ -53,7 +53,7 @@
 }
 
 .scholar-article {
-  max-width: 680px;
+  max-width: 740px;
   margin: 0 auto;
 }
 
@@ -132,6 +132,26 @@
   color: var(--text-muted);
   margin: 0;
   line-height: 1.5;
+}
+
+.scholar-research-news {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin: var(--space-xs) 0 0;
+  padding-left: 1rem;
+  line-height: 1.5;
+  transform: scale(0.85);
+  transform-origin: left top;
+}
+
+.scholar-research-news a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.scholar-research-news a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
 }
 
 /* ===== NEWS ===== */
