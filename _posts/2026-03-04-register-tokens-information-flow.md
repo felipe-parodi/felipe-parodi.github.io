@@ -401,11 +401,10 @@ Our findings have concrete implications for practitioners working with DINOv2 an
 ## Citation {#citation}
 
 ```bibtex
-@inproceedings{parodi2026cls,
+@article{parodi2026cls,
   title={CLS and Register Token Ablations Reveal Asymmetric
          Information Flow in Vision Transformers},
   author={Parodi, Felipe and Segado, Melanie},
-  booktitle={Proceedings of the HOW Workshop at CVPR},
   year={2026}
 }
 ```
