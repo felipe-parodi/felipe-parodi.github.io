@@ -11,7 +11,7 @@
 /* Interactive containers */
 .howtocv-interactive {
   background: var(--bg-secondary, #f8f9fa);
-  border: 1px solid var(--border-color, #dee2e6);
+  border: 1px solid var(--border, #dee2e6);
   border-radius: 8px;
   padding: 1.5rem;
   margin: 2rem 0;
@@ -37,19 +37,19 @@
   gap: 0;
   border-radius: 6px;
   overflow: hidden;
-  border: 1px solid var(--border-color, #ced4da);
+  border: 1px solid var(--border, #ced4da);
 }
 
 .howtocv-btn {
   padding: 0.4rem 0.9rem;
   border: none;
-  background: var(--bg-primary, #fff);
-  color: var(--text-color, #333);
+  background: var(--bg-secondary, #fff);
+  color: var(--text, #333);
   cursor: pointer;
   font-size: 0.85rem;
   font-weight: 500;
   transition: background 0.15s, color 0.15s;
-  border-right: 1px solid var(--border-color, #ced4da);
+  border-right: 1px solid var(--border, #ced4da);
 }
 
 .howtocv-btn:last-child {
@@ -57,11 +57,11 @@
 }
 
 .howtocv-btn:hover {
-  background: var(--link-color-hover, #e9ecef);
+  background: var(--bg-tertiary, #e9ecef);
 }
 
 .howtocv-btn.active {
-  background: #4a90d9;
+  background: var(--accent, #C15F3C);
   color: #fff;
 }
 
@@ -69,7 +69,7 @@
   padding: 0.25rem 0.6rem;
   font-size: 0.8rem;
   border-radius: 4px;
-  border: 1px solid var(--border-color, #ced4da);
+  border: 1px solid var(--border, #ced4da);
 }
 
 /* Slider row */
@@ -87,7 +87,7 @@
 
 .howtocv-slider-row input[type="range"] {
   width: 200px;
-  accent-color: #4a90d9;
+  accent-color: var(--accent, #C15F3C);
 }
 
 #attention-layer-label {
@@ -107,7 +107,7 @@
 }
 
 .howtocv-toggle input[type="checkbox"] {
-  accent-color: #4a90d9;
+  accent-color: var(--accent, #C15F3C);
   width: 1rem;
   height: 1rem;
 }
@@ -130,10 +130,10 @@
 
 .gallery-item {
   text-align: center;
-  background: var(--bg-primary, #fff);
+  background: var(--bg-secondary, #fff);
   border-radius: 6px;
   padding: 0.75rem;
-  border: 1px solid var(--border-color, #dee2e6);
+  border: 1px solid var(--border, #dee2e6);
   transition: transform 0.15s;
 }
 
@@ -152,7 +152,7 @@
 .gallery-item .sim-score {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #4a90d9;
+  color: var(--accent, #C15F3C);
 }
 
 .gallery-item .patch-info {
@@ -187,7 +187,7 @@
 .howtocv-footer {
   margin-top: 3rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--border-color, #dee2e6);
+  border-top: 1px solid var(--border, #dee2e6);
   font-size: 0.85rem;
   color: var(--text-muted, #6c757d);
 }
@@ -196,7 +196,7 @@
 .viz-gallery {
   margin: 2rem 0;
   background: var(--bg-secondary, #f8f9fa);
-  border: 1px solid var(--border-color, #dee2e6);
+  border: 1px solid var(--border, #dee2e6);
   border-radius: 8px;
   padding: 1.5rem;
 }
@@ -224,9 +224,9 @@
 .viz-mode-btn,
 .viz-model-btn {
   padding: 0.3rem 0.7rem;
-  border: 1px solid var(--border-color, #ced4da);
-  background: var(--bg-primary, #fff);
-  color: var(--text-color, #333);
+  border: 1px solid var(--border, #ced4da);
+  background: var(--bg-secondary, #fff);
+  color: var(--text, #333);
   cursor: pointer;
   font-size: 0.8rem;
   font-weight: 500;
@@ -237,15 +237,15 @@
 .viz-img-btn:hover,
 .viz-mode-btn:hover,
 .viz-model-btn:hover {
-  background: var(--link-color-hover, #e9ecef);
+  background: var(--bg-tertiary, #e9ecef);
 }
 
 .viz-img-btn.active,
 .viz-mode-btn.active,
 .viz-model-btn.active {
-  background: #4a90d9;
+  background: var(--accent, #C15F3C);
   color: #fff;
-  border-color: #4a90d9;
+  border-color: var(--accent, #C15F3C);
 }
 
 .viz-grid {
@@ -262,7 +262,7 @@
   width: 100%;
   height: auto;
   border-radius: 4px;
-  border: 1px solid var(--border-color, #dee2e6);
+  border: 1px solid var(--border, #dee2e6);
 }
 
 .viz-label {
@@ -290,6 +290,18 @@
     color: #e0e0e0;
     border-color: #3a3a4a;
   }
+}
+
+[data-theme="dark"] .viz-gallery {
+  background: #1e1e2e;
+  border-color: #3a3a4a;
+}
+[data-theme="dark"] .viz-img-btn,
+[data-theme="dark"] .viz-mode-btn,
+[data-theme="dark"] .viz-model-btn {
+  background: #2a2a3a;
+  color: #e0e0e0;
+  border-color: #3a3a4a;
 }
 
 @media (max-width: 768px) {
@@ -334,6 +346,23 @@
     background: #2a2a3a;
     border-color: #3a3a4a;
   }
+}
+
+[data-theme="dark"] .howtocv-interactive {
+  background: #1e1e2e;
+  border-color: #3a3a4a;
+}
+[data-theme="dark"] .howtocv-btn {
+  background: #2a2a3a;
+  color: #e0e0e0;
+  border-color: #3a3a4a;
+}
+[data-theme="dark"] .howtocv-btn:hover {
+  background: #3a3a4a;
+}
+[data-theme="dark"] .gallery-item {
+  background: #2a2a3a;
+  border-color: #3a3a4a;
 }
 
 /* Responsive */
