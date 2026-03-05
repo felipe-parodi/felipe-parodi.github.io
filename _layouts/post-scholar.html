@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact - Felipe Parodi</title>
+  <title>{{ page.title }} - Felipe Parodi</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,108 +16,57 @@
   <!-- Styles -->
   <link rel="stylesheet" href="{{ '/assets/css/claude-theme.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/v1-scholar.css' | relative_url }}">
-  <link rel="stylesheet" href="{{ '/assets/css/contact.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/post.css' | relative_url }}">
+  {% for css in page.extra_css %}
+  <link rel="stylesheet" href="{{ css | relative_url }}">
+  {% endfor %}
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="{{ '/images/favicon-32x32.png' | relative_url }}">
 
   {% include seo.html %}
+  {% include researcher-schema.html %}
 </head>
 <body class="claude-layout scholar-layout">
 
-  <!-- Minimal Header -->
+  <!-- Header -->
   <header class="scholar-header">
     <div class="scholar-header-inner">
       <a href="/" class="scholar-name">Felipe Parodi</a>
       <nav class="scholar-nav">
         <a href="/">Home</a>
         <a href="/research/">Research</a>
-        <a href="/blog/">Blog</a>
-        <a href="/contact/" class="active">Contact</a>
+        <a href="/blog/" class="active">Blog</a>
+        <a href="/contact/">Contact</a>
       </nav>
     </div>
   </header>
 
   <!-- Main Content -->
   <main class="scholar-main">
-    <article class="scholar-article">
+    <article class="scholar-article scholar-article--post">
 
-      <!-- Page Header -->
-      <header class="contact-header">
-        <h1>Contact</h1>
-        <p class="contact-intro">Reach out if you'd like to chat!</p>
+      <!-- Post Header -->
+      <header class="post-header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <p class="post-meta">
+          <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+          · {{ content | number_of_words | divided_by: 160 }} min read
+        </p>
+        {% if page.tags.size > 0 %}
+        <div class="post-tags">
+          {% for tag in page.tags %}
+          <span class="post-tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
       </header>
 
       <hr class="claude-divider">
 
-      <!-- Contact Info -->
-      <section class="contact-section">
-        <div class="contact-grid">
-
-          <!-- Email -->
-          <div class="contact-card">
-            <div class="contact-icon">
-              <i class="fas fa-envelope"></i>
-            </div>
-            <h3>Email</h3>
-            <p>fparodi > upenn dot edu</p>
-          </div>
-
-          <!-- Location -->
-          <div class="contact-card">
-            <div class="contact-icon">
-              <i class="fas fa-map-marker-alt"></i>
-            </div>
-            <h3>Location</h3>
-            <p>
-              Richards Medical Research Labs<br>
-              3700 Hamilton Walk<br>
-              Philadelphia, PA 19104
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      <!-- Labs -->
-      <section class="contact-section">
-        <div class="claude-section-header">
-          <h2>Labs</h2>
-        </div>
-        <div class="contact-labs">
-          <a href="http://plattlabs.rocks/" class="contact-lab">
-            <strong>Platt Lab</strong>
-            <span>Suite A401</span>
-          </a>
-          <a href="http://kordinglab.com/" class="contact-lab">
-            <strong>Kording Lab</strong>
-            <span>Suite B401</span>
-          </a>
-        </div>
-      </section>
-
-      <hr class="claude-divider">
-
-      <!-- Contact Form -->
-      <section class="contact-section">
-        <div class="claude-section-header">
-          <h2>Send a Message</h2>
-        </div>
-        <form action="https://formspree.io/f/xoqzobln" method="POST" class="contact-form">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="_replyto" required>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="claude-btn claude-btn--primary">Send Message</button>
-        </form>
+      <!-- Post Content -->
+      <section class="post-content">
+        {{ content }}
       </section>
 
       <hr class="claude-divider">

@@ -1,18 +1,13 @@
 ---
-layout: single
+layout: post-scholar
 title: "How Register Tokens Reshape Information Flow in Vision Transformers"
 date: 2026-03-04
 categories: [blog]
-author_profile: false
 tags: [vision-transformers, interpretability, DINOv3, self-supervised-learning]
 excerpt: "We discovered that DINOv3's register tokens function as active computation buffers, not passive stores — and the evidence comes from a simple trick: zeroing them out."
-toc: true
-toc_sticky: true
-toc_label: "Contents"
-classes: wide
+extra_css:
+  - /assets/css/howtocv.css
 ---
-
-<link rel="stylesheet" href="/assets/css/howtocv.css">
 
 <div class="howtocv-links">
   <a href="https://github.com/felipe-parodi/howtocv" class="howtocv-link-btn"><i class="fab fa-github"></i> Code</a>

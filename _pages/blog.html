@@ -1,0 +1,19 @@
+---
+layout: post-scholar
+title: "Blog"
+permalink: /blog/
+---
+
+<div class="blog-list">
+  {% for post in site.posts %}
+  <article class="blog-entry">
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    <p class="post-meta">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+    </p>
+    {% if post.excerpt %}
+    <p class="blog-excerpt">{{ post.excerpt | strip_html | truncatewords: 40 }}</p>
+    {% endif %}
+  </article>
+  {% endfor %}
+</div>
