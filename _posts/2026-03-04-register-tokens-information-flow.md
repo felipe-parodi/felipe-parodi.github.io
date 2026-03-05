@@ -6,9 +6,6 @@ categories: [blog]
 author_profile: false
 tags: [vision-transformers, interpretability, DINOv3, self-supervised-learning]
 excerpt: "We discovered that DINOv3's register tokens function as active computation buffers, not passive stores — and the evidence comes from a simple trick: zeroing them out."
-header:
-  overlay_color: "#1a1a2e"
-  overlay_filter: "0.6"
 toc: true
 toc_sticky: true
 toc_label: "Contents"
@@ -18,9 +15,9 @@ classes: wide
 <link rel="stylesheet" href="/assets/css/howtocv.css">
 
 <div class="howtocv-links">
-  <a href="https://github.com/felipe-parodi/howtocv" class="btn btn--primary btn--small"><i class="fab fa-github"></i> Code</a>
-  <a href="#" class="btn btn--info btn--small"><i class="fas fa-file-pdf"></i> Paper PDF</a>
-  <a href="#citation" class="btn btn--warning btn--small"><i class="fas fa-quote-left"></i> Cite</a>
+  <a href="https://github.com/felipe-parodi/howtocv" class="howtocv-link-btn"><i class="fab fa-github"></i> Code</a>
+  <a href="#" class="howtocv-link-btn"><i class="fas fa-file-pdf"></i> Paper PDF</a>
+  <a href="#citation" class="howtocv-link-btn"><i class="fas fa-quote-left"></i> Cite</a>
 </div>
 
 Modern vision transformers like DINOv2 and DINOv3 include a curious architectural feature: **register tokens** — learnable vectors appended to the input sequence that participate in self-attention but correspond to no image region. Originally introduced to [suppress attention artifacts](https://arxiv.org/abs/2309.16588), these tokens turn out to play a far more active role than their name suggests.

@@ -8,6 +8,25 @@
   flex-wrap: wrap;
 }
 
+.howtocv-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent, #C15F3C);
+  border: 1px solid var(--accent, #C15F3C);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 150ms ease, color 150ms ease;
+}
+
+.howtocv-link-btn:hover {
+  background: var(--accent, #C15F3C);
+  color: #fff;
+}
+
 /* Interactive containers */
 .howtocv-interactive {
   background: var(--bg-secondary, #f8f9fa);
