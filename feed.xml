@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://felipe-parodi.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://felipe-parodi.github.io//" rel="alternate" type="text/html" /><updated>2026-03-05T14:07:37-08:00</updated><id>https://felipe-parodi.github.io//feed.xml</id><title type="html">Felipe Parodi</title><subtitle>Computational Neuroethologist | PhD Candidate at UPenn | Research in AI, Deep Learning, and Primate Behavior | Specializing in Social Interaction Analysis</subtitle><author><name>Felipe Parodi</name></author><entry><title type="html">How Register Tokens Reshape Information Flow in Vision Transformers</title><link href="https://felipe-parodi.github.io//blog/register-tokens-information-flow/" rel="alternate" type="text/html" title="How Register Tokens Reshape Information Flow in Vision Transformers" /><published>2026-03-04T00:00:00-08:00</published><updated>2026-03-04T00:00:00-08:00</updated><id>https://felipe-parodi.github.io//blog/register-tokens-information-flow</id><content type="html" xml:base="https://felipe-parodi.github.io//blog/register-tokens-information-flow/"><![CDATA[<div class="howtocv-links">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="https://felipe-parodi.github.io//feed.xml" rel="self" type="application/atom+xml" /><link href="https://felipe-parodi.github.io//" rel="alternate" type="text/html" /><updated>2026-03-05T14:30:36-08:00</updated><id>https://felipe-parodi.github.io//feed.xml</id><title type="html">Felipe Parodi</title><subtitle>Computational Neuroethologist | PhD Candidate at UPenn | Research in AI, Deep Learning, and Primate Behavior | Specializing in Social Interaction Analysis</subtitle><author><name>Felipe Parodi</name></author><entry><title type="html">How Register Tokens Reshape Information Flow in Vision Transformers</title><link href="https://felipe-parodi.github.io//blog/register-tokens-information-flow/" rel="alternate" type="text/html" title="How Register Tokens Reshape Information Flow in Vision Transformers" /><published>2026-03-04T00:00:00-08:00</published><updated>2026-03-04T00:00:00-08:00</updated><id>https://felipe-parodi.github.io//blog/register-tokens-information-flow</id><content type="html" xml:base="https://felipe-parodi.github.io//blog/register-tokens-information-flow/"><![CDATA[<div class="howtocv-links">
   <a href="https://github.com/felipe-parodi/howtocv" class="howtocv-link-btn"><i class="fab fa-github"></i> Code</a>
   <a href="#" class="howtocv-link-btn"><i class="fas fa-file-pdf"></i> Paper PDF</a>
   <a href="#citation" class="howtocv-link-btn"><i class="fas fa-quote-left"></i> Cite</a>
 </div>
 
-<p>When neural networks process images, they need to organize a lot of information — and some of the most capable models have quietly developed extra “scratch space” to do it. Modern vision transformers like DINOv2 and DINOv3 include a curious architectural feature: <strong>register tokens</strong> — extra learned tokens added alongside the image tokens that participate in the network’s computations but don’t correspond to any image region. Originally introduced to <a href="https://arxiv.org/abs/2309.16588">suppress attention artifacts</a>, these tokens turn out to play a far more active role than their name suggests.</p>
+<p>When neural networks process images, they need to organize a lot of information — and some of the most capable models have quietly developed extra “scratch space” to do it. Modern vision transformers like DINOv2 and DINOv3 include an unusual architectural feature: <strong>register tokens</strong> — extra learned tokens added alongside the image tokens that participate in the network’s computations but don’t correspond to any image region. Originally introduced to <a href="https://arxiv.org/abs/2309.16588">suppress attention artifacts</a>, these tokens turn out to play a far more active role than their name suggests.</p>
 
-<p>In this post, I walk through our findings from systematic token-zeroing experiments — selectively disabling parts of the model and measuring what breaks. We find a <strong>double dissociation</strong> between CLS and register tokens (each is critical for different tasks), show that registers function as <strong>attention scaffolds</strong> rather than information stores, and trace the surprising <strong>temporal dynamics</strong> of how registers acquire and sometimes release semantic content across network layers. The upshot: register tokens are load-bearing computational infrastructure, not passive bystanders.</p>
+<p>In this post, I walk through our findings from systematic token-zeroing experiments — selectively disabling parts of the model and measuring what breaks. We find a <strong>double dissociation</strong> between CLS and register tokens (each is critical for different tasks), show that registers function as <strong>attention scaffolds</strong> rather than information stores, and trace the <strong>temporal dynamics</strong> of how registers acquire and sometimes release semantic content across network layers. The upshot: register tokens are load-bearing computational infrastructure, not passive bystanders.</p>
 
 <hr />
 
@@ -14,9 +14,9 @@
 
 <h3 id="self-supervised-vits-in-60-seconds">Self-supervised ViTs in 60 seconds</h3>
 
-<p>Most neural networks learn from labeled data — millions of images tagged with “cat” or “dog.” The DINO family takes a different approach called <strong>self-distillation</strong>: the model trains by trying to match a slowly-updated copy of itself, without any labels at all. The result is a model whose internal representations capture rich semantic and spatial structure, often rivaling supervised models.</p>
+<p>Most neural networks learn from labeled data — millions of images tagged with “cat” or “dog.” The DINO family takes a different approach called <strong>self-distillation</strong>: the model trains by trying to match a slowly-updated copy of itself, without any labels at all. The result is a model whose internal representations capture strong semantic and spatial structure, often rivaling supervised models.</p>
 
-<p>A standard ViT (Vision Transformer) processes an image by splitting it into non-overlapping patches (typically 14×14 pixels), converting each patch into a vector, and prepending a special learnable <strong>CLS token</strong>. All tokens — CLS plus patches — interact through <strong>self-attention</strong> (each token can “look at” every other token to decide what matters) across multiple transformer layers. At the output, the CLS token serves as a global image summary (useful for classification), while patch tokens retain spatial information (useful for segmentation and finding correspondences between images). This division of labor — one global token, many spatial tokens — is central to everything that follows.</p>
+<p>A standard ViT (Vision Transformer) processes an image by splitting it into non-overlapping patches (typically 14×14 pixels), converting each patch into a vector, and prepending a special learnable <strong>CLS token</strong>. All tokens — CLS plus patches — interact through <strong>self-attention</strong> (each token can “look at” every other token to decide what matters) across multiple transformer layers. At the output, the CLS token serves as a global image summary (useful for classification), while patch tokens retain spatial information (useful for segmentation and finding correspondences between images). This division of labor — one global token, many spatial tokens — is important for what follows.</p>
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/approach.svg" alt="Experimental approach: ViT architecture with CLS and register tokens, showing zero-CLS and zero-registers ablation conditions" style="max-width: 700px;" />
@@ -40,9 +40,9 @@
 
 <h3 id="the-artifact-problem">The artifact problem</h3>
 
-<p><a href="https://arxiv.org/abs/2309.16588">Darcet et al. (2024)</a> discovered that DINO and DINOv2 produce <strong>high-norm artifact tokens</strong> in low-information image regions — patches corresponding to sky, water, or uniform backgrounds would develop anomalously large activation norms that distorted downstream feature maps. Their solution: append 4 learnable <strong>register tokens</strong> to the input sequence. These registers participate in the network’s computations but are discarded at inference, absorbing the artifact computation and leaving patch tokens clean. Problem solved — but this fix raised a deeper question.</p>
+<p><a href="https://arxiv.org/abs/2309.16588">Darcet et al. (2024)</a> discovered that DINO and DINOv2 produce <strong>high-norm artifact tokens</strong> in low-information image regions — patches corresponding to sky, water, or uniform backgrounds would develop anomalously large activation norms that distorted downstream feature maps. Their solution: append 4 learnable <strong>register tokens</strong> to the input sequence. These registers participate in the network’s computations but are discarded at inference, absorbing the artifact computation and leaving patch tokens clean. This worked — but it raised a question.</p>
 
-<p>DINOv2 was then retrained with registers (DINOv2+reg), and the artifacts disappeared. But a question remained: <strong>what exactly are these registers doing?</strong> Are they merely absorbing garbage computation, or are they playing a more fundamental role in the network’s information processing?</p>
+<p>DINOv2 was then retrained with registers (DINOv2+reg), and the artifacts disappeared. But a question remained: <strong>what exactly are these registers doing?</strong> Are they merely absorbing garbage computation, or are they playing a more active role in the network’s information processing?</p>
 
 <p>The patch norm heatmaps below visualize these artifacts directly. High-norm patches (bright regions) indicate where the model concentrates computation. Compare DINOv2 (artifacts visible in uniform regions) with DINOv2+reg and DINOv3 (cleaner after registers):</p>
 
@@ -150,13 +150,13 @@
 
 <h2 id="the-double-dissociation">The Double Dissociation</h2>
 
-<p>The heatmap reveals a striking pattern — a <strong>double dissociation</strong> between CLS and register tokens. In neuroscience, a double dissociation means two systems are each necessary for different functions: damaging one impairs function A but not B, and damaging the other impairs B but not A. That’s exactly what we see here:</p>
+<p>The heatmap shows a clear pattern — a <strong>double dissociation</strong> between CLS and register tokens. In neuroscience, a double dissociation means two systems are each necessary for different functions: damaging one impairs function A but not B, and damaging the other impairs B but not A. That’s exactly what we see here:</p>
 
 <h3 id="cls-zeroing-dense-tasks-are-buffered">CLS zeroing: dense tasks are buffered</h3>
 
-<p>In DINOv2 (no registers), zeroing CLS is catastrophic everywhere: classification drops from 73.2% to 0.1%, and even correspondence falls from 72.0% to 56.1%. The CLS token is the network’s central hub.</p>
+<p>In DINOv2 (no registers), zeroing CLS is bad across all tasks: classification drops from 73.2% to 0.1%, and even correspondence falls from 72.0% to 56.1%. The CLS token is the network’s central hub.</p>
 
-<p>But in DINOv2+reg and DINOv3, something remarkable happens. CLS zeroing still kills classification (expected — the probe reads from CLS). But <strong>dense tasks are almost completely unaffected</strong>:</p>
+<p>But in DINOv2+reg and DINOv3, something different happens. CLS zeroing still kills classification (expected — the probe reads from CLS). But <strong>dense tasks are almost completely unaffected</strong>:</p>
 
 <ul>
   <li>DINOv2+reg correspondence: 69.1% → 68.3% (−0.8pp)</li>
@@ -167,7 +167,7 @@
 
 <h3 id="register-zeroing-everything-collapses">Register zeroing: everything collapses</h3>
 
-<p>Conversely, zeroing registers is devastating, especially for DINOv3:</p>
+<p>Conversely, zeroing registers causes large drops, especially for DINOv3:</p>
 
 <ul>
   <li>DINOv3 classification: 62.0% → 25.4% (<strong>−36.6pp</strong>)</li>
@@ -175,7 +175,7 @@
   <li>DINOv3 correspondence: 78.9% → 57.8% (<strong>−21.1pp</strong>)</li>
 </ul>
 
-<p>This is the double dissociation: CLS zeroing selectively impairs global tasks while sparing dense tasks, and register zeroing impairs everything. The two token types serve <strong>distinct, complementary functional roles</strong>.</p>
+<p>This is the double dissociation: CLS zeroing selectively impairs global tasks while sparing dense tasks, and register zeroing impairs everything. The two token types serve <strong>different functional roles</strong>.</p>
 
 <p>You can see the ablation effects directly in patch PCA features below. Compare “Full Model” with “Zero CLS” (often barely changes) and “Zero Registers” (feature structure collapses):</p>
 
@@ -200,9 +200,9 @@
 
 <h3 id="the-scaffold-experiment">The scaffold experiment</h3>
 
-<p>The zeroing results raise a crucial question: is it the <em>specific information</em> stored in registers that matters, or just their <em>structural presence</em> in the attention computation? We tested this with <strong>mean substitution</strong>: replacing each register’s output with its average activation pattern (computed over 5,000 images). This preserves the registers’ typical statistical footprint while stripping away any image-specific content.</p>
+<p>The zeroing results raise a key question: is it the <em>specific information</em> stored in registers that matters, or just their <em>structural presence</em> in the attention computation? We tested this with <strong>mean substitution</strong>: replacing each register’s output with its average activation pattern (computed over 5,000 images). This preserves the registers’ typical statistical footprint while stripping away any image-specific content.</p>
 
-<p>The result is striking: <strong>classification accuracy is fully preserved</strong> under mean substitution. DINOv2+reg drops only 0.3pp, DINOv3 actually gains 0.1pp. This means registers’ image-specific content is irrelevant — what matters is simply their <em>presence as attention targets</em>. They serve as an <strong>attention scaffold</strong>: the network routes computation through them regardless of what they contain, and removing this scaffold entirely (via zeroing) is what causes the collapse.</p>
+<p>The result: <strong>classification accuracy is fully preserved</strong> under mean substitution. DINOv2+reg drops only 0.3pp, DINOv3 actually gains 0.1pp. This means registers’ image-specific content is irrelevant — what matters is simply their <em>presence as attention targets</em>. They serve as an <strong>attention scaffold</strong>: the network routes computation through them regardless of what they contain, and removing this scaffold entirely (via zeroing) is what causes the collapse.</p>
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/correspondence/qualitative.svg" alt="Qualitative correspondence under different ablation conditions" style="max-width: 700px;" />
@@ -213,7 +213,7 @@
 
 <h2 id="what-do-individual-registers-do">What Do Individual Registers Do?</h2>
 
-<p>Not all registers are created equal. We probed each register individually and discovered a <strong>specialist-generalist split</strong> that reverses between architectures.</p>
+<p>Registers are not interchangeable. We probed each register individually and found a <strong>specialist-generalist split</strong> that reverses between architectures.</p>
 
 <h3 id="dinov2reg-r2-is-the-specialist">DINOv2+reg: R2 is the specialist</h3>
 
@@ -225,7 +225,7 @@
 
 <p>DINOv3 flips this pattern. R3 becomes the <strong>semantic specialist</strong> — its probe accuracy reaches 50.1%, far above R1 (3.0%) and R2 (12.5%). Conversely, R1, R2, and R4 match to <strong>low-level patches</strong>: ground textures (R4, cos=0.77), dark backgrounds (R1), and homogeneous regions (R2).</p>
 
-<p>This is a qualitative reorganization, not just a quantitative shift. Gram anchoring fundamentally changes how the network distributes computation across its register tokens.</p>
+<p>This is a qualitative reorganization, not just a quantitative shift. Gram anchoring changes how the network distributes computation across its register tokens.</p>
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig3_registers_combined.svg" alt="Per-register classification accuracy and cosine similarity matrices" style="max-width: 800px;" />
@@ -259,7 +259,7 @@
 
 <h2 id="when-do-registers-become-important">When Do Registers Become Important?</h2>
 
-<p>So registers matter — but <em>when</em> do they become important during the network’s processing? A transformer processes information through 12 sequential layers, and each layer can change what tokens attend to and what information they carry. We traced two signals across all 12 layers: <strong>attention routing</strong> (how much attention mass flows to registers) and <strong>semantic content</strong> (how much classification information each register carries). These two signals, surprisingly, turn out to be dissociated.</p>
+<p>So registers matter — but <em>when</em> do they become important during the network’s processing? A transformer processes information through 12 sequential layers, and each layer can change what tokens attend to and what information they carry. We traced two signals across all 12 layers: <strong>attention routing</strong> (how much attention mass flows to registers) and <strong>semantic content</strong> (how much classification information each register carries). These two signals turn out to be dissociated.</p>
 
 <h3 id="cls-attention-distribution">CLS attention distribution</h3>
 
@@ -329,7 +329,7 @@
 
 <div id="probe-container" class="howtocv-interactive">
   <h3 class="howtocv-section-title">Interactive: Layer-wise register probing</h3>
-  <p>Drag the slider to see classification accuracy at each layer. Note the explosive emergence at layers 10–11 and the transient R1 peak in DINOv3.</p>
+  <p>Drag the slider to see classification accuracy at each layer. Note the sharp jump at layers 10–11 and the transient R1 peak in DINOv3.</p>
   <div id="probe-chart"></div>
   <noscript>
     <img src="/assets/images/howtocv/layer_probe_static.png" alt="Layer-wise probing results for register tokens" style="max-width: 100%;" />
@@ -338,7 +338,7 @@
 
 <h3 id="layer-wise-task-performance">Layer-wise task performance</h3>
 
-<p>The layer sweep tells a complementary story: how does <em>task</em> performance (not just register probing) evolve across layers?</p>
+<p>The layer sweep adds another view: how does <em>task</em> performance (not just register probing) evolve across layers?</p>
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig5_layer_sweep.svg" alt="Layer-wise classification and correspondence performance" style="max-width: 700px;" />
@@ -347,16 +347,16 @@
 
 <h3 id="the-temporal-dissociation">The temporal dissociation</h3>
 
-<p>The attention and probing data reveal a surprising disconnect between <em>where the network looks</em> and <em>what it knows</em>:</p>
+<p>The attention and probing data show a disconnect between <em>where the network looks</em> and <em>what it knows</em>:</p>
 
 <ol>
   <li><strong>Attention routing builds gradually</strong>: Patches start attending to registers from mid-layers onward, ramping smoothly.</li>
-  <li><strong>Semantic content emerges abruptly</strong>: All tokens carry near-random classification accuracy through layer 8 (&lt; 6% for DINOv2+reg, &lt; 14% for DINOv3). Then at layers 10–11, accuracy explodes — CLS jumps to 67.3%/61.9%, and specific registers follow.</li>
+  <li><strong>Semantic content emerges abruptly</strong>: All tokens carry near-random classification accuracy through layer 8 (&lt; 6% for DINOv2+reg, &lt; 14% for DINOv3). Then at layers 10–11, accuracy jumps sharply — CLS jumps to 67.3%/61.9%, and specific registers follow.</li>
 </ol>
 
 <p>These two signals are <strong>temporally dissociated</strong>: the attention routing infrastructure is built several layers before any semantic content appears. Registers are being used as computation targets before they carry meaningful information.</p>
 
-<p>Even more striking are the per-register dynamics:</p>
+<p>The per-register dynamics are telling:</p>
 
 <ul>
   <li><strong>DINOv3 R1</strong>: Peaks at layer 10 (10.7% accuracy) then <strong>drops</strong> to 3.0% at layer 11 — despite receiving the most attention (21.1%). R1 appears to be a <strong>transient computation buffer</strong> — it temporarily holds and processes information before passing it along, rather than accumulating a final answer.</li>
@@ -384,7 +384,7 @@
   <li><strong>DINOv3</strong>: Sum of individual = −7.0pp, collective = −36.6pp</li>
 </ul>
 
-<p>This <strong>non-additive interaction</strong> — the collective effect far exceeds the sum of individual effects — confirms that registers function as a coordinated system. Their value lies not in what any single register contributes, but in the collective attention scaffold they provide.</p>
+<p>This <strong>non-additive interaction</strong> — the collective effect far exceeds the sum of individual effects — confirms that registers function as a coordinated system. No single register is critical on its own — what matters is the collective scaffold.</p>
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/cumulative_lesion.svg" alt="Cumulative register lesion effects" style="max-width: 600px;" />
@@ -397,7 +397,7 @@
 
 <h3 id="vit-s-vs-vit-b">ViT-S vs ViT-B</h3>
 
-<p>We replicated all key experiments with ViT-B backbones. The ablation patterns are strikingly consistent across scales.</p>
+<p>We replicated all key experiments with ViT-B backbones. The ablation patterns are consistent across scales.</p>
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig7_scale_comparison.svg" alt="ViT-S vs ViT-B scale comparison" style="max-width: 700px;" />
@@ -417,7 +417,7 @@
 
 <h2 id="practical-takeaways">Practical Takeaways</h2>
 
-<p>Our findings have concrete implications for practitioners working with DINOv2 and DINOv3 features:</p>
+<p>Some practical implications:</p>
 
 <ol>
   <li>
@@ -433,7 +433,7 @@
     <p><strong>Registers are active, not passive.</strong> The temporal dissociation — attention routing precedes semantic emergence — means registers participate in computation, not just storage. This has implications for pruning, distillation, and architectural design.</p>
   </li>
   <li>
-    <p><strong>Scale-consistent.</strong> All findings replicate across ViT-S and ViT-B backbones, suggesting these are fundamental properties of the architecture rather than scale-dependent phenomena.</p>
+    <p><strong>Scale-consistent.</strong> All findings replicate across ViT-S and ViT-B backbones, suggesting these are stable properties of the architecture rather than scale-dependent phenomena.</p>
   </li>
 </ol>
 
@@ -466,4 +466,4 @@
 
 <script src="/assets/js/howtocv-gallery.js"></script>
 
-<script src="/assets/js/howtocv-viz-gallery.js"></script>]]></content><author><name>Felipe Parodi</name></author><category term="blog" /><category term="vision-transformers" /><category term="interpretability" /><category term="DINOv3" /><category term="self-supervised-learning" /><summary type="html"><![CDATA[We discovered that DINOv3's register tokens function as active computation buffers, not passive stores — and the evidence comes from a simple trick: zeroing them out.]]></summary></entry></feed>
+<script src="/assets/js/howtocv-viz-gallery.js"></script>]]></content><author><name>Felipe Parodi</name></author><category term="blog" /><category term="vision-transformers" /><category term="interpretability" /><category term="DINOv3" /><category term="self-supervised-learning" /><summary type="html"><![CDATA[DINOv3's register tokens function as active computation buffers, not passive stores — and the evidence comes from a simple trick: zeroing them out.]]></summary></entry></feed>
