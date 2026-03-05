@@ -9,11 +9,7 @@
 (function () {
   'use strict';
 
-  // Detect if running from Jekyll (absolute paths) or local preview (relative)
-  const isJekyll = window.location.pathname.indexOf('/20') !== -1;  // Jekyll posts have /2026-...
-  const BASE = isJekyll
-    ? '/assets/images/howtocv/interactive_viz'
-    : 'assets/images/howtocv/interactive_viz';
+  const BASE = '/assets/images/howtocv/interactive_viz';
 
   const MODELS = ['dinov2_no_reg', 'dinov2_reg', 'dinov3_vits16'];
   const MODEL_LABELS = {
