@@ -1,0 +1,1031 @@
+{
+  "layers": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    11
+  ],
+  "ablation": "full",
+  "g1": {
+    "0": {
+      "ablation": "full",
+      "layer": 0,
+      "models": {
+        "dinov2_no_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.0013000000035390258
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.0013000000035390258,
+              "mean": 0.0013000000035390258,
+              "min": 0.0013000000035390258,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.004100000020116568
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.004100000020116568,
+              "mean": 0.004100000020116568,
+              "min": 0.004100000020116568,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov2_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.001500000013038516
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.001500000013038516,
+              "mean": 0.001500000013038516,
+              "min": 0.001500000013038516,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.006099999882280827
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.006099999882280827,
+              "mean": 0.006099999882280827,
+              "min": 0.006099999882280827,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov3_vits16": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.0009999999310821295
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.0009999999310821295,
+              "mean": 0.0009999999310821295,
+              "min": 0.0009999999310821295,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.005799999926239252
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.005799999926239252,
+              "mean": 0.005799999926239252,
+              "min": 0.005799999926239252,
+              "std": 0.0
+            }
+          }
+        }
+      },
+      "train_dataset": "imagenet_50k",
+      "val_dataset": "imagenet_50k"
+    },
+    "2": {
+      "ablation": "full",
+      "layer": 2,
+      "models": {
+        "dinov2_no_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.0009999999310821295
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.0009999999310821295,
+              "mean": 0.0009999999310821295,
+              "min": 0.0009999999310821295,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.006599999964237213
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.006599999964237213,
+              "mean": 0.006599999964237213,
+              "min": 0.006599999964237213,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov2_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.0011999999405816197
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.0011999999405816197,
+              "mean": 0.0011999999405816197,
+              "min": 0.0011999999405816197,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.014800000004470348
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.014800000004470348,
+              "mean": 0.014800000004470348,
+              "min": 0.014800000004470348,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov3_vits16": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.005499999970197678
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.005499999970197678,
+              "mean": 0.005499999970197678,
+              "min": 0.005499999970197678,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.015399999916553497
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.015399999916553497,
+              "mean": 0.015399999916553497,
+              "min": 0.015399999916553497,
+              "std": 0.0
+            }
+          }
+        }
+      },
+      "train_dataset": "imagenet_50k",
+      "val_dataset": "imagenet_50k"
+    },
+    "4": {
+      "ablation": "full",
+      "layer": 4,
+      "models": {
+        "dinov2_no_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.0011999999405816197
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.0011999999405816197,
+              "mean": 0.0011999999405816197,
+              "min": 0.0011999999405816197,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.0142000000923872
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.0142000000923872,
+              "mean": 0.0142000000923872,
+              "min": 0.0142000000923872,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov2_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.001999999862164259
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.001999999862164259,
+              "mean": 0.001999999862164259,
+              "min": 0.001999999862164259,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.03779999911785126
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.03779999911785126,
+              "mean": 0.03779999911785126,
+              "min": 0.03779999911785126,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov3_vits16": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.009499999694526196
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.009499999694526196,
+              "mean": 0.009499999694526196,
+              "min": 0.009499999694526196,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.02759999968111515
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.02759999968111515,
+              "mean": 0.02759999968111515,
+              "min": 0.02759999968111515,
+              "std": 0.0
+            }
+          }
+        }
+      },
+      "train_dataset": "imagenet_50k",
+      "val_dataset": "imagenet_50k"
+    },
+    "6": {
+      "ablation": "full",
+      "layer": 6,
+      "models": {
+        "dinov2_no_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.005499999970197678
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.005499999970197678,
+              "mean": 0.005499999970197678,
+              "min": 0.005499999970197678,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.03689999878406525
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.03689999878406525,
+              "mean": 0.03689999878406525,
+              "min": 0.03689999878406525,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov2_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.004999999888241291
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.004999999888241291,
+              "mean": 0.004999999888241291,
+              "min": 0.004999999888241291,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.043299999088048935
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.043299999088048935,
+              "mean": 0.043299999088048935,
+              "min": 0.043299999088048935,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov3_vits16": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.0510999970138073
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.0510999970138073,
+              "mean": 0.0510999970138073,
+              "min": 0.0510999970138073,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.07239999622106552
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.07239999622106552,
+              "mean": 0.07239999622106552,
+              "min": 0.07239999622106552,
+              "std": 0.0
+            }
+          }
+        }
+      },
+      "train_dataset": "imagenet_50k",
+      "val_dataset": "imagenet_50k"
+    },
+    "8": {
+      "ablation": "full",
+      "layer": 8,
+      "models": {
+        "dinov2_no_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.011399999260902405
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.011399999260902405,
+              "mean": 0.011399999260902405,
+              "min": 0.011399999260902405,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.07239999622106552
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.07239999622106552,
+              "mean": 0.07239999622106552,
+              "min": 0.07239999622106552,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov2_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.05769999697804451
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.05769999697804451,
+              "mean": 0.05769999697804451,
+              "min": 0.05769999697804451,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.08760000020265579
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.08760000020265579,
+              "mean": 0.08760000020265579,
+              "min": 0.08760000020265579,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov3_vits16": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.14010000228881836
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.14010000228881836,
+              "mean": 0.14010000228881836,
+              "min": 0.14010000228881836,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.13519999384880066
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.13519999384880066,
+              "mean": 0.13519999384880066,
+              "min": 0.13519999384880066,
+              "std": 0.0
+            }
+          }
+        }
+      },
+      "train_dataset": "imagenet_50k",
+      "val_dataset": "imagenet_50k"
+    },
+    "10": {
+      "ablation": "full",
+      "layer": 10,
+      "models": {
+        "dinov2_no_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.07859999686479568
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.07859999686479568,
+              "mean": 0.07859999686479568,
+              "min": 0.07859999686479568,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.17379999160766602
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.17379999160766602,
+              "mean": 0.17379999160766602,
+              "min": 0.17379999160766602,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov2_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.15869998931884766
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.15869998931884766,
+              "mean": 0.15869998931884766,
+              "min": 0.15869998931884766,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.23669999837875366
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.23669999837875366,
+              "mean": 0.23669999837875366,
+              "min": 0.23669999837875366,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov3_vits16": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.5066999793052673
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.5066999793052673,
+              "mean": 0.5066999793052673,
+              "min": 0.5066999793052673,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.39409998059272766
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.39409998059272766,
+              "mean": 0.39409998059272766,
+              "min": 0.39409998059272766,
+              "std": 0.0
+            }
+          }
+        }
+      },
+      "train_dataset": "imagenet_50k",
+      "val_dataset": "imagenet_50k"
+    },
+    "11": {
+      "ablation": "full",
+      "layer": 11,
+      "models": {
+        "dinov2_no_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.7315999865531921
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.7315999865531921,
+              "mean": 0.7315999865531921,
+              "min": 0.7315999865531921,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.4867999851703644
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.4867999851703644,
+              "mean": 0.4867999851703644,
+              "min": 0.4867999851703644,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov2_reg": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.6730999946594238
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.6730999946594238,
+              "mean": 0.6730999946594238,
+              "min": 0.6730999946594238,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.4851999878883362
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.4851999878883362,
+              "mean": 0.4851999878883362,
+              "min": 0.4851999878883362,
+              "std": 0.0
+            }
+          }
+        },
+        "dinov3_vits16": {
+          "cls": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.6194999814033508
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.6194999814033508,
+              "mean": 0.6194999814033508,
+              "min": 0.6194999814033508,
+              "std": 0.0
+            }
+          },
+          "patch_mean": {
+            "n_train": 40000,
+            "n_val": 10000,
+            "scores": [
+              0.34619998931884766
+            ],
+            "seeds": [
+              0
+            ],
+            "summary": {
+              "max": 0.34619998931884766,
+              "mean": 0.34619998931884766,
+              "min": 0.34619998931884766,
+              "std": 0.0
+            }
+          }
+        }
+      },
+      "train_dataset": "imagenet_50k",
+      "val_dataset": "imagenet_50k"
+    }
+  },
+  "d1": {
+    "0": {
+      "ablation": "full",
+      "dataset": "synthetic_pairs",
+      "layer": 0,
+      "models": {
+        "dinov2_no_reg": {
+          "cycle_ci95_high": 0.20350688695907593,
+          "cycle_ci95_low": 0.19547246396541595,
+          "cycle_consistency": 0.19936132431030273,
+          "gt_accuracy": 0.23916369676589966,
+          "gt_ci95_high": 0.24515096843242645,
+          "gt_ci95_low": 0.233091339468956,
+          "n_pairs": 2000
+        },
+        "dinov2_reg": {
+          "cycle_ci95_high": 0.26065656542778015,
+          "cycle_ci95_low": 0.2539414167404175,
+          "cycle_consistency": 0.25737303495407104,
+          "gt_accuracy": 0.27656683325767517,
+          "gt_ci95_high": 0.28298842906951904,
+          "gt_ci95_low": 0.2700715661048889,
+          "n_pairs": 2000
+        },
+        "dinov3_vits16": {
+          "cycle_ci95_high": 0.17402295768260956,
+          "cycle_ci95_low": 0.16792748868465424,
+          "cycle_consistency": 0.1709311157464981,
+          "gt_accuracy": 0.23809170722961426,
+          "gt_ci95_high": 0.24320854246616364,
+          "gt_ci95_low": 0.23311592638492584,
+          "n_pairs": 2000
+        }
+      },
+      "pair_metadata": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\synthetic_pairs\\pairs.jsonl"
+    },
+    "2": {
+      "ablation": "full",
+      "dataset": "synthetic_pairs",
+      "layer": 2,
+      "models": {
+        "dinov2_no_reg": {
+          "cycle_ci95_high": 0.45210757851600647,
+          "cycle_ci95_low": 0.44034749269485474,
+          "cycle_consistency": 0.4461621046066284,
+          "gt_accuracy": 0.5642602443695068,
+          "gt_ci95_high": 0.5753548741340637,
+          "gt_ci95_low": 0.5526676774024963,
+          "n_pairs": 2000
+        },
+        "dinov2_reg": {
+          "cycle_ci95_high": 0.3983031213283539,
+          "cycle_ci95_low": 0.38746002316474915,
+          "cycle_consistency": 0.392947256565094,
+          "gt_accuracy": 0.506693959236145,
+          "gt_ci95_high": 0.5168545842170715,
+          "gt_ci95_low": 0.496182382106781,
+          "n_pairs": 2000
+        },
+        "dinov3_vits16": {
+          "cycle_ci95_high": 0.4132731854915619,
+          "cycle_ci95_low": 0.40169763565063477,
+          "cycle_consistency": 0.4073188900947571,
+          "gt_accuracy": 0.5046743154525757,
+          "gt_ci95_high": 0.5168557167053223,
+          "gt_ci95_low": 0.4920191168785095,
+          "n_pairs": 2000
+        }
+      },
+      "pair_metadata": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\synthetic_pairs\\pairs.jsonl"
+    },
+    "4": {
+      "ablation": "full",
+      "dataset": "synthetic_pairs",
+      "layer": 4,
+      "models": {
+        "dinov2_no_reg": {
+          "cycle_ci95_high": 0.541610836982727,
+          "cycle_ci95_low": 0.529120683670044,
+          "cycle_consistency": 0.535150408744812,
+          "gt_accuracy": 0.7242059111595154,
+          "gt_ci95_high": 0.734652578830719,
+          "gt_ci95_low": 0.714297890663147,
+          "n_pairs": 2000
+        },
+        "dinov2_reg": {
+          "cycle_ci95_high": 0.5056009292602539,
+          "cycle_ci95_low": 0.4929836392402649,
+          "cycle_consistency": 0.49900975823402405,
+          "gt_accuracy": 0.7055487036705017,
+          "gt_ci95_high": 0.7159513235092163,
+          "gt_ci95_low": 0.695583164691925,
+          "n_pairs": 2000
+        },
+        "dinov3_vits16": {
+          "cycle_ci95_high": 0.5131872296333313,
+          "cycle_ci95_low": 0.4998019337654114,
+          "cycle_consistency": 0.5064107179641724,
+          "gt_accuracy": 0.6883217692375183,
+          "gt_ci95_high": 0.6998134851455688,
+          "gt_ci95_low": 0.6767148971557617,
+          "n_pairs": 2000
+        }
+      },
+      "pair_metadata": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\synthetic_pairs\\pairs.jsonl"
+    },
+    "6": {
+      "ablation": "full",
+      "dataset": "synthetic_pairs",
+      "layer": 6,
+      "models": {
+        "dinov2_no_reg": {
+          "cycle_ci95_high": 0.5667662024497986,
+          "cycle_ci95_low": 0.5583335757255554,
+          "cycle_consistency": 0.5624218583106995,
+          "gt_accuracy": 0.8252582550048828,
+          "gt_ci95_high": 0.8312647938728333,
+          "gt_ci95_low": 0.8195215463638306,
+          "n_pairs": 2000
+        },
+        "dinov2_reg": {
+          "cycle_ci95_high": 0.5536991953849792,
+          "cycle_ci95_low": 0.5439191460609436,
+          "cycle_consistency": 0.5485859513282776,
+          "gt_accuracy": 0.8101533055305481,
+          "gt_ci95_high": 0.8171640634536743,
+          "gt_ci95_low": 0.8030437231063843,
+          "n_pairs": 2000
+        },
+        "dinov3_vits16": {
+          "cycle_ci95_high": 0.5461201667785645,
+          "cycle_ci95_low": 0.5364357829093933,
+          "cycle_consistency": 0.5410612225532532,
+          "gt_accuracy": 0.813191831111908,
+          "gt_ci95_high": 0.8199104070663452,
+          "gt_ci95_low": 0.8070138692855835,
+          "n_pairs": 2000
+        }
+      },
+      "pair_metadata": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\synthetic_pairs\\pairs.jsonl"
+    },
+    "8": {
+      "ablation": "full",
+      "dataset": "synthetic_pairs",
+      "layer": 8,
+      "models": {
+        "dinov2_no_reg": {
+          "cycle_ci95_high": 0.5380901098251343,
+          "cycle_ci95_low": 0.5303040742874146,
+          "cycle_consistency": 0.5340800881385803,
+          "gt_accuracy": 0.7990162372589111,
+          "gt_ci95_high": 0.8043864369392395,
+          "gt_ci95_low": 0.7939081788063049,
+          "n_pairs": 2000
+        },
+        "dinov2_reg": {
+          "cycle_ci95_high": 0.5582988858222961,
+          "cycle_ci95_low": 0.5508610606193542,
+          "cycle_consistency": 0.5543769598007202,
+          "gt_accuracy": 0.8605245351791382,
+          "gt_ci95_high": 0.864457905292511,
+          "gt_ci95_low": 0.8567896485328674,
+          "n_pairs": 2000
+        },
+        "dinov3_vits16": {
+          "cycle_ci95_high": 0.5396507382392883,
+          "cycle_ci95_low": 0.5313518643379211,
+          "cycle_consistency": 0.5354337096214294,
+          "gt_accuracy": 0.8362255692481995,
+          "gt_ci95_high": 0.8412153720855713,
+          "gt_ci95_low": 0.831710159778595,
+          "n_pairs": 2000
+        }
+      },
+      "pair_metadata": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\synthetic_pairs\\pairs.jsonl"
+    },
+    "10": {
+      "ablation": "full",
+      "dataset": "synthetic_pairs",
+      "layer": 10,
+      "models": {
+        "dinov2_no_reg": {
+          "cycle_ci95_high": 0.5159355998039246,
+          "cycle_ci95_low": 0.5089697241783142,
+          "cycle_consistency": 0.5122734308242798,
+          "gt_accuracy": 0.7612777352333069,
+          "gt_ci95_high": 0.7659055590629578,
+          "gt_ci95_low": 0.7568719983100891,
+          "n_pairs": 2000
+        },
+        "dinov2_reg": {
+          "cycle_ci95_high": 0.49674510955810547,
+          "cycle_ci95_low": 0.48967111110687256,
+          "cycle_consistency": 0.493107408285141,
+          "gt_accuracy": 0.7593705058097839,
+          "gt_ci95_high": 0.7641159892082214,
+          "gt_ci95_low": 0.7548528909683228,
+          "n_pairs": 2000
+        },
+        "dinov3_vits16": {
+          "cycle_ci95_high": 0.5101837515830994,
+          "cycle_ci95_low": 0.5023160576820374,
+          "cycle_consistency": 0.5062091946601868,
+          "gt_accuracy": 0.8094700574874878,
+          "gt_ci95_high": 0.8144075274467468,
+          "gt_ci95_low": 0.8049889802932739,
+          "n_pairs": 2000
+        }
+      },
+      "pair_metadata": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\synthetic_pairs\\pairs.jsonl"
+    },
+    "11": {
+      "ablation": "full",
+      "dataset": "synthetic_pairs",
+      "layer": 11,
+      "models": {
+        "dinov2_no_reg": {
+          "cycle_ci95_high": 0.47186556458473206,
+          "cycle_ci95_low": 0.463919460773468,
+          "cycle_consistency": 0.4676855504512787,
+          "gt_accuracy": 0.7202089428901672,
+          "gt_ci95_high": 0.7268170118331909,
+          "gt_ci95_low": 0.7138276100158691,
+          "n_pairs": 2000
+        },
+        "dinov2_reg": {
+          "cycle_ci95_high": 0.45806685090065,
+          "cycle_ci95_low": 0.4496130645275116,
+          "cycle_consistency": 0.4536074101924896,
+          "gt_accuracy": 0.6912044882774353,
+          "gt_ci95_high": 0.6992613077163696,
+          "gt_ci95_low": 0.6837350726127625,
+          "n_pairs": 2000
+        },
+        "dinov3_vits16": {
+          "cycle_ci95_high": 0.4823729395866394,
+          "cycle_ci95_low": 0.4722065031528473,
+          "cycle_consistency": 0.47707653045654297,
+          "gt_accuracy": 0.7893492579460144,
+          "gt_ci95_high": 0.7974507808685303,
+          "gt_ci95_low": 0.7818827629089355,
+          "n_pairs": 2000
+        }
+      },
+      "pair_metadata": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\synthetic_pairs\\pairs.jsonl"
+    }
+  }
+}

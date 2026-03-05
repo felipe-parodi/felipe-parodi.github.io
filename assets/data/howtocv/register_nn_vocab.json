@@ -1,0 +1,640 @@
+{
+  "dinov2_reg": {
+    "num_images": 500,
+    "top_k": 5,
+    "patch_grid": [
+      16,
+      16
+    ],
+    "patch_size": 14,
+    "registers": {
+      "r1": [
+        {
+          "rank": 0,
+          "similarity": 0.4786379337310791,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0043\\ILSVRC2012_val_00003867.JPEG",
+          "image_idx": 187,
+          "patch_row": 10,
+          "patch_col": 5,
+          "crop_box": [
+            70,
+            140,
+            84,
+            154
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r1_0.png"
+        },
+        {
+          "rank": 1,
+          "similarity": 0.474415123462677,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0044\\ILSVRC2012_val_00000269.JPEG",
+          "image_idx": 188,
+          "patch_row": 10,
+          "patch_col": 5,
+          "crop_box": [
+            70,
+            140,
+            84,
+            154
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r1_1.png"
+        },
+        {
+          "rank": 2,
+          "similarity": 0.47434085607528687,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0044\\ILSVRC2012_val_00004043.JPEG",
+          "image_idx": 191,
+          "patch_row": 4,
+          "patch_col": 13,
+          "crop_box": [
+            182,
+            56,
+            196,
+            70
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r1_2.png"
+        },
+        {
+          "rank": 3,
+          "similarity": 0.47416532039642334,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0044\\ILSVRC2012_val_00000269.JPEG",
+          "image_idx": 188,
+          "patch_row": 11,
+          "patch_col": 5,
+          "crop_box": [
+            70,
+            154,
+            84,
+            168
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r1_3.png"
+        },
+        {
+          "rank": 4,
+          "similarity": 0.4725779891014099,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0043\\ILSVRC2012_val_00003867.JPEG",
+          "image_idx": 187,
+          "patch_row": 11,
+          "patch_col": 5,
+          "crop_box": [
+            70,
+            154,
+            84,
+            168
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r1_4.png"
+        }
+      ],
+      "r2": [
+        {
+          "rank": 0,
+          "similarity": 0.20411795377731323,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0013\\ILSVRC2012_val_00002745.JPEG",
+          "image_idx": 54,
+          "patch_row": 3,
+          "patch_col": 15,
+          "crop_box": [
+            210,
+            42,
+            224,
+            56
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r2_0.png"
+        },
+        {
+          "rank": 1,
+          "similarity": 0.19027738273143768,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0013\\ILSVRC2012_val_00002745.JPEG",
+          "image_idx": 54,
+          "patch_row": 0,
+          "patch_col": 5,
+          "crop_box": [
+            70,
+            0,
+            84,
+            14
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r2_1.png"
+        },
+        {
+          "rank": 2,
+          "similarity": 0.1898864060640335,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0013\\ILSVRC2012_val_00002745.JPEG",
+          "image_idx": 54,
+          "patch_row": 4,
+          "patch_col": 10,
+          "crop_box": [
+            140,
+            56,
+            154,
+            70
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r2_2.png"
+        },
+        {
+          "rank": 3,
+          "similarity": 0.18689829111099243,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0018\\ILSVRC2012_val_00001852.JPEG",
+          "image_idx": 77,
+          "patch_row": 4,
+          "patch_col": 3,
+          "crop_box": [
+            42,
+            56,
+            56,
+            70
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r2_3.png"
+        },
+        {
+          "rank": 4,
+          "similarity": 0.1863994300365448,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0091\\ILSVRC2012_val_00004329.JPEG",
+          "image_idx": 424,
+          "patch_row": 1,
+          "patch_col": 4,
+          "crop_box": [
+            56,
+            14,
+            70,
+            28
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r2_4.png"
+        }
+      ],
+      "r3": [
+        {
+          "rank": 0,
+          "similarity": 0.43670356273651123,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0043\\ILSVRC2012_val_00003867.JPEG",
+          "image_idx": 187,
+          "patch_row": 10,
+          "patch_col": 10,
+          "crop_box": [
+            140,
+            140,
+            154,
+            154
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r3_0.png"
+        },
+        {
+          "rank": 1,
+          "similarity": 0.43268653750419617,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0043\\ILSVRC2012_val_00003867.JPEG",
+          "image_idx": 187,
+          "patch_row": 14,
+          "patch_col": 4,
+          "crop_box": [
+            56,
+            196,
+            70,
+            210
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r3_1.png"
+        },
+        {
+          "rank": 2,
+          "similarity": 0.4297659397125244,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0043\\ILSVRC2012_val_00003867.JPEG",
+          "image_idx": 187,
+          "patch_row": 6,
+          "patch_col": 11,
+          "crop_box": [
+            154,
+            84,
+            168,
+            98
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r3_2.png"
+        },
+        {
+          "rank": 3,
+          "similarity": 0.42807772755622864,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0043\\ILSVRC2012_val_00002439.JPEG",
+          "image_idx": 185,
+          "patch_row": 10,
+          "patch_col": 5,
+          "crop_box": [
+            70,
+            140,
+            84,
+            154
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r3_3.png"
+        },
+        {
+          "rank": 4,
+          "similarity": 0.42577874660491943,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0044\\ILSVRC2012_val_00002296.JPEG",
+          "image_idx": 190,
+          "patch_row": 9,
+          "patch_col": 7,
+          "crop_box": [
+            98,
+            126,
+            112,
+            140
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r3_4.png"
+        }
+      ],
+      "r4": [
+        {
+          "rank": 0,
+          "similarity": 0.41414183378219604,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0044\\ILSVRC2012_val_00004043.JPEG",
+          "image_idx": 191,
+          "patch_row": 4,
+          "patch_col": 13,
+          "crop_box": [
+            182,
+            56,
+            196,
+            70
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r4_0.png"
+        },
+        {
+          "rank": 1,
+          "similarity": 0.4008829593658447,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0044\\ILSVRC2012_val_00002296.JPEG",
+          "image_idx": 190,
+          "patch_row": 6,
+          "patch_col": 5,
+          "crop_box": [
+            70,
+            84,
+            84,
+            98
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r4_1.png"
+        },
+        {
+          "rank": 2,
+          "similarity": 0.39992180466651917,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0044\\ILSVRC2012_val_00002296.JPEG",
+          "image_idx": 190,
+          "patch_row": 7,
+          "patch_col": 5,
+          "crop_box": [
+            70,
+            98,
+            84,
+            112
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r4_2.png"
+        },
+        {
+          "rank": 3,
+          "similarity": 0.3991245925426483,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0044\\ILSVRC2012_val_00002296.JPEG",
+          "image_idx": 190,
+          "patch_row": 6,
+          "patch_col": 6,
+          "crop_box": [
+            84,
+            84,
+            98,
+            98
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r4_3.png"
+        },
+        {
+          "rank": 4,
+          "similarity": 0.3968355655670166,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0044\\ILSVRC2012_val_00002296.JPEG",
+          "image_idx": 190,
+          "patch_row": 7,
+          "patch_col": 7,
+          "crop_box": [
+            98,
+            98,
+            112,
+            112
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov2_reg_r4_4.png"
+        }
+      ]
+    }
+  },
+  "dinov3_vits16": {
+    "num_images": 500,
+    "top_k": 5,
+    "patch_grid": [
+      14,
+      14
+    ],
+    "patch_size": 16,
+    "registers": {
+      "r1": [
+        {
+          "rank": 0,
+          "similarity": 0.22418420016765594,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 8,
+          "patch_col": 9,
+          "crop_box": [
+            144,
+            128,
+            160,
+            144
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r1_0.png"
+        },
+        {
+          "rank": 1,
+          "similarity": 0.19610688090324402,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 8,
+          "patch_col": 10,
+          "crop_box": [
+            160,
+            128,
+            176,
+            144
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r1_1.png"
+        },
+        {
+          "rank": 2,
+          "similarity": 0.193769171833992,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 6,
+          "patch_col": 8,
+          "crop_box": [
+            128,
+            96,
+            144,
+            112
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r1_2.png"
+        },
+        {
+          "rank": 3,
+          "similarity": 0.18992769718170166,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 4,
+          "patch_col": 6,
+          "crop_box": [
+            96,
+            64,
+            112,
+            80
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r1_3.png"
+        },
+        {
+          "rank": 4,
+          "similarity": 0.18225829303264618,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 8,
+          "patch_col": 8,
+          "crop_box": [
+            128,
+            128,
+            144,
+            144
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r1_4.png"
+        }
+      ],
+      "r2": [
+        {
+          "rank": 0,
+          "similarity": 0.2373843938112259,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 8,
+          "patch_col": 9,
+          "crop_box": [
+            144,
+            128,
+            160,
+            144
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r2_0.png"
+        },
+        {
+          "rank": 1,
+          "similarity": 0.21716849505901337,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 6,
+          "patch_col": 8,
+          "crop_box": [
+            128,
+            96,
+            144,
+            112
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r2_1.png"
+        },
+        {
+          "rank": 2,
+          "similarity": 0.2134602963924408,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 4,
+          "patch_col": 6,
+          "crop_box": [
+            96,
+            64,
+            112,
+            80
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r2_2.png"
+        },
+        {
+          "rank": 3,
+          "similarity": 0.20940126478672028,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 8,
+          "patch_col": 8,
+          "crop_box": [
+            128,
+            128,
+            144,
+            144
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r2_3.png"
+        },
+        {
+          "rank": 4,
+          "similarity": 0.20833437144756317,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 8,
+          "patch_col": 10,
+          "crop_box": [
+            160,
+            128,
+            176,
+            144
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r2_4.png"
+        }
+      ],
+      "r3": [
+        {
+          "rank": 0,
+          "similarity": 0.2194940149784088,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 6,
+          "patch_col": 8,
+          "crop_box": [
+            128,
+            96,
+            144,
+            112
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r3_0.png"
+        },
+        {
+          "rank": 1,
+          "similarity": 0.2170785665512085,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 4,
+          "patch_col": 6,
+          "crop_box": [
+            96,
+            64,
+            112,
+            80
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r3_1.png"
+        },
+        {
+          "rank": 2,
+          "similarity": 0.21014578640460968,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 8,
+          "patch_col": 9,
+          "crop_box": [
+            144,
+            128,
+            160,
+            144
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r3_2.png"
+        },
+        {
+          "rank": 3,
+          "similarity": 0.19604042172431946,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0059\\ILSVRC2012_val_00001630.JPEG",
+          "image_idx": 270,
+          "patch_row": 5,
+          "patch_col": 7,
+          "crop_box": [
+            112,
+            80,
+            128,
+            96
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r3_3.png"
+        },
+        {
+          "rank": 4,
+          "similarity": 0.18443834781646729,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0045\\ILSVRC2012_val_00003049.JPEG",
+          "image_idx": 194,
+          "patch_row": 0,
+          "patch_col": 0,
+          "crop_box": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r3_4.png"
+        }
+      ],
+      "r4": [
+        {
+          "rank": 0,
+          "similarity": 0.7651094198226929,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0064\\ILSVRC2012_val_00000884.JPEG",
+          "image_idx": 300,
+          "patch_row": 9,
+          "patch_col": 6,
+          "crop_box": [
+            96,
+            144,
+            112,
+            160
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r4_0.png"
+        },
+        {
+          "rank": 1,
+          "similarity": 0.762687087059021,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0043\\ILSVRC2012_val_00003867.JPEG",
+          "image_idx": 187,
+          "patch_row": 13,
+          "patch_col": 1,
+          "crop_box": [
+            16,
+            208,
+            32,
+            224
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r4_1.png"
+        },
+        {
+          "rank": 2,
+          "similarity": 0.7586824893951416,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0064\\ILSVRC2012_val_00000884.JPEG",
+          "image_idx": 300,
+          "patch_row": 8,
+          "patch_col": 0,
+          "crop_box": [
+            0,
+            128,
+            16,
+            144
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r4_2.png"
+        },
+        {
+          "rank": 3,
+          "similarity": 0.757597804069519,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0064\\ILSVRC2012_val_00000884.JPEG",
+          "image_idx": 300,
+          "patch_row": 7,
+          "patch_col": 8,
+          "crop_box": [
+            128,
+            112,
+            144,
+            128
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r4_3.png"
+        },
+        {
+          "rank": 4,
+          "similarity": 0.7572838068008423,
+          "image_path": "C:\\Users\\Felipe Parodi\\Documents\\ext_repos\\howtocv\\data\\imagenet_val\\0064\\ILSVRC2012_val_00000884.JPEG",
+          "image_idx": 300,
+          "patch_row": 8,
+          "patch_col": 8,
+          "crop_box": [
+            128,
+            128,
+            144,
+            144
+          ],
+          "crop_url": "assets/images/howtocv/nn_patches/dinov3_vits16_r4_4.png"
+        }
+      ]
+    }
+  }
+}
