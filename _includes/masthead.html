@@ -21,19 +21,19 @@
       {% for link_hash in site.social.links %}
         {% assign link = link_hash %}
         {% if link contains "github.com" %}
-          {% assign icon_name = "fa fa-github" %}
+          {% assign icon_name = "fab fa-github" %}
           {% assign service_name = "GitHub" %}
         {% elsif link contains "linkedin.com" %}
-          {% assign icon_name = "fa fa-linkedin" %}
+          {% assign icon_name = "fab fa-linkedin-in" %}
           {% assign service_name = "LinkedIn" %}
         {% elsif link contains "scholar.google.com" %}
-          {% assign icon_name = "fa fa-graduation-cap" %}
+          {% assign icon_name = "fas fa-graduation-cap" %}
           {% assign service_name = "Google Scholar" %}
         {% elsif link contains "twitter.com" or link contains "x.com" %}
-          {% assign icon_name = "fa fa-twitter" %}
+          {% assign icon_name = "fab fa-x-twitter" %}
           {% assign service_name = "Twitter" %}
         {% else %}
-          {% assign icon_name = "fa fa-link" %}
+          {% assign icon_name = "fas fa-link" %}
           {% assign service_name = "Website" %}
         {% endif %}
         <a href="{{ link }}" title="{{ service_name }}" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-left: 8px;"><i class="{{ icon_name }}"></i></a>

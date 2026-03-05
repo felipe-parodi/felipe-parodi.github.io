@@ -35,7 +35,7 @@ The DINO family of vision transformers learns visual representations through **s
 A standard ViT processes an image by splitting it into non-overlapping patches (typically 14×14 pixels), projecting each patch into an embedding, and prepending a learnable **CLS token**. All tokens — CLS plus patches — interact through self-attention across multiple transformer layers. At the output, the CLS token serves as a global image representation (useful for classification), while patch tokens retain spatial information (useful for segmentation and correspondence).
 
 <figure class="howtocv-figure">
-  <img src="/assets/images/howtocv/approach.png" alt="Experimental approach: ViT architecture with CLS and register tokens, showing zero-CLS and zero-registers ablation conditions" style="max-width: 700px;">
+  <img src="/assets/images/howtocv/approach.svg" alt="Experimental approach: ViT architecture with CLS and register tokens, showing zero-CLS and zero-registers ablation conditions" style="max-width: 700px;">
   <figcaption><strong>Figure 1.</strong> Our experimental approach. A ViT processes an image as CLS + register + patch tokens. We selectively zero CLS or register token outputs at the final layer and measure impact on global tasks (classification, retrieval) and dense tasks (correspondence, segmentation).</figcaption>
 </figure>
 
@@ -124,7 +124,7 @@ The heatmap below shows all ablation results. Each cell encodes the accuracy (or
 Beyond task accuracy, we measured how each training objective shapes the geometry of patch representations. **Effective rank** quantifies the dimensionality of the patch feature space — higher means more diverse representations.
 
 <figure class="howtocv-figure">
-  <img src="/assets/images/howtocv/fig2_combined.png" alt="Combined heatmap, effective rank, and eigenspectrum analysis" style="max-width: 800px;">
+  <img src="/assets/images/howtocv/fig2_combined.svg" alt="Combined heatmap, effective rank, and eigenspectrum analysis" style="max-width: 800px;">
   <figcaption><strong>Figure 2.</strong> (a) Task × ablation delta heatmap. (b) Effective rank of patch features — DINOv3's Gram anchoring compresses patch geometry (erank 4.2 vs 9.4 for DINOv2+reg). (c) Eigenspectrum in log scale showing DINOv3 concentrates variance in fewer dimensions.</figcaption>
 </figure>
 
@@ -185,7 +185,7 @@ But is it the *information* stored in registers that matters, or their *structur
 The result: **classification accuracy is fully preserved** under mean substitution. DINOv2+reg drops only 0.3pp, DINOv3 actually gains 0.1pp. This means registers' image-specific content is irrelevant — what matters is their presence as attention targets. They serve as an **attention scaffold**, and disrupting this scaffold (via zeroing) is what causes the collapse.
 
 <figure class="howtocv-figure">
-  <img src="/assets/images/howtocv/correspondence/qualitative.png" alt="Qualitative correspondence under different ablation conditions" style="max-width: 700px;">
+  <img src="/assets/images/howtocv/correspondence/qualitative.svg" alt="Qualitative correspondence under different ablation conditions" style="max-width: 700px;">
   <figcaption><strong>Figure 2.</strong> Qualitative correspondence results. Top: full model with correct matches (green). Middle: zero CLS — matches preserved. Bottom: zero registers — spatial matching collapses. Green = correct, red = incorrect.</figcaption>
 </figure>
 
@@ -208,7 +208,7 @@ DINOv3 flips this pattern. R3 becomes the **semantic specialist** — its probe 
 This is a qualitative reorganization, not just a quantitative shift. Gram anchoring fundamentally changes how the network distributes computation across its register tokens.
 
 <figure class="howtocv-figure">
-  <img src="/assets/images/howtocv/fig3_registers_combined.png" alt="Per-register classification accuracy and cosine similarity matrices" style="max-width: 800px;">
+  <img src="/assets/images/howtocv/fig3_registers_combined.svg" alt="Per-register classification accuracy and cosine similarity matrices" style="max-width: 800px;">
   <figcaption><strong>Figure 4.</strong> (a) Per-register classification accuracy. DINOv2+reg R2 is a low-accuracy outlier; DINOv3 R3 is the lone semantic specialist. (b–c) Pairwise cosine similarity between register representations — DINOv2+reg R2 is dissimilar to all others (cos 0.11), while DINOv3 shows a different clustering pattern.</figcaption>
 </figure>
 
@@ -246,7 +246,7 @@ This is the mechanistic core of our work. We traced two signals across all 12 tr
 Before looking at per-layer dynamics, here's the high-level picture: how does CLS distribute its attention across token types?
 
 <figure class="howtocv-figure">
-  <img src="/assets/images/howtocv/fig4_attention.png" alt="CLS attention distribution across models" style="max-width: 700px;">
+  <img src="/assets/images/howtocv/fig4_attention.svg" alt="CLS attention distribution across models" style="max-width: 700px;">
   <figcaption><strong>Figure 5.</strong> (a) CLS attention to registers vs patches. DINOv3 routes 29.1% of CLS attention to registers vs 17.9% for DINOv2+reg. (b) Per-register breakdown: DINOv2+reg concentrates on R2 (16.1%); DINOv3 concentrates on R1 (21.1%).</figcaption>
 </figure>
 
@@ -319,7 +319,7 @@ We trained linear probes on each register's embedding at 7 intermediate layers (
 The layer sweep tells a complementary story: how does *task* performance (not just register probing) evolve across layers?
 
 <figure class="howtocv-figure">
-  <img src="/assets/images/howtocv/fig5_layer_sweep.png" alt="Layer-wise classification and correspondence performance" style="max-width: 700px;">
+  <img src="/assets/images/howtocv/fig5_layer_sweep.svg" alt="Layer-wise classification and correspondence performance" style="max-width: 700px;">
   <figcaption><strong>Figure 7.</strong> (a) CLS classification accuracy across layers — all models are near-random until layer 8, then rise steeply. (b) Patch correspondence peaks at mid-layers (6–8) then declines for DINOv2 variants, while DINOv3 maintains the best late-layer correspondence thanks to Gram anchoring.</figcaption>
 </figure>
 
@@ -347,7 +347,7 @@ This suggests registers serve dynamic computational roles that change across lay
 When we zero registers one at a time, the effects are modest — but they reveal which registers matter most for which tasks.
 
 <figure class="howtocv-figure">
-  <img src="/assets/images/howtocv/fig6_register_lesion.png" alt="Per-register lesion effects on classification and correspondence" style="max-width: 700px;">
+  <img src="/assets/images/howtocv/fig6_register_lesion.svg" alt="Per-register lesion effects on classification and correspondence" style="max-width: 700px;">
   <figcaption><strong>Figure 8.</strong> Per-register lesion effects. (a) CLS classification: DINOv2+reg R2 is the only individual register whose removal substantially hurts (−4.9pp). DINOv3 effects are distributed. (b) Correspondence: similar pattern — no single DINOv3 register is critical alone.</figcaption>
 </figure>
 
@@ -359,7 +359,7 @@ But zeroing all four together produces a collapse far exceeding the sum of indiv
 This **non-additive interaction** confirms that registers function as a coordinated system. Their value lies not in what any single register contributes, but in the collective attention scaffold they provide.
 
 <figure class="howtocv-figure">
-  <img src="/assets/images/howtocv/cumulative_lesion.png" alt="Cumulative register lesion effects" style="max-width: 600px;">
+  <img src="/assets/images/howtocv/cumulative_lesion.svg" alt="Cumulative register lesion effects" style="max-width: 600px;">
   <figcaption><strong>Figure 3.</strong> Cumulative register lesion: zeroing registers one at a time. Individual effects are small, but collective zeroing (rightmost) far exceeds their sum, revealing non-additive interactions.</figcaption>
 </figure>
 
@@ -372,7 +372,7 @@ This **non-additive interaction** confirms that registers function as a coordina
 We replicated all key experiments with ViT-B backbones. The ablation patterns are strikingly consistent across scales.
 
 <figure class="howtocv-figure">
-  <img src="/assets/images/howtocv/fig7_scale_comparison.png" alt="ViT-S vs ViT-B scale comparison" style="max-width: 700px;">
+  <img src="/assets/images/howtocv/fig7_scale_comparison.svg" alt="ViT-S vs ViT-B scale comparison" style="max-width: 700px;">
   <figcaption><strong>Figure 10.</strong> Scale comparison. Solid = ViT-S, dashed = ViT-B. (a) Classification: register zeroing drops are larger for DINOv3 at both scales. (b) Segmentation: DINOv3 shows the largest register-zeroing drop at both scales. The double dissociation pattern is scale-invariant.</figcaption>
 </figure>
 
@@ -381,7 +381,7 @@ We replicated all key experiments with ViT-B backbones. The ablation patterns ar
 A natural concern: maybe zeroing *any* set of 4 tokens would be equally disruptive? We controlled for this by zeroing 4 randomly selected patch tokens instead of registers.
 
 <figure class="howtocv-figure">
-  <img src="/assets/images/howtocv/fig9_random_patch_control.png" alt="Random patch zeroing negative control" style="max-width: 600px;">
+  <img src="/assets/images/howtocv/fig9_random_patch_control.svg" alt="Random patch zeroing negative control" style="max-width: 600px;">
   <figcaption><strong>Figure 11.</strong> Negative control: zeroing 4 random patch tokens has negligible effect compared to zeroing 4 register tokens. The register effects are specific to the registers, not a general consequence of removing tokens from the sequence.</figcaption>
 </figure>
 
