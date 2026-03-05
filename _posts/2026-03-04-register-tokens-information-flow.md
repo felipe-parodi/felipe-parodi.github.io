@@ -1,8 +1,9 @@
 ---
 layout: single
 title: "How Register Tokens Reshape Information Flow in Vision Transformers"
-date: 2026-03-10
-categories: [research]
+date: 2026-03-04
+categories: [blog]
+author_profile: false
 tags: [vision-transformers, interpretability, DINOv3, self-supervised-learning]
 excerpt: "We discovered that DINOv3's register tokens function as active computation buffers, not passive stores — and the evidence comes from a simple trick: zeroing them out."
 header:
