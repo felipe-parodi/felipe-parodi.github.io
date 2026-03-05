@@ -148,7 +148,14 @@
         ? ['full', 'zero_cls']
         : ABLATIONS;
 
-      grid.innerHTML = abls.map(a =>
+      const originalCell = `<div class="viz-cell">
+          <div class="viz-label">Original</div>
+          <img src="${BASE}/originals/${state.image}.png"
+               alt="Original image"
+               loading="lazy">
+        </div>`;
+
+      grid.innerHTML = originalCell + abls.map(a =>
         `<div class="viz-cell">
           <div class="viz-label">${ABL_LABELS[a]}</div>
           <img src="${BASE}/ablation_pca/${state.model}_${state.image}_${a}.png"

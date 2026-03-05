@@ -432,3 +432,78 @@
 .claude-arrow-link:hover::after {
   transform: translateX(4px);
 }
+
+/* ===== MINIMAL MISTAKES THEME OVERRIDES ===== */
+/* Re-skin MM components with the terracotta design system */
+
+/* Body background to match homepage */
+body {
+  background-color: var(--bg, #FAF9F6);
+}
+
+/* Widen content for .wide pages */
+.page.wide {
+  float: none;
+  width: 100%;
+}
+.page.wide .page__inner-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Links */
+.page__content a:not(.btn):not(.howtocv-link-btn) {
+  color: var(--accent, #C15F3C);
+}
+.page__content a:not(.btn):not(.howtocv-link-btn):hover {
+  color: var(--accent-hover, #d97757);
+}
+
+/* Masthead navigation */
+.greedy-nav a {
+  color: var(--text, #2D2D2D);
+}
+.greedy-nav a:hover {
+  color: var(--accent, #C15F3C);
+}
+.masthead {
+  border-bottom: 1px solid var(--border, #E5E5E5);
+}
+
+/* Masthead social icons */
+.masthead__social-icons a {
+  color: var(--text-muted, #6B6B6B);
+  font-size: 1.1rem;
+  transition: color 150ms ease;
+}
+.masthead__social-icons a:hover {
+  color: var(--accent, #C15F3C);
+}
+
+/* TOC sidebar */
+.toc__menu a {
+  color: var(--text, #2D2D2D);
+}
+.toc .active a {
+  color: var(--accent, #C15F3C);
+}
+.sidebar__right {
+  background: var(--bg-secondary, #FFFFFF);
+}
+
+/* Page title */
+.page__title {
+  color: var(--text, #2D2D2D);
+}
+
+/* Taxonomy tags */
+.page__taxonomy-item {
+  color: var(--accent, #C15F3C);
+  border-color: var(--accent, #C15F3C);
+}
+
+/* Footer */
+.page__footer {
+  background: var(--bg-tertiary, #F5F4F1);
+  color: var(--text-muted, #6B6B6B);
+}
