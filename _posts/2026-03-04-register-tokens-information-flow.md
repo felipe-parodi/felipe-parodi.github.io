@@ -30,7 +30,7 @@ Most neural networks learn from labeled data — millions of images tagged with 
 A standard ViT (Vision Transformer) processes an image by splitting it into non-overlapping patches (typically 14×14 pixels), converting each patch into a vector, and prepending a special learnable **CLS token**. All tokens — CLS plus patches — interact through **self-attention** (each token can "look at" every other token to decide what matters) across multiple transformer layers. At the output, the CLS token serves as a global image summary (useful for classification), while patch tokens retain spatial information (useful for segmentation and finding correspondences between images). This division of labor — one global token, many spatial tokens — is important for what follows.
 
 <figure class="howtocv-figure">
-  <img src="/assets/images/howtocv/approach.svg" alt="Experimental approach: ViT architecture with CLS and register tokens, showing zero-CLS and zero-registers ablation conditions" style="max-width: 700px;">
+  <img src="/assets/images/howtocv/approach.svg" alt="Experimental approach: ViT architecture with CLS and register tokens, showing zero-CLS and zero-registers ablation conditions" style="max-width: 700px; background: white; border-radius: 4px; padding: 0.5rem;">
   <figcaption><strong>Figure 1.</strong> Our experimental approach. A ViT processes an image as CLS + register + patch tokens. We selectively zero CLS or register token outputs at the final layer and measure impact on global tasks (classification, retrieval) and dense tasks (correspondence, segmentation).</figcaption>
 </figure>
 
