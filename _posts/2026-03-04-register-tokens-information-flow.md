@@ -17,7 +17,7 @@ extra_css:
 
 When neural networks process images, they need to organize a lot of information — and some of the most capable models have quietly developed extra "scratch space" to do it. Modern vision transformers like DINOv2 and DINOv3 include an unusual architectural feature: **register tokens** — extra learned tokens added alongside the image tokens that participate in the network's computations but don't correspond to any image region. Originally introduced to [suppress attention artifacts](https://arxiv.org/abs/2309.16588), these tokens turn out to play a far more active role than their name suggests.
 
-In this post, I walk through our findings from systematic token-zeroing experiments — selectively disabling parts of the model and measuring what breaks. We find a **double dissociation** between CLS and register tokens (each is critical for different tasks), show that registers function as **attention scaffolds** rather than information stores, and trace the **temporal dynamics** of how registers acquire and sometimes release semantic content across network layers. The upshot: register tokens are load-bearing computational infrastructure, not passive bystanders.
+In this post, I walk through our findings from systematic token-zeroing experiments — selectively disabling parts of the model and measuring what breaks. We find an **asymmetric dissociation** between CLS and register tokens — CLS zeroing selectively spares dense tasks when registers are present, but register zeroing degrades *everything*. We show that registers function as **attention scaffolds** rather than information stores, and trace the **temporal dynamics** of how registers acquire and sometimes release semantic content across network layers. The upshot: register tokens are load-bearing computational infrastructure, not passive bystanders.
 
 ---
 
@@ -72,7 +72,7 @@ The patch norm heatmaps below visualize these artifacts directly. High-norm patc
 
 ### DINOv3 and Gram anchoring
 
-DINOv3 ([Darquey et al., 2025](https://arxiv.org/abs/2503.03077)) adds a new training objective called **Gram anchoring** — it encourages patch tokens to preserve their pairwise spatial relationships (which patches are similar to which). The intuition: if a model maintains consistent spatial structure during training, it should produce better features for tasks like segmentation and correspondence that depend on spatial layout.
+DINOv3 ([Siméoni et al., 2025](https://arxiv.org/abs/2508.10104)) adds a new training objective called **Gram anchoring** — it encourages patch tokens to preserve their pairwise spatial relationships (which patches are similar to which). The intuition: if a model maintains consistent spatial structure during training, it should produce better features for tasks like segmentation and correspondence that depend on spatial layout.
 
 DINOv3 also includes register tokens. But here's the key question our paper investigates: **how do registers interact with Gram anchoring?** Does the combination simply add benefits, or does it qualitatively change how the network organizes information across token types?
 
@@ -120,16 +120,16 @@ Beyond task accuracy, we wanted to understand *how* each training objective orga
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig2_combined.svg" alt="Combined heatmap, effective rank, and eigenspectrum analysis" style="max-width: 800px;">
-  <figcaption><strong>Figure 2.</strong> (a) Task × ablation delta heatmap. (b) Effective rank of patch features — DINOv3's Gram anchoring compresses patch geometry (erank 4.2 vs 9.4 for DINOv2+reg). (c) Eigenspectrum (variance captured by each principal component) in log scale — DINOv3 concentrates information into fewer dimensions.</figcaption>
+  <figcaption><strong>Figure 2.</strong> (a) Task × ablation delta heatmap. (b) Effective rank of patch features — DINOv3's Gram anchoring compresses patch geometry (erank 4.0 vs 8.7 for DINOv2+reg). (c) Eigenspectrum (variance captured by each principal component) in log scale — DINOv3 concentrates information into fewer dimensions.</figcaption>
 </figure>
 
-DINOv2 has an effective rank of 14.1, DINOv2+reg drops to 9.4, and DINOv3 compresses further to just 4.2. This means Gram anchoring concentrates patch information into far fewer dimensions — yet this compressed representation actually *improves* dense prediction performance. The takeaway: fewer dimensions doesn't mean less information. DINOv3's patches are more structured and organized, not impoverished.
+DINOv2 has an effective rank of 13.5, DINOv2+reg drops to 8.7, and DINOv3 compresses further to just 4.0. This means Gram anchoring concentrates patch information into far fewer dimensions — yet this compressed representation actually *improves* dense prediction performance. The takeaway: fewer dimensions doesn't mean less information. DINOv3's patches are more structured and organized, not impoverished.
 
 ---
 
-## The Double Dissociation
+## The Asymmetric Dissociation
 
-The heatmap shows a clear pattern — a **double dissociation** between CLS and register tokens. In neuroscience, a double dissociation means two systems are each necessary for different functions: damaging one impairs function A but not B, and damaging the other impairs B but not A. That's exactly what we see here:
+The heatmap shows a clear pattern — an **asymmetric dissociation** between CLS and register tokens. In neuroscience, a double dissociation means two systems are each necessary for different functions: damaging one impairs function A but not B, and damaging the other impairs B but not A. Our pattern is *asymmetric* rather than a clean double dissociation: CLS zeroing selectively spares dense tasks (when registers are present), but register zeroing impairs *both* global and dense tasks. This one-sided selectivity reveals that registers play a broader structural role:
 
 ### CLS zeroing: dense tasks are buffered
 
@@ -150,7 +150,7 @@ Conversely, zeroing registers causes large drops, especially for DINOv3:
 - DINOv3 segmentation: 78.5% → 47.6% (**−30.9pp**)
 - DINOv3 correspondence: 78.9% → 57.8% (**−21.1pp**)
 
-This is the double dissociation: CLS zeroing selectively impairs global tasks while sparing dense tasks, and register zeroing impairs everything. The two token types serve **different functional roles**.
+This is the asymmetric dissociation: CLS zeroing selectively impairs global tasks while sparing dense tasks, but register zeroing impairs *everything* — global and dense alike. The asymmetry reveals that registers serve a broader structural role than CLS, functioning as computational infrastructure the entire network depends on.
 
 You can see the ablation effects directly in patch PCA features below. Compare "Full Model" with "Zero CLS" (often barely changes) and "Zero Registers" (feature structure collapses):
 
@@ -179,9 +179,22 @@ The zeroing results raise a key question: is it the *specific information* store
 
 The result: **classification accuracy is fully preserved** under mean substitution. DINOv2+reg drops only 0.3pp, DINOv3 actually gains 0.1pp. This means registers' image-specific content is irrelevant — what matters is simply their *presence as attention targets*. They serve as an **attention scaffold**: the network routes computation through them regardless of what they contain, and removing this scaffold entirely (via zeroing) is what causes the collapse.
 
+### Measuring the scaffold: attention divergence
+
+To directly quantify scaffold disruption, we measured **Jensen–Shannon divergence** between full and ablated attention patterns at every layer. JS divergence measures how different two probability distributions are — in this case, how much the attention pattern changes when registers are zeroed vs. mean-substituted.
+
+The results are striking. Register zeroing causes **cascading divergence that amplifies across layers**: in DINOv3, JS divergence starts at 0.00 at layer 0 (same input, no difference yet) and grows to 0.18 by layer 11. Mean-substitution, by contrast, preserves attention patterns almost perfectly — JS stays below 0.005 at every layer. That's a **~250× gap**, demonstrating that the performance collapse from zeroing is scaffold disruption, not information removal.
+
+<figure class="howtocv-figure">
+  <img src="/assets/images/howtocv/fig_attention_rewiring.svg" alt="Attention scaffold under ablation: JS divergence across layers and attention redistribution" style="max-width: 700px;">
+  <figcaption><strong>Figure 3.</strong> Attention scaffold under ablation. (a) JS divergence vs. layer: register zeroing (solid) causes cascading divergence that amplifies across layers; mean-substitution (dashed) preserves attention patterns. Lighter lines show ViT-B scale. (b) CLS attention redistribution at the last layer when registers are zeroed — DINOv3's CLS attention shifts to patches (+19.9pp) while DINOv2+reg shifts toward CLS self-attention.</figcaption>
+</figure>
+
+The per-register analysis aligns with the specialist findings from above: removing R2 (DINOv2+reg) or R3 (DINOv3) causes the greatest attention disruption (JS = 0.062 and 0.076 respectively), confirming these specialist registers serve as **structural anchors** for the attention scaffold. Remove the anchor, and the routing pattern fractures.
+
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/correspondence/qualitative.svg" alt="Qualitative correspondence under different ablation conditions" style="max-width: 700px;">
-  <figcaption><strong>Figure 2.</strong> Qualitative correspondence results. Top: full model with correct matches (green). Middle: zero CLS — matches preserved. Bottom: zero registers — spatial matching collapses. Green = correct, red = incorrect.</figcaption>
+  <figcaption><strong>Figure 4.</strong> Qualitative correspondence results. Top: full model with correct matches (green). Middle: zero CLS — matches preserved. Bottom: zero registers — spatial matching collapses. Green = correct, red = incorrect.</figcaption>
 </figure>
 
 ---
@@ -192,19 +205,19 @@ Registers are not interchangeable. We probed each register individually and foun
 
 ### DINOv2+reg: R2 is the specialist
 
-In DINOv2+reg, register R2 stands apart. Its nearest-neighbor patches are dominated by **dark, low-information regions** — borders, shadows, uniform backgrounds. Its cosine similarity (a measure of how aligned two vectors are, from 0 = unrelated to 1 = identical direction) to other registers is just 0.11, far below the 0.47–0.62 range of R1/R3/R4. When R2 is individually zeroed, classification drops −4.9pp; zeroing any other single register has minimal effect (< 0.2pp).
+In DINOv2+reg, register R2 stands apart. Its nearest-neighbor patches are dominated by **dark, low-information regions** — borders, shadows, uniform backgrounds. Its cosine similarity (a measure of how aligned two vectors are, from 0 = unrelated to 1 = identical direction) to other registers is just 0.11, far below the 0.87–0.90 range among R1/R3/R4. When R2 is individually zeroed, classification drops −4.9pp; zeroing any other single register has minimal effect (< 0.2pp).
 
 R2 is a **low-level specialist**: it handles the original artifact-absorption role. R1, R3, and R4 are **semantic generalists** — their nearest-neighbor patches include object parts, textures, and scene elements, and they carry comparable classification information (61–64% each).
 
 ### DINOv3: the inversion
 
-DINOv3 flips this pattern. R3 becomes the **semantic specialist** — its probe accuracy reaches 50.1%, far above R1 (3.0%) and R2 (12.5%). Conversely, R1, R2, and R4 match to **low-level patches**: ground textures (R4, cos=0.77), dark backgrounds (R1), and homogeneous regions (R2).
+DINOv3 flips this pattern. R3 becomes the **semantic specialist** — its probe accuracy reaches 50.5%, far above R1 (4.1%) and R2 (15.2%). Conversely, R1, R2, and R4 match to **low-level patches**: ground textures (R4, cos=0.77), dark backgrounds (R1), and homogeneous regions (R2).
 
 This is a qualitative reorganization, not just a quantitative shift. Gram anchoring changes how the network distributes computation across its register tokens.
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig3_registers_combined.svg" alt="Per-register classification accuracy and cosine similarity matrices" style="max-width: 800px;">
-  <figcaption><strong>Figure 4.</strong> (a) Per-register classification accuracy. DINOv2+reg R2 is a low-accuracy outlier; DINOv3 R3 is the lone semantic specialist. (b–c) Pairwise cosine similarity between register representations — DINOv2+reg R2 is dissimilar to all others (cos 0.11), while DINOv3 shows a different clustering pattern.</figcaption>
+  <figcaption><strong>Figure 5.</strong> (a) Per-register classification accuracy. DINOv2+reg R2 is a low-accuracy outlier; DINOv3 R3 is the lone semantic specialist. (b–c) Pairwise cosine similarity between register representations — DINOv2+reg R2 is dissimilar to all others (cos 0.11), while DINOv3 shows a different clustering pattern.</figcaption>
 </figure>
 
 <div id="gallery-container" class="howtocv-interactive">
@@ -228,7 +241,7 @@ This is a qualitative reorganization, not just a quantitative shift. Gram anchor
   </noscript>
 </div>
 
-**How to read this gallery:** Higher cosine similarity means a patch more closely matches the register's learned representation. In DINOv2+reg, try R2 — all 5 nearest neighbors are dark, low-information patches (cos ~0.20), confirming its role as an artifact absorber. R1/R3/R4 show more diverse, semantically meaningful patches at higher similarity (~0.47). In DINOv3, R4 stands out with strong matches to green vegetation textures (cos ~0.77) — a clear texture specialist. R1/R2/R3 all weakly match earthy ground patches (cos ~0.2), suggesting they don't specialize on any specific visual pattern. But don't confuse visual similarity with semantic content: DINOv3's R3 carries the most classification information (50.1% probe accuracy) despite not resembling any specific patch type. It encodes abstract semantics, not visual templates.
+**How to read this gallery:** Higher cosine similarity means a patch more closely matches the register's learned representation. In DINOv2+reg, try R2 — all 5 nearest neighbors are dark, low-information patches (cos ~0.20), confirming its role as an artifact absorber. R1/R3/R4 show more diverse, semantically meaningful patches at higher similarity (~0.47). In DINOv3, R4 stands out with strong matches to green vegetation textures (cos ~0.77) — a clear texture specialist. R1/R2/R3 all weakly match earthy ground patches (cos ~0.2), suggesting they don't specialize on any specific visual pattern. But don't confuse visual similarity with semantic content: DINOv3's R3 carries the most classification information (50.5% probe accuracy) despite not resembling any specific patch type. It encodes abstract semantics, not visual templates.
 
 ---
 
@@ -242,7 +255,7 @@ Before looking at per-layer dynamics, here's the high-level picture: how does CL
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig4_attention.svg" alt="CLS attention distribution across models" style="max-width: 700px;">
-  <figcaption><strong>Figure 5.</strong> (a) CLS attention to registers vs patches. DINOv3 routes 29.1% of CLS attention to registers vs 17.9% for DINOv2+reg. (b) Per-register breakdown: DINOv2+reg concentrates on R2 (16.1%); DINOv3 concentrates on R1 (21.1%).</figcaption>
+  <figcaption><strong>Figure 6.</strong> (a) CLS attention to registers vs patches. DINOv3 routes 29.1% of CLS attention to registers vs 17.9% for DINOv2+reg. (b) Per-register breakdown: DINOv2+reg concentrates on R2 (16.1%); DINOv3 concentrates on R1 (21.1%).</figcaption>
 </figure>
 
 Explore the actual CLS and register attention maps across different images. Toggle between CLS attention (where the CLS token looks) and register attention (where registers collectively attend):
@@ -329,8 +342,8 @@ These two signals are **temporally dissociated**: the attention routing infrastr
 
 The per-register dynamics are telling:
 
-- **DINOv3 R1**: Peaks at layer 10 (10.7% accuracy) then **drops** to 3.0% at layer 11 — despite receiving the most attention (21.1%). R1 appears to be a **transient computation buffer** — it temporarily holds and processes information before passing it along, rather than accumulating a final answer.
-- **DINOv3 R3**: Progressively accumulates from 28.9% (layer 10) to 50.1% (layer 11) — a **semantic accumulator**.
+- **DINOv3 R1**: Peaks at layer 10 (10.7% accuracy) then **drops** to 4.1% at layer 11 — despite receiving the most attention (21.1%). R1 appears to be a **transient computation buffer** — it temporarily holds and processes information before passing it along, rather than accumulating a final answer.
+- **DINOv3 R3**: Progressively accumulates from 28.9% (layer 10) to 50.5% (layer 11) — a **semantic accumulator**.
 - **DINOv2+reg R1/R3/R4**: All acquire and retain classification information (61–64% at layer 11) — **semantic endpoints**.
 
 This suggests registers serve dynamic computational roles that change across layers, not fixed storage functions.
@@ -355,7 +368,7 @@ This **non-additive interaction** — the collective effect far exceeds the sum 
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/cumulative_lesion.svg" alt="Cumulative register lesion effects" style="max-width: 600px;">
-  <figcaption><strong>Figure 3.</strong> Cumulative register lesion: zeroing registers one at a time. Individual effects are small, but collective zeroing (rightmost) far exceeds their sum, revealing non-additive interactions.</figcaption>
+  <figcaption><strong>Figure 9.</strong> Cumulative register lesion: zeroing registers one at a time. Individual effects are small, but collective zeroing (rightmost) far exceeds their sum, revealing non-additive interactions.</figcaption>
 </figure>
 
 ---
@@ -368,7 +381,7 @@ We replicated all key experiments with ViT-B backbones. The ablation patterns ar
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig7_scale_comparison.svg" alt="ViT-S vs ViT-B scale comparison" style="max-width: 700px;">
-  <figcaption><strong>Figure 10.</strong> Scale comparison. Solid = ViT-S, dashed = ViT-B. (a) Classification: register zeroing drops are larger for DINOv3 at both scales. (b) Segmentation: DINOv3 shows the largest register-zeroing drop at both scales. The double dissociation pattern is scale-invariant.</figcaption>
+  <figcaption><strong>Figure 10.</strong> Scale comparison. Solid = ViT-S, dashed = ViT-B. (a) Classification: register zeroing drops are larger for DINOv3 at both scales. (b) Segmentation: DINOv3 shows the largest register-zeroing drop at both scales. The asymmetric dissociation pattern is scale-invariant.</figcaption>
 </figure>
 
 ### Is register zeroing special?
@@ -401,10 +414,11 @@ Some practical implications:
 ## Citation {#citation}
 
 ```bibtex
-@article{parodi2026cls,
+@inproceedings{parodi2026cls,
   title={CLS and Register Token Ablations Reveal Asymmetric
          Information Flow in Vision Transformers},
   author={Parodi, Felipe and Segado, Melanie},
+  booktitle={CVPR HOW Workshop},
   year={2026}
 }
 ```
