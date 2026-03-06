@@ -297,31 +297,7 @@
   font-size: 0.8rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  .viz-gallery {
-    background: #1e1e2e;
-    border-color: #3a3a4a;
-  }
-  .viz-img-btn,
-  .viz-mode-btn,
-  .viz-model-btn {
-    background: #2a2a3a;
-    color: #e0e0e0;
-    border-color: #3a3a4a;
-  }
-}
-
-[data-theme="dark"] .viz-gallery {
-  background: #1e1e2e;
-  border-color: #3a3a4a;
-}
-[data-theme="dark"] .viz-img-btn,
-[data-theme="dark"] .viz-mode-btn,
-[data-theme="dark"] .viz-model-btn {
-  background: #2a2a3a;
-  color: #e0e0e0;
-  border-color: #3a3a4a;
-}
+/* Dark mode disabled for interactive panels — always light for readability */
 
 @media (max-width: 768px) {
   .viz-grid {
@@ -344,45 +320,7 @@
   font-size: 0.9rem;
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .howtocv-interactive {
-    background: #1e1e2e;
-    border-color: #3a3a4a;
-  }
-
-  .howtocv-btn {
-    background: #2a2a3a;
-    color: #e0e0e0;
-    border-color: #3a3a4a;
-  }
-
-  .howtocv-btn:hover {
-    background: #3a3a4a;
-  }
-
-  .gallery-item {
-    background: #2a2a3a;
-    border-color: #3a3a4a;
-  }
-}
-
-[data-theme="dark"] .howtocv-interactive {
-  background: #1e1e2e;
-  border-color: #3a3a4a;
-}
-[data-theme="dark"] .howtocv-btn {
-  background: #2a2a3a;
-  color: #e0e0e0;
-  border-color: #3a3a4a;
-}
-[data-theme="dark"] .howtocv-btn:hover {
-  background: #3a3a4a;
-}
-[data-theme="dark"] .gallery-item {
-  background: #2a2a3a;
-  border-color: #3a3a4a;
-}
+/* Dark mode disabled for interactive panels — always light for readability */
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -410,4 +348,23 @@
   #gallery-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* Force light-mode colors on interactive panels regardless of site dark theme */
+.howtocv-interactive,
+.viz-gallery,
+.gallery-item,
+.howtocv-btn,
+.howtocv-btn-group,
+.viz-img-btn,
+.viz-mode-btn,
+.viz-model-btn,
+.viz-cell img {
+  --bg-secondary: #fff;
+  --bg-tertiary: #e9ecef;
+  --text: #333;
+  --text-muted: #6c757d;
+  --border: #dee2e6;
+  --accent: #C15F3C;
+  color: var(--text);
 }
