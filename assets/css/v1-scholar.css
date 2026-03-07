@@ -87,6 +87,11 @@
   margin: 0;
 }
 
+.scholar-affiliation--sub {
+  font-size: 0.875rem;
+  margin-top: 0.15rem;
+}
+
 /* ===== SECTIONS ===== */
 .scholar-section {
   margin-bottom: var(--space-md);
