@@ -297,7 +297,15 @@
   font-size: 0.8rem;
 }
 
-/* Dark mode disabled for interactive panels — always light for readability */
+/* Dark-mode SVG figure inversion */
+@media (prefers-color-scheme: dark) {
+  .howtocv-figure img[src$=".svg"] {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+[data-theme="dark"] .howtocv-figure img[src$=".svg"] {
+  filter: invert(1) hue-rotate(180deg);
+}
 
 @media (max-width: 768px) {
   .viz-grid {
