@@ -19,7 +19,7 @@ Jonas and Kording ([2017](https://doi.org/10.1371/journal.pcbi.1005268)) applied
 
 We encountered an analogous problem with vision transformers.
 
-**Zero-ablation** – replacing token activations with zero vectors – is the standard tool for probing token function in a ViT. When we zeroed register tokens in DINOv2+registers and DINOv3, classification dropped 36.6 pp and segmentation dropped 30.9 pp. Registers appeared functionally indispensable. Yet when we replaced registers with dataset-mean activations, Gaussian noise, or even registers from *completely different images*, every task was preserved within 1 pp of baseline. The specific content of registers is dispensable; only their presence matters.
+**Zero-ablation** – replacing token activations with zero vectors – is (was?) a widely used tool for probing token function in ViTs. When we zeroed register tokens in DINOv2+registers and DINOv3, classification dropped 36.6 pp and segmentation dropped 30.9 pp. Registers appeared functionally indispensable. Yet when we replaced registers with dataset-mean activations, Gaussian noise, or even registers from *completely different images*, every task was preserved within 1 pp of baseline. The specific content of registers is dispensable; only their presence matters.
 
 Registers do play a real structural role: they buffer dense features from CLS dependence (zeroing CLS collapses segmentation by 37 pp without registers but <1 pp with them), and they compress patch geometry (effective rank 13.5 → 4.0). Their per-image content, however, is interchangeable. Zero-ablation overstated the story because zero vectors are out-of-distribution – the network never encountered them during training, and injecting them cascades disruption through every subsequent layer.
 
@@ -192,7 +192,7 @@ Register zeroing causes cascading divergence that amplifies layer by layer: in D
 Per-patch cosine similarity confirms this pattern. Under plausible replacements, each patch's features have 0.95–0.999 cosine similarity to the unmodified condition – a genuine perturbation, but a small one. Under zeroing, cosine drops to ~0.6. The zero vector doesn't just remove register content; it breaks the entire downstream computation.
 
 <figure class="howtocv-figure">
-  <img src="/assets/images/howtocv/correspondence/qualitative.svg" alt="Correspondence under ablation" style="max-width: 100%; width: 700px;">
+  <img src="/assets/images/howtocv/correspondence/qualitative.svg" alt="Correspondence under ablation" style="max-width: 100%; width: 900px;">
   <figcaption><strong>Figure 3.</strong> Correspondence results. Top: full model (green = correct). Middle: zero CLS – matches preserved. Bottom: zero registers – spatial matching collapses.</figcaption>
 </figure>
 
@@ -252,9 +252,11 @@ We ran the full experiment suite with ViT-B backbones. Ablation delta patterns a
   <figcaption><strong>Figure 5.</strong> Scale comparison. Solid = ViT-S, dashed = ViT-B. (a) Classification and (b) segmentation under ablation. The patterns are consistent across scales.</figcaption>
 </figure>
 
+These three findings – CLS buffering, geometric compression, and attention routing – characterize the structural role registers play. They hold regardless of what specific activations occupy the register slots.
+
 ---
 
-<details>
+<details markdown="1">
 <summary><strong>Register specialists (click to expand)</strong></summary>
 
 **Caveat upfront:** The substitution controls show that the decodable content described here is not functionally necessary. Class information is present in individual registers, but models don't need it for any measured task. These patterns characterize representational structure, not functional dependence.
@@ -293,9 +295,11 @@ DINOv3 inverts this pattern. R3 becomes the semantic specialist – probe accura
   </noscript>
 </div>
 
+Registers develop structured, differentiated representations – but as the controls in the main text show, none of this content is functionally necessary for downstream tasks.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Temporal dynamics: when do registers matter? (click to expand)</strong></summary>
 
 ### Attention routing precedes semantic content
@@ -325,9 +329,11 @@ Per-register dynamics are interesting: DINOv3's R1 peaks at layer 10 then *drops
   <figcaption><strong>Figure 8.</strong> (a) CLS classification across layers – near-random until layer 8, then rises steeply. (b) Correspondence peaks at mid-layers then declines, except DINOv3 which maintains 78.9% at layer 11.</figcaption>
 </figure>
 
+Attention routing to registers is established well before semantic content appears, consistent with registers serving as structural placeholders rather than content-specific processors.
+
 </details>
 
-<details>
+<details markdown="1">
 <summary><strong>Cumulative lesions and negative controls (click to expand)</strong></summary>
 
 ### Non-additive effects
@@ -367,6 +373,8 @@ Here are the attention maps under different conditions:
   </div>
   <div class="viz-grid"></div>
 </div>
+
+The super-additive pattern and the register-specific sensitivity are both consistent with zeroing as a disproportionately destructive OOD intervention, not evidence of unique register content.
 
 </details>
 
