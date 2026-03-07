@@ -245,7 +245,20 @@ CLS directs 17.9% of its last-layer attention to registers in DINOv2+reg and 29.
 
 ### All findings replicate at ViT-B scale
 
-We ran the full experiment suite with ViT-B backbones. Ablation delta patterns are nearly identical: DINOv3-B loses −36.5pp classification under register zeroing (vs. −36.6 at ViT-S), and the CLS-buffering asymmetry holds.
+We ran the full experiment suite with ViT-B backbones. Ablation delta patterns are nearly identical:
+
+| Model | Condition | CLS | Corr. | Seg. | SPair |
+|-------|-----------|-----|-------|------|-------|
+| DINOv2-B | Full | 78.7 | 72.9 | 72.0 | 41.2 |
+| | Zero CLS | 0.1 (−78.6) | 58.9 (−14.0) | 46.1 (−25.9) | 21.3 (−19.9) |
+| DINOv2-B+reg | Full | 74.5 | 71.2 | 72.3 | 41.1 |
+| | Zero CLS | 0.1 (−74.4) | 70.4 (−0.8) | 72.3 (0.0) | 41.2 (+0.1) |
+| | Zero Reg | 55.2 (−19.3) | 63.3 (−7.9) | 64.1 (−8.2) | 28.8 (−12.3) |
+| DINOv3-B | Full | 73.3 | 77.1 | 83.4 | 37.9 |
+| | Zero CLS | 0.1 (−73.2) | 79.5 (+2.4) | 82.8 (−0.6) | 37.8 (−0.1) |
+| | Zero Reg | 36.8 (−36.5) | 61.3 (−15.8) | 59.6 (−23.8) | 19.1 (−18.8) |
+
+DINOv3-B loses −36.5 pp classification under register zeroing (vs. −36.6 at ViT-S), and the CLS-buffering asymmetry holds. Paired permutation tests (10,000 permutations) confirm: DINOv3 vs. DINOv2+reg register-zeroing sensitivity, *p* < 0.001; CLS-buffering effect on segmentation, *p* < 0.001; ViT-S vs. ViT-B register dependence consistency, *p* = 0.80 (not significant, as expected for scale replication).
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig7_scale_comparison.svg" alt="ViT-S vs ViT-B scale comparison" style="max-width: 100%; width: 700px;">
@@ -329,6 +342,11 @@ Per-register dynamics are interesting: DINOv3's R1 peaks at layer 10 then *drops
   <figcaption><strong>Figure 8.</strong> (a) CLS classification across layers – near-random until layer 8, then rises steeply. (b) Correspondence peaks at mid-layers then declines, except DINOv3 which maintains 78.9% at layer 11.</figcaption>
 </figure>
 
+<figure class="howtocv-figure">
+  <img src="/assets/images/howtocv/fig_gram_dependence.svg" alt="Gram compression and register dependence across layers" style="max-width: 100%; width: 700px;">
+  <figcaption><strong>Figure 9.</strong> (a) Effective rank across layers: geometric compression is present by layer 6 in all register-equipped models. (b) CLS accuracy (Full vs. Zero-reg) across layers: register dependence emerges abruptly at layers 10–11, well after compression is established.</figcaption>
+</figure>
+
 Attention routing to registers is established well before semantic content appears, consistent with registers serving as structural placeholders rather than content-specific processors.
 
 </details>
@@ -342,7 +360,7 @@ Zeroing registers one at a time produces modest drops. But zeroing all four caus
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/cumulative_lesion.svg" alt="Cumulative register lesion" style="max-width: 100%; width: 600px;">
-  <figcaption><strong>Figure 9.</strong> Cumulative register lesion: zeroing registers one at a time. Solid = actual, dashed = additive prediction. Both models show super-additive degradation.</figcaption>
+  <figcaption><strong>Figure 10.</strong> Cumulative register lesion: zeroing registers one at a time. Solid = actual, dashed = additive prediction. Both models show super-additive degradation.</figcaption>
 </figure>
 
 ### Random patch negative control
@@ -351,7 +369,7 @@ A natural question is whether zeroing any four tokens produces comparable damage
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig9_random_patch_control.svg" alt="Random patch control" style="max-width: 100%; width: 600px;">
-  <figcaption><strong>Figure 10.</strong> Negative control: zeroing 4 random patches has negligible effect vs. zeroing 4 registers.</figcaption>
+  <figcaption><strong>Figure 11.</strong> Negative control: zeroing 4 random patches has negligible effect vs. zeroing 4 registers.</figcaption>
 </figure>
 
 Here are the attention maps under different conditions:
