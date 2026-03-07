@@ -211,7 +211,7 @@
         <h1 class="post-title">Zero-Ablation Overstates Register Function in Vision Transformers</h1>
         <p class="post-meta">
           <time datetime="2026-03-04T00:00:00-08:00">March 4, 2026</time>
-          · 19 min read
+          · 20 min read
         </p>
         
         <div class="post-tags">
@@ -242,7 +242,7 @@
 
 <p>We encountered an analogous problem with vision transformers.</p>
 
-<p><strong>Zero-ablation</strong> – replacing token activations with zero vectors – is the standard tool for probing token function in a ViT. When we zeroed register tokens in DINOv2+registers and DINOv3, classification dropped 36.6 pp and segmentation dropped 30.9 pp. Registers appeared functionally indispensable. Yet when we replaced registers with dataset-mean activations, Gaussian noise, or even registers from <em>completely different images</em>, every task was preserved within 1 pp of baseline. The specific content of registers is dispensable; only their presence matters.</p>
+<p><strong>Zero-ablation</strong> – replacing token activations with zero vectors – is (was?) a widely used tool for probing token function in ViTs. When we zeroed register tokens in DINOv2+registers and DINOv3, classification dropped 36.6 pp and segmentation dropped 30.9 pp. Registers appeared functionally indispensable. Yet when we replaced registers with dataset-mean activations, Gaussian noise, or even registers from <em>completely different images</em>, every task was preserved within 1 pp of baseline. The specific content of registers is dispensable; only their presence matters.</p>
 
 <p>Registers do play a real structural role: they buffer dense features from CLS dependence (zeroing CLS collapses segmentation by 37 pp without registers but &lt;1 pp with them), and they compress patch geometry (effective rank 13.5 → 4.0). Their per-image content, however, is interchangeable. Zero-ablation overstated the story because zero vectors are out-of-distribution – the network never encountered them during training, and injecting them cascades disruption through every subsequent layer.</p>
 
@@ -486,7 +486,7 @@
 <p>Per-patch cosine similarity confirms this pattern. Under plausible replacements, each patch’s features have 0.95–0.999 cosine similarity to the unmodified condition – a genuine perturbation, but a small one. Under zeroing, cosine drops to ~0.6. The zero vector doesn’t just remove register content; it breaks the entire downstream computation.</p>
 
 <figure class="howtocv-figure">
-  <img src="/assets/images/howtocv/correspondence/qualitative.svg" alt="Correspondence under ablation" style="max-width: 100%; width: 700px;" />
+  <img src="/assets/images/howtocv/correspondence/qualitative.svg" alt="Correspondence under ablation" style="max-width: 100%; width: 900px;" />
   <figcaption><strong>Figure 3.</strong> Correspondence results. Top: full model (green = correct). Middle: zero CLS – matches preserved. Bottom: zero registers – spatial matching collapses.</figcaption>
 </figure>
 
@@ -546,27 +546,29 @@
   <figcaption><strong>Figure 5.</strong> Scale comparison. Solid = ViT-S, dashed = ViT-B. (a) Classification and (b) segmentation under ablation. The patterns are consistent across scales.</figcaption>
 </figure>
 
+<p>These three findings – CLS buffering, geometric compression, and attention routing – characterize the structural role registers play. They hold regardless of what specific activations occupy the register slots.</p>
+
 <hr />
 
 <details>
-<summary><strong>Register specialists (click to expand)</strong></summary>
+  <summary><strong>Register specialists (click to expand)</strong></summary>
 
-**Caveat upfront:** The substitution controls show that the decodable content described here is not functionally necessary. Class information is present in individual registers, but models don't need it for any measured task. These patterns characterize representational structure, not functional dependence.
+  <p><strong>Caveat upfront:</strong> The substitution controls show that the decodable content described here is not functionally necessary. Class information is present in individual registers, but models don’t need it for any measured task. These patterns characterize representational structure, not functional dependence.</p>
 
-### DINOv2+reg: R2 is the specialist
+  <h3 id="dinov2reg-r2-is-the-specialist">DINOv2+reg: R2 is the specialist</h3>
 
-Register R2 stands apart. Its nearest-neighbor patches are dominated by dark, low-information regions – borders, shadows, uniform backgrounds. Its cosine similarity to other registers is just 0.11, far below the 0.87–0.90 range among R1/R3/R4. When R2 alone is zeroed, classification drops −4.9pp; zeroing any other single register barely matters (&lt;0.2pp). R2 handles artifact-absorption. R1, R3, and R4 are semantic generalists – their nearest-neighbor patches include object parts and textures, and they carry comparable classification information (61–64% each).
+  <p>Register R2 stands apart. Its nearest-neighbor patches are dominated by dark, low-information regions – borders, shadows, uniform backgrounds. Its cosine similarity to other registers is just 0.11, far below the 0.87–0.90 range among R1/R3/R4. When R2 alone is zeroed, classification drops −4.9pp; zeroing any other single register barely matters (&lt;0.2pp). R2 handles artifact-absorption. R1, R3, and R4 are semantic generalists – their nearest-neighbor patches include object parts and textures, and they carry comparable classification information (61–64% each).</p>
 
-### DINOv3: the inversion
+  <h3 id="dinov3-the-inversion">DINOv3: the inversion</h3>
 
-DINOv3 inverts this pattern. R3 becomes the semantic specialist – probe accuracy of 50.5%, far above R1 (4.1%) and R2 (15.2%). R1, R2, and R4 match to low-level patches: ground textures, dark backgrounds, homogeneous regions. Gram anchoring reorganized how the network distributes computation across registers.
+  <p>DINOv3 inverts this pattern. R3 becomes the semantic specialist – probe accuracy of 50.5%, far above R1 (4.1%) and R2 (15.2%). R1, R2, and R4 match to low-level patches: ground textures, dark backgrounds, homogeneous regions. Gram anchoring reorganized how the network distributes computation across registers.</p>
 
-<figure class="howtocv-figure">
+  <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig3_registers_combined.svg" alt="Per-register analysis" style="max-width: 100%; width: 700px;" />
   <figcaption><strong>Figure 6.</strong> (a) Per-register classification accuracy. (b–c) Pairwise cosine similarity – DINOv2+reg R2 is structurally distinct. (d–e) Per-register lesion effects (note: zeroing is an OOD intervention).</figcaption>
 </figure>
 
-<div id="gallery-container" class="howtocv-interactive">
+  <div id="gallery-container" class="howtocv-interactive">
   <h3 class="howtocv-section-title">Interactive: Register nearest-neighbor gallery</h3>
   <p>Select a model and register to see which image patches are most similar to each register's learned representation.</p>
   <div class="howtocv-controls">
@@ -587,23 +589,25 @@ DINOv3 inverts this pattern. R3 becomes the semantic specialist – probe accura
   </noscript>
 </div>
 
+  <p>Registers develop structured, differentiated representations – but as the controls in the main text show, none of this content is functionally necessary for downstream tasks.</p>
+
 </details>
 
 <details>
-<summary><strong>Temporal dynamics: when do registers matter? (click to expand)</strong></summary>
+  <summary><strong>Temporal dynamics: when do registers matter? (click to expand)</strong></summary>
 
-### Attention routing precedes semantic content
+  <h3 id="attention-routing-precedes-semantic-content">Attention routing precedes semantic content</h3>
 
-We traced two signals across all 12 layers: attention mass flowing to registers and classification information in each register (via linear probes). These two signals are dissociated.
+  <p>We traced two signals across all 12 layers: attention mass flowing to registers and classification information in each register (via linear probes). These two signals are dissociated.</p>
 
-Patches start attending to registers from mid-layers onward, building gradually. But semantic content emerges abruptly at layers 10–11. All tokens carry near-random classification accuracy through layer 8 (&lt;6% for DINOv2+reg, &lt;14% for DINOv3). Then accuracy jumps sharply. The attention routing infrastructure gets built several layers before any semantic content appears.
+  <p>Patches start attending to registers from mid-layers onward, building gradually. But semantic content emerges abruptly at layers 10–11. All tokens carry near-random classification accuracy through layer 8 (&lt;6% for DINOv2+reg, &lt;14% for DINOv3). Then accuracy jumps sharply. The attention routing infrastructure gets built several layers before any semantic content appears.</p>
 
-<figure class="howtocv-figure">
+  <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig4_attention.svg" alt="CLS attention distribution" style="max-width: 100%; width: 700px;" />
   <figcaption><strong>Figure 7.</strong> (a) CLS attention fraction per token type. DINOv2+reg: 17.9% to registers; DINOv3: 29.1%. (b) Per-register breakdown.</figcaption>
 </figure>
 
-<div id="probe-container" class="howtocv-interactive">
+  <div id="probe-container" class="howtocv-interactive">
   <h3 class="howtocv-section-title">Interactive: Layer-wise register probing</h3>
   <p>Drag the slider to see classification accuracy at each layer. Note the sharp jump at layers 10–11.</p>
   <div id="probe-chart"></div>
@@ -612,39 +616,41 @@ Patches start attending to registers from mid-layers onward, building gradually.
   </noscript>
 </div>
 
-Per-register dynamics are interesting: DINOv3's R1 peaks at layer 10 then *drops* at layer 11, despite receiving the most attention. This suggests a transient computation buffer – it temporarily holds information before passing it along, rather than accumulating a final answer. R3 rises monotonically through layer 11, acting as a semantic accumulator.
+  <p>Per-register dynamics are interesting: DINOv3’s R1 peaks at layer 10 then <em>drops</em> at layer 11, despite receiving the most attention. This suggests a transient computation buffer – it temporarily holds information before passing it along, rather than accumulating a final answer. R3 rises monotonically through layer 11, acting as a semantic accumulator.</p>
 
-<figure class="howtocv-figure">
+  <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig5_layer_sweep.svg" alt="Layer-wise task performance" style="max-width: 100%; width: 700px;" />
   <figcaption><strong>Figure 8.</strong> (a) CLS classification across layers – near-random until layer 8, then rises steeply. (b) Correspondence peaks at mid-layers then declines, except DINOv3 which maintains 78.9% at layer 11.</figcaption>
 </figure>
 
+  <p>Attention routing to registers is established well before semantic content appears, consistent with registers serving as structural placeholders rather than content-specific processors.</p>
+
 </details>
 
 <details>
-<summary><strong>Cumulative lesions and negative controls (click to expand)</strong></summary>
+  <summary><strong>Cumulative lesions and negative controls (click to expand)</strong></summary>
 
-### Non-additive effects
+  <h3 id="non-additive-effects">Non-additive effects</h3>
 
-Zeroing registers one at a time produces modest drops. But zeroing all four causes collapse far exceeding the sum of individual effects – DINOv2+reg: sum of individual deltas = −5.2pp, collective = −18.9pp; DINOv3: sum = −7.0pp, collective = −36.6pp. This is consistent with zeroing being a disproportionately destructive intervention that compounds across token positions – the OOD disruption from zeroing one register is modest, but zeroing all four creates a much larger distributional shift.
+  <p>Zeroing registers one at a time produces modest drops. But zeroing all four causes collapse far exceeding the sum of individual effects – DINOv2+reg: sum of individual deltas = −5.2pp, collective = −18.9pp; DINOv3: sum = −7.0pp, collective = −36.6pp. This is consistent with zeroing being a disproportionately destructive intervention that compounds across token positions – the OOD disruption from zeroing one register is modest, but zeroing all four creates a much larger distributional shift.</p>
 
-<figure class="howtocv-figure">
+  <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/cumulative_lesion.svg" alt="Cumulative register lesion" style="max-width: 100%; width: 600px;" />
   <figcaption><strong>Figure 9.</strong> Cumulative register lesion: zeroing registers one at a time. Solid = actual, dashed = additive prediction. Both models show super-additive degradation.</figcaption>
 </figure>
 
-### Random patch negative control
+  <h3 id="random-patch-negative-control">Random patch negative control</h3>
 
-A natural question is whether zeroing any four tokens produces comparable damage. Zeroing four random patch tokens causes ≤1 pp drop – confirming the register effect is specific. But this specificity reflects registers' distinct activation distribution (zeros are more OOD for registers than for patches), not necessarily unique functional content.
+  <p>A natural question is whether zeroing any four tokens produces comparable damage. Zeroing four random patch tokens causes ≤1 pp drop – confirming the register effect is specific. But this specificity reflects registers’ distinct activation distribution (zeros are more OOD for registers than for patches), not necessarily unique functional content.</p>
 
-<figure class="howtocv-figure">
+  <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig9_random_patch_control.svg" alt="Random patch control" style="max-width: 100%; width: 600px;" />
   <figcaption><strong>Figure 10.</strong> Negative control: zeroing 4 random patches has negligible effect vs. zeroing 4 registers.</figcaption>
 </figure>
 
-Here are the attention maps under different conditions:
+  <p>Here are the attention maps under different conditions:</p>
 
-<div id="attn-gallery" class="viz-gallery">
+  <div id="attn-gallery" class="viz-gallery">
   <h4>Interactive: Attention map overlays</h4>
   <div class="viz-controls">
     <span class="label">Image:</span>
@@ -661,6 +667,8 @@ Here are the attention maps under different conditions:
   </div>
   <div class="viz-grid"></div>
 </div>
+
+  <p>The super-additive pattern and the register-specific sensitivity are both consistent with zeroing as a disproportionately destructive OOD intervention, not evidence of unique register content.</p>
 
 </details>
 
