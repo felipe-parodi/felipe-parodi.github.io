@@ -1,10 +1,10 @@
 ---
 layout: post-scholar
-title: "How Register Tokens Reshape Information Flow in Vision Transformers"
+title: "Zero-Ablation Overstates Register Function in Vision Transformers"
 date: 2026-03-04
 categories: [blog]
 tags: [vision-transformers, interpretability, DINOv3, self-supervised-learning]
-excerpt: "DINOv3's register tokens function as active computation buffers, not passive stores — and the evidence comes from a simple trick: zeroing them out."
+excerpt: "Zeroing register tokens suggests they're indispensable — but replacing them with noise, dataset means, or even registers from wrong images preserves every task. The zero vector is the problem, not the registers."
 extra_css:
   - /assets/css/howtocv.css
 ---
@@ -17,7 +17,11 @@ extra_css:
 
 When neural networks process images, they need to organize a lot of information — and some of the most capable models have quietly developed extra "scratch space" to do it. Modern vision transformers like DINOv2 and DINOv3 include an unusual architectural feature: **register tokens** — extra learned tokens added alongside the image tokens that participate in the network's computations but don't correspond to any image region. Originally introduced to [suppress attention artifacts](https://arxiv.org/abs/2309.16588), these tokens turn out to play a far more active role than their name suggests.
 
-In this post, I walk through our findings from systematic token-zeroing experiments — selectively disabling parts of the model and measuring what breaks. We find an **asymmetric dissociation** between CLS and register tokens — CLS zeroing selectively spares dense tasks when registers are present, but register zeroing degrades *everything*. We show that registers function as **attention scaffolds** rather than information stores, and trace the **temporal dynamics** of how registers acquire and sometimes release semantic content across network layers. The upshot: register tokens are load-bearing computational infrastructure, not passive bystanders.
+**Zero-ablation** — replacing token activations with zero vectors — is the standard tool for probing what these tokens do. When you zero registers, everything collapses: classification drops 36.6pp, segmentation drops 30.9pp. This looks like registers are functionally indispensable. But we show this conclusion is too strong.
+
+In this post, I walk through how we discovered that zero-ablation **overstates register function**. Three replacement controls — substituting dataset-mean activations, Gaussian noise, or even registers from completely different images — all preserve every task within 1pp. The dramatic drops from zeroing aren't because registers carry critical information; they're because the zero vector is **out-of-distribution** relative to what the network expects, causing cascading disruption through all subsequent layers. This parallels a [classic lesson from neuroscience](https://doi.org/10.1371/journal.pcbi.1005268): lesioning a microprocessor component and observing a deficit doesn't mean that component computes Donkey Kong.
+
+What IS real: registers **buffer dense features from CLS dependence** (zeroing CLS collapses segmentation by 37pp without registers but <1pp with them), and they **compress patch geometry** (effective rank drops from 13.5 to 4.0). But their specific per-image content? Fungible.
 
 ---
 
@@ -80,13 +84,16 @@ DINOv3 also includes register tokens. But here's the key question our paper inve
 
 ## The Experiment: Token-Zeroing Ablations
 
-### The logic of zeroing
+### The logic of ablation
 
-Our approach is simple: at the final transformer layer, we **zero out** specific token types and measure the downstream impact. This lets us test what depends on each token's contribution:
+Our approach: at every transformer layer, we **replace** specific token types with different values and measure the downstream impact. The key insight is comparing *what* you replace with:
 
-- **Zero CLS**: Sets the CLS token output to zero. If a task degrades, it relied on CLS.
-- **Zero registers**: Sets all 4 register outputs to zero. If a task degrades, it relied on registers.
-- **Mean substitution**: Replaces tokens with dataset-mean activations (rather than zeros). This preserves the statistical "scaffold" while removing image-specific content.
+- **Zero-ablation**: Sets tokens to the zero vector. The standard approach — but the zero vector is something the network has *never seen* during training, making it an out-of-distribution input.
+- **Mean substitution**: Replaces with the average activation at that layer (calibrated on 5,000 images). Stays on-manifold but removes image-specific content.
+- **Noise substitution**: Replaces with Gaussian noise matched in per-layer mean and variance. Right statistics, no learned structure.
+- **Cross-image shuffling**: Swaps register activations across images in the batch (fresh permutation at each layer). Real register values from real images — just the *wrong* images.
+
+If models depend on register **content**, all replacements should degrade performance. If they depend only on register **presence**, plausible replacements should suffice.
 
 We evaluate on four tasks spanning global and dense prediction:
 
@@ -150,7 +157,7 @@ Conversely, zeroing registers causes large drops, especially for DINOv3:
 - DINOv3 segmentation: 78.5% → 47.6% (**−30.9pp**)
 - DINOv3 correspondence: 78.9% → 57.8% (**−21.1pp**)
 
-This is the asymmetric dissociation: CLS zeroing selectively impairs global tasks while sparing dense tasks, but register zeroing impairs *everything* — global and dense alike. The asymmetry reveals that registers serve a broader structural role than CLS, functioning as computational infrastructure the entire network depends on.
+Taken at face value, this is an asymmetric dissociation: CLS zeroing selectively spares dense tasks, while register zeroing impairs *everything*. But as we'll see below, the register side of this dissociation is overstated — **the dramatic drops come from injecting out-of-distribution zero vectors, not from losing critical register content.**
 
 You can see the ablation effects directly in patch PCA features below. Compare "Full Model" with "Zero CLS" (often barely changes) and "Zero Registers" (feature structure collapses):
 
@@ -173,24 +180,38 @@ You can see the ablation effects directly in patch PCA features below. Compare "
   <div class="viz-grid"></div>
 </div>
 
-### The scaffold experiment
+### Register content is fungible
 
-The zeroing results raise a key question: is it the *specific information* stored in registers that matters, or just their *structural presence* in the attention computation? We tested this with **mean substitution**: replacing each register's output with its average activation pattern (computed over 5,000 images). This preserves the registers' typical statistical footprint while stripping away any image-specific content.
+The zeroing results raise a key question: is it the *specific information* stored in registers that matters, or just their *structural presence*? We tested this with three replacement controls alongside zeroing.
 
-The result: **classification accuracy is fully preserved** under mean substitution. DINOv2+reg drops only 0.3pp, DINOv3 actually gains 0.1pp. This means registers' image-specific content is irrelevant — what matters is simply their *presence as attention targets*. They serve as an **attention scaffold**: the network routes computation through them regardless of what they contain, and removing this scaffold entirely (via zeroing) is what causes the collapse.
+The result: **all three plausible replacements preserve performance across every task** — classification, correspondence, and segmentation — within ~1pp of the unmodified baseline:
 
-### Measuring the scaffold: attention divergence
+| Condition | CLS (v2+R / v3) | Corr. (v2+R / v3) | Seg. (v2+R / v3) |
+|-----------|------------------|--------------------|-------------------|
+| Full | 67.3 / 62.0 | 69.1 / 78.9 | 71.3 / 78.5 |
+| Zero registers | 48.4 / 25.4 | 64.3 / 57.8 | 61.7 / 47.6 |
+| Mean-sub | 67.0 / 62.1 | 68.8 / 78.8 | 71.6 / 78.6 |
+| Noise-sub | 67.0 / 62.0 | 68.7 / 78.7 | 71.5 / 78.6 |
+| Shuffle | 67.8 / 62.0 | 68.5 / 78.6 | 71.2 / 78.6 |
 
-To directly quantify scaffold disruption, we measured **Jensen–Shannon divergence** between full and ablated attention patterns at every layer. JS divergence measures how different two probability distributions are — in this case, how much the attention pattern changes when registers are zeroed vs. mean-substituted.
+Only zeroing causes catastrophic drops. The shuffle result is especially striking: by layer 11, registers have been shaped by 12 layers of attention with a specific image's patches. Yet swapping in registers conditioned on *completely different images* doesn't hurt any task. The network spent all that compute conditioning registers on the image, and none of that per-image conditioning matters.
 
-The results are striking. Register zeroing causes **cascading divergence that amplifies across layers**: in DINOv3, JS divergence starts at 0.00 at layer 0 (same input, no difference yet) and grows to 0.18 by layer 11. Mean-substitution, by contrast, preserves attention patterns almost perfectly — JS stays below 0.005 at every layer. That's a **~250× gap**, demonstrating that the performance collapse from zeroing is scaffold disruption, not information removal.
+**But CLS is different.** Mean-substituting CLS yields 0.1% classification — same as zeroing. CLS content is genuinely image-specific. The fungibility is specific to registers.
+
+This connects to a broader lesson. [Jiang et al. (2025)](https://arxiv.org/abs/2501.11457) showed that even *untrained* register tokens suffice for artifact removal. We extend this: even in models *trained with* registers, the per-image content is unnecessary for all standard downstream tasks.
+
+### Why zeroing is misleading: the OOD explanation
+
+To understand *why* only zeroing causes damage, we measured **Jensen–Shannon divergence** between full and ablated attention patterns at every layer. JS divergence measures how different two probability distributions are — in this case, how much the attention pattern changes under each intervention.
+
+Register zeroing causes **cascading divergence that amplifies across layers**: in DINOv3, JS divergence starts at 0.00 at layer 0 and grows to 0.18 by layer 11. Mean-substitution preserves attention patterns almost perfectly — JS stays below 0.005 at every layer. That's a **~250× gap**. The zero vector sits far outside the manifold of activations the network learned to process. When attention heads encounter it, they compute corrupted outputs that feed corrupted inputs to the next layer, compounding through all 12 layers.
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig_attention_rewiring.svg" alt="Attention scaffold under ablation: JS divergence across layers and attention redistribution" style="max-width: 700px;">
-  <figcaption><strong>Figure 3.</strong> Attention scaffold under ablation. (a) JS divergence vs. layer: register zeroing (solid) causes cascading divergence that amplifies across layers; mean-substitution (dashed) preserves attention patterns. Lighter lines show ViT-B scale. (b) CLS attention redistribution at the last layer when registers are zeroed — DINOv3's CLS attention shifts to patches (+19.9pp) while DINOv2+reg shifts toward CLS self-attention.</figcaption>
+  <figcaption><strong>Figure 3.</strong> Why zeroing is misleading. (a) JS divergence vs. layer: register zeroing (solid) causes cascading divergence — the OOD zero vector compounds through layers; mean-substitution (dashed) preserves attention patterns. Lighter lines show ViT-B scale. (b) CLS attention redistribution at the last layer when registers are zeroed — DINOv3's CLS attention shifts to patches (+19.9pp) while DINOv2+reg shifts toward CLS self-attention.</figcaption>
 </figure>
 
-The per-register analysis aligns with the specialist findings from above: removing R2 (DINOv2+reg) or R3 (DINOv3) causes the greatest attention disruption (JS = 0.062 and 0.076 respectively), confirming these specialist registers serve as **structural anchors** for the attention scaffold. Remove the anchor, and the routing pattern fractures.
+Per-register analysis shows removing R2 (DINOv2+reg) or R3 (DINOv3) causes the greatest attention disruption (JS = 0.062 and 0.076 respectively). But note: zeroing individual registers is *also* an OOD intervention, so these results measure sensitivity to distributional shift rather than functional dependence on register content.
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/correspondence/qualitative.svg" alt="Qualitative correspondence under different ablation conditions" style="max-width: 700px;">
@@ -201,7 +222,7 @@ The per-register analysis aligns with the specialist findings from above: removi
 
 ## What Do Individual Registers Do?
 
-Registers are not interchangeable. We probed each register individually and found a **specialist-generalist split** that reverses between architectures.
+We probed each register individually and found a **specialist-generalist split** that reverses between architectures. **Important caveat:** the substitution controls show that this decodable content is not *functionally necessary* — class information is present in individual registers, but models don't require it for any measured task. These patterns characterize representational structure, not functional dependence.
 
 ### DINOv2+reg: R2 is the specialist
 
@@ -364,7 +385,7 @@ But zeroing all four together produces a collapse far exceeding the sum of indiv
 - **DINOv2+reg**: Sum of individual G1 deltas = −5.2pp, collective = −18.9pp
 - **DINOv3**: Sum of individual = −7.0pp, collective = −36.6pp
 
-This **non-additive interaction** — the collective effect far exceeds the sum of individual effects — confirms that registers function as a coordinated system. No single register is critical on its own — what matters is the collective scaffold.
+This **non-additive interaction** — the collective effect far exceeds the sum of individual effects — is consistent with zeroing being a disproportionately destructive intervention that compounds across token positions. The OOD disruption from zeroing one register is modest; zeroing all four creates a much larger distributional shift that cascades through subsequent layers.
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/cumulative_lesion.svg" alt="Cumulative register lesion effects" style="max-width: 600px;">
@@ -386,7 +407,7 @@ We replicated all key experiments with ViT-B backbones. The ablation patterns ar
 
 ### Is register zeroing special?
 
-A natural concern: maybe zeroing *any* set of 4 tokens would be equally disruptive? We controlled for this by zeroing 4 randomly selected patch tokens instead of registers.
+A natural concern: maybe zeroing *any* set of 4 tokens would be equally disruptive? We controlled for this by zeroing 4 randomly selected patch tokens instead of registers. The result: ≤1pp drop — confirming that the register-zeroing effect is specific to registers, not a generic consequence of zeroing any tokens. But as shown above, this specificity reflects the registers' distinct activation distribution (making zeros more OOD for registers than for patches), not necessarily their unique functional content.
 
 <figure class="howtocv-figure">
   <img src="/assets/images/howtocv/fig9_random_patch_control.svg" alt="Random patch zeroing negative control" style="max-width: 600px;">
@@ -397,17 +418,17 @@ A natural concern: maybe zeroing *any* set of 4 tokens would be equally disrupti
 
 ## Practical Takeaways
 
-Some practical implications:
+1. **Don't trust zero-ablation alone.** Zeroing injects OOD inputs that cascade disruption, overstating functional dependence. Always pair with replacement controls — cross-image shuffling is the strongest test (preserves real activation structure while breaking content), mean-substitution is simplest to implement.
 
-1. **Don't discard registers.** If your pipeline extracts features from register-equipped models, include register tokens in your feature set. They are not auxiliary — they are load-bearing.
+2. **Register slots matter; register content doesn't** (for standard frozen-feature tasks). The network has reorganized its computation to expect activations in those slots. Any plausible activation works — dataset means, noise, wrong-image registers.
 
-2. **Mean substitution works as a fallback.** If you must replace register values (e.g., for batching across models with different register counts), substituting dataset-mean activations preserves the attention scaffold and maintains accuracy.
+3. **CLS content genuinely matters.** Mean-substituting CLS also kills classification (0.1%). The fungibility is specific to registers, not a general property of the controls being weak.
 
-3. **Register specialization is exploitable.** DINOv2+reg's R2 encodes low-level image statistics; DINOv3's R3 concentrates semantic content. These can be selectively queried for different downstream tasks.
+4. **Registers buffer dense features from CLS dependence.** This is a real architectural effect confirmed by the CLS-zeroing asymmetry (37pp segmentation drop without registers vs <1pp with them) — and doesn't rely on zero-ablation of registers.
 
-4. **Registers are active, not passive.** The temporal dissociation — attention routing precedes semantic emergence — means registers participate in computation, not just storage. This has implications for pruning, distillation, and architectural design.
+5. **Scale-consistent.** All findings replicate across ViT-S and ViT-B backbones.
 
-5. **Scale-consistent.** All findings replicate across ViT-S and ViT-B backbones, suggesting these are stable properties of the architecture rather than scale-dependent phenomena.
+6. **Open question:** Our fungibility result covers standard frozen-feature evaluations. Tasks requiring fine-grained register content (few-shot adaptation, generation) remain untested.
 
 ---
 
@@ -415,9 +436,9 @@ Some practical implications:
 
 ```bibtex
 @inproceedings{parodi2026cls,
-  title={CLS and Register Token Ablations Reveal Asymmetric
-         Information Flow in Vision Transformers},
-  author={Parodi, Felipe and Segado, Melanie},
+  title={Zero-Ablation Overstates Register Function
+         in {DINO} Vision Transformers},
+  author={Parodi, Felipe and Matelsky, Jordan K. and Segado, Melanie},
   booktitle={CVPR HOW Workshop},
   year={2026}
 }
