@@ -160,11 +160,11 @@
 }
 
 /* ===== NEWS ===== */
-.scholar-section .claude-news {
+.scholar-section .fp-news {
   margin-bottom: var(--space-lg);
 }
 
-.scholar-section .claude-news li {
+.scholar-section .fp-news li {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
@@ -213,7 +213,7 @@
     font-size: 1rem;
   }
 
-  .scholar-section .claude-news li {
+  .scholar-section .fp-news li {
     flex-direction: column;
     gap: var(--space-xs);
   }
@@ -222,7 +222,7 @@
 /* ===== PRINT STYLES ===== */
 @media print {
   .scholar-header,
-  .claude-theme-toggle,
+  .fp-theme-toggle,
   .scholar-toggle-btn {
     display: none;
   }

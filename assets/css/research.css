@@ -277,7 +277,7 @@
 @media print {
   .project-toggle,
   .publications-filter,
-  .claude-theme-toggle {
+  .fp-theme-toggle {
     display: none;
   }
 
