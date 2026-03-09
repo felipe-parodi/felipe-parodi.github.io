@@ -148,7 +148,7 @@
   min-height: 120px;
 }
 
-.contact-form .claude-btn {
+.contact-form .fp-btn {
   width: 100%;
   justify-content: center;
   margin-top: var(--space-sm);

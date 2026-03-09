@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="{{ '/assets/css/claude-theme.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/fp-theme.css' | relative_url }}">
   <link rel="stylesheet" href="{{ '/assets/css/v1-scholar.css' | relative_url }}">
 
   <!-- Favicons -->
@@ -22,7 +22,7 @@
 
   {% include seo.html %}
 </head>
-<body class="claude-layout scholar-layout">
+<body class="fp-layout scholar-layout">
 
   <!-- Minimal Header -->
   <header class="scholar-header">
@@ -42,7 +42,7 @@
 
       <!-- Portrait -->
       <div class="scholar-portrait-wrap">
-        <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="claude-portrait claude-portrait--lg">
+        <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" class="fp-portrait fp-portrait--lg">
       </div>
 
       <!-- Title & Tagline -->
@@ -60,11 +60,11 @@
         <p>I went to college at the University of Miami, where I studied Neuroscience and Economics. I then briefly worked as a Psychometrician before grad school.</p>
       </section>
 
-      <hr class="claude-divider">
+      <hr class="fp-divider">
 
       <!-- Research Section -->
       <section class="scholar-section">
-        <div class="claude-section-header">
+        <div class="fp-section-header">
           <h2>Research</h2>
         </div>
 
@@ -84,23 +84,23 @@
           </li>
         </ul>
 
-        <a href="/research/" class="claude-arrow-link">View all publications</a>
+        <a href="/research/" class="fp-arrow-link">View all publications</a>
       </section>
 
-      <hr class="claude-divider">
+      <hr class="fp-divider">
 
       <!-- News Section -->
       <section class="scholar-section">
-        <div class="claude-section-header">
+        <div class="fp-section-header">
           <h2>News</h2>
         </div>
 
-        <ul class="claude-news" id="news-list">
+        <ul class="fp-news" id="news-list">
           {% assign news_items = site.data.news %}
           {% for item in news_items limit:5 %}
           <li>
-            <span class="claude-news-date">{{ item.date | date: "%b %Y" }}</span>
-            <span class="claude-news-event">{{ item.event | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+            <span class="fp-news-date">{{ item.date | date: "%b %Y" }}</span>
+            <span class="fp-news-event">{{ item.event | markdownify | remove: '<p>' | remove: '</p>' }}</span>
           </li>
           {% endfor %}
         </ul>
@@ -119,13 +119,13 @@
         {% endfor %}
 
         {% if recent_size > 0 %}
-        <ul class="claude-news" id="older-news" style="display: none;">
+        <ul class="fp-news" id="older-news" style="display: none;">
           {% for item in news_items offset:5 %}
             {% assign item_ts = item.date | date: '%s' %}
             {% if item_ts >= cutoff %}
             <li>
-              <span class="claude-news-date">{{ item.date | date: "%b %Y" }}</span>
-              <span class="claude-news-event">{{ item.event | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+              <span class="fp-news-date">{{ item.date | date: "%b %Y" }}</span>
+              <span class="fp-news-event">{{ item.event | markdownify | remove: '<p>' | remove: '</p>' }}</span>
             </li>
             {% endif %}
           {% endfor %}
@@ -134,13 +134,13 @@
         {% endif %}
 
         {% if archive_size > 0 %}
-        <ul class="claude-news" id="archive-news" style="display: none;">
+        <ul class="fp-news" id="archive-news" style="display: none;">
           {% for item in news_items offset:5 %}
             {% assign item_ts = item.date | date: '%s' %}
             {% if item_ts < cutoff %}
             <li>
-              <span class="claude-news-date">{{ item.date | date: "%b %Y" }}</span>
-              <span class="claude-news-event">{{ item.event | markdownify | remove: '<p>' | remove: '</p>' }}</span>
+              <span class="fp-news-date">{{ item.date | date: "%b %Y" }}</span>
+              <span class="fp-news-event">{{ item.event | markdownify | remove: '<p>' | remove: '</p>' }}</span>
             </li>
             {% endif %}
           {% endfor %}
@@ -150,24 +150,24 @@
         {% endif %}
       </section>
 
-      <hr class="claude-divider">
+      <hr class="fp-divider">
 
       <!-- Social Links -->
       <footer class="scholar-footer">
-        <div class="claude-socials">
-          <a href="mailto:fparodi@upenn.edu" class="claude-social-link" title="Email">
+        <div class="fp-socials">
+          <a href="mailto:fparodi@upenn.edu" class="fp-social-link" title="Email">
             <i class="fas fa-envelope"></i>
           </a>
-          <a href="https://github.com/felipe-parodi" class="claude-social-link" title="GitHub">
+          <a href="https://github.com/felipe-parodi" class="fp-social-link" title="GitHub">
             <i class="fab fa-github"></i>
           </a>
-          <a href="https://scholar.google.com/citations?user=kqW-zA0A5dAC" class="claude-social-link" title="Google Scholar">
+          <a href="https://scholar.google.com/citations?user=kqW-zA0A5dAC" class="fp-social-link" title="Google Scholar">
             <i class="fas fa-graduation-cap"></i>
           </a>
-          <a href="https://linkedin.com/in/felipeparodi" class="claude-social-link" title="LinkedIn">
+          <a href="https://linkedin.com/in/felipeparodi" class="fp-social-link" title="LinkedIn">
             <i class="fab fa-linkedin-in"></i>
           </a>
-          <a href="https://twitter.com/fe_parodi" class="claude-social-link" title="Twitter">
+          <a href="https://twitter.com/fe_parodi" class="fp-social-link" title="Twitter">
             <i class="fab fa-twitter"></i>
           </a>
         </div>
@@ -177,7 +177,7 @@
   </main>
 
   <!-- Theme Toggle -->
-  <button class="claude-theme-toggle" id="theme-toggle" title="Toggle dark mode">
+  <button class="fp-theme-toggle" id="theme-toggle" title="Toggle dark mode">
     <span id="theme-icon">&#9790;</span>
   </button>
 
