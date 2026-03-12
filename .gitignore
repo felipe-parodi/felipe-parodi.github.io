@@ -10,6 +10,8 @@ vendor/
 !images/parodi_headshot.png
 !assets/images/howtocv/**/*.png
 !assets/images/howtocv/*.png
+!assets/images/awesome-comp-primatology/**/*.png
+!assets/images/awesome-comp-primatology/*.png
 images/*/mp4
 # Ignore build artifacts
 .bundle/
